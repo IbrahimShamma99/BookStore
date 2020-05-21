@@ -3,13 +3,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
-import RouteNames from "../constants/user.routes";
+import RouteNames from "../constants/books.routes";
 
 //SECTION Pages
-import Login from "./Login";
-import Signup from "./Register";
+import Book from "./Book";
+import Feed from "./Feed";
 
 class UserComponent extends React.Component {
   render() {
@@ -17,8 +16,8 @@ class UserComponent extends React.Component {
       <div>
         <Router>
           <Switch>
-            <Route exact path={RouteNames.base} component={Home} />
-            <Route path={RouteNames.login} component={Login} />
+            <Route exact path={RouteNames.feed} component={Feed} />
+            <Route path={RouteNames.book} component={Book} />
           </Switch>
         </Router>
       </div>
