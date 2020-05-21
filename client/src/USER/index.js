@@ -1,2 +1,2 @@
-import UserComponent from './user.Switcher';
+import UserComponent from './Pages/';
 export default UserComponent;

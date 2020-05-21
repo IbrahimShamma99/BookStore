@@ -1,5 +1,4 @@
 import React from "react";
-import UserComponent from "./USER/";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "./Styles/theme";
 import { GlobalStyles } from "./Styles/global";
@@ -7,6 +6,9 @@ import Layout from "./Components/Layout";
 import { connect } from "react-redux";
 import NavigationBar from "./Navigation";
 import * as utilTypes from "./UtilStore/util.actions";
+
+import UserComponent from "./USER/";
+import BookComponent from './Book/';
 const mapStateToProps = (state) => {
   return {
     theme: state.util.theme,
@@ -30,6 +32,7 @@ function App(props) {
           }
         />
         <UserComponent />
+        <BookComponent/>
       </React.Fragment>
     </ThemeProvider>
   );

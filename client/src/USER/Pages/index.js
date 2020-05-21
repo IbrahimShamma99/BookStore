@@ -5,14 +5,14 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import RouteNames from "./constants/user.routes";
+import RouteNames from "../constants/user.routes";
 
 //SECTION Pages
-import Login from "./Pages/Login";
-import Signup from "./Pages/Register";
-import Home from "./Pages/Home";
-import Profile from "./Pages/Profile";
-import Update from "./Pages/Update";
+import Login from "./Login";
+import Signup from "./Register";
+import Home from "./Home";
+import Profile from "./Profile";
+import Update from "./Update";
 
 class UserComponent extends React.Component {
   render() {
