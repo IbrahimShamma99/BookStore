@@ -1,0 +1,5 @@
+{
+    "PORT": 5000,
+    "LocalDB": "mongodb://localhost/BookShop",
+    "secret": "It is Ibrahim"
+}
