@@ -67,9 +67,7 @@ class Login extends React.PureComponent {
   SubmitHandler = () => {
     if (this.props.email && this.props.password) {
       this.setState({ submitted: true });
-      return this.props.submit(() => {
-        // this.refreshPage();
-      });
+      return this.props.submit(() => {});
     } else {
       this.setState({ submitted: true });
     }
