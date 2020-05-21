@@ -1,5 +1,3 @@
-import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
-import middlewares from "./middlewares";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
 import { applyMiddleware } from "redux";
@@ -48,13 +46,4 @@ const getMiddleware = () => {
   }
 };
 
-
-const getMiddleware = () => {
-  if (process.env.NODE_ENV === "production") {
-    return middlewares.ProdMiddlewares;
-  } else {
-    return middlewares.DevMiddlewares;
-  }
-};
-
-export default composeWithDevTools(getMiddleware());
+export default getMiddleware;

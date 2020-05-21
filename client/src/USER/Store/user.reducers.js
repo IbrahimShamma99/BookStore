@@ -21,6 +21,7 @@ const reducers = (state = intialState, action) => {
         ...action.data,
         show: false,
         error: "",
+        message:"",
         open: false,
         success: "",
       };
@@ -117,7 +118,6 @@ const reducers = (state = intialState, action) => {
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
-      console.log("action=", action);
       auth.authenticate(action.user.token, () => {
         return { ...state, ...action, profile: {}, open: true };
       });

@@ -1,5 +1,5 @@
 import React from "react";
-//import "./Profile.css";
+import "./Profile.css";
 import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
@@ -10,7 +10,6 @@ import ServerDir from "../../../constants/server";
 import StyleComponents from "./Components/Styles";
 
 const mapStatetoProps = (state) => {
-  console.log("state.user", state.user);
   return {
     ...state.UserState,
     theme: state.util.theme,
@@ -34,7 +33,7 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.props.show ? (
+        {this.props.show ? 
           <this.Styles.alert>
             <div className="alert">
               <span
@@ -46,7 +45,7 @@ class Profile extends React.Component {
               {this.props.error}
             </div>
           </this.Styles.alert>
-        ) : null}
+         : null}
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}

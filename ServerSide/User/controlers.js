@@ -56,7 +56,6 @@ const fetchUserViaUsername = (req, res) => {
 
 const login = async (req, res, next) => {
   const UserInfo = req.body.user;
-  console.log(UserInfo);
   if (!UserInfo.email) {
     return res.send(422).json({ error: "please provide email " });
   }
@@ -69,10 +68,8 @@ const login = async (req, res, next) => {
         return res.status(422).json({ error: "User not found" });
       }
       if (user.validPassword(UserInfo.password)) {
-        console.log("Valid")
         return res.status(202).json(user.toAuthJSON());
       } else {
-        console.log("Not valid")
         return res.status(422).send({ error: "authentication error" });
       }
     })
@@ -131,17 +128,17 @@ const followUser = (req, res, next) => {
   const userInfo = req.body.user;
   const followedInfo = req.body.followed;
   if (!userInfo) {
-    res.status(422).send({ success: false, message: "User not provided" });
+    res.status(422).send({ success: false, error: "User not provided" });
   }
   if (!followedInfo) {
-    res.status(422).send({ success: false, message: "Followed not provided" });
+    res.status(422).send({ success: false, error: "Followed not provided" });
   }
   User.findById(userInfo._id)
     .then((user) => {
       User.findById(followedInfo._id)
         .then((followed) => {
           if (!user) {
-            res.status(422).send({ success: false, message: "User not found" });
+            res.status(422).send({ success: false, error: "User not found" });
           }
           if (!followed) {
             res
