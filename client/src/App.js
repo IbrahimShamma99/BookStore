@@ -31,8 +31,8 @@ function App(props) {
             <Layout checked={props.checked} onChange={props.ToggleTheme} />
           }
         />
-        <UserComponent />
         <BookComponent/>
+        <UserComponent />
       </React.Fragment>
     </ThemeProvider>
   );

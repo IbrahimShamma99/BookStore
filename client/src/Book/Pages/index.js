@@ -1,16 +1,12 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import RouteNames from "../constants/books.routes";
 
 //SECTION Pages
 import Book from "./Book";
 import Feed from "./Feed";
 
-class UserComponent extends React.Component {
+class BookComponent extends React.Component {
   render() {
     return (
       <div>
@@ -24,4 +20,4 @@ class UserComponent extends React.Component {
     );
   }
 }
-export default UserComponent;
+export default BookComponent;

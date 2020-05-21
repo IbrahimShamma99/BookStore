@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import { persistStore } from "redux-persist";
-import rootReducer from "./Reducer";
-import Middleware from "./Middleware/";
+import rootReducer from './Reducer';
 
-const store = createStore(rootReducer, Middleware);
+
+const store = createStore(rootReducer);
+
 const persistor = persistStore(store);
 
 const StoreComponent = { persistor, store };
