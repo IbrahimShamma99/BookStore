@@ -124,7 +124,8 @@ class Profile extends React.Component {
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
-            {this.props.profile ? (
+            {this.props.profile ?
+              this.props.profile.avatar? 
               <img
                 className="mobile-profile-picture"
                 alt="profile"
@@ -132,13 +133,14 @@ class Profile extends React.Component {
                   ServerDir.serverDev + "/" + this.props.profile.avatar.filename
                 }
               ></img>
-            ) : (
+             : (
               <img
                 className="mobile-profile-picture"
                 alt="profile"
                 src={require("../../Assets/profile.jpg")}
               ></img>
-            )}
+            ):null
+          }
             <div className="mobile-username-container">
               <span>
                 <h3>
