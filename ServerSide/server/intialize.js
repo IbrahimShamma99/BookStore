@@ -14,6 +14,7 @@ const { paths } = require("../helper/");
 
 var app = express();
 app.use(express.static(paths.userAvatar));
+app.use(express.static(paths.bookCover));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
