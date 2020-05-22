@@ -1,4 +1,14 @@
 import React from "react";
+import StyleComponent from "./Styles";
+import { connect } from "react-redux";
+
+const mapStatetoProps = (state) => {
+  return { theme: state.util.theme };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
 const BookInfo = {
   _id: "0000",
@@ -11,19 +21,23 @@ const BookInfo = {
     { writer: "easyMoneySniper", body: "Great" },
   ],
   cover: {
-    filename: "XX",
+    filename: "Ego.jpg",
   },
 };
 
 class Book extends React.Component {
   render() {
     return (
-      <div>
-        <h2>{BookInfo.title}</h2>
+      <StyleComponent.BookDiv primary={this.props.theme === "light" ? true : null}>
+{/*        <h2>{BookInfo.title}</h2>
         <p>{BookInfo.brief}</p>
-        <p>{BookInfo.author}</p>
-      </div>
+            <p>{BookInfo.author}</p>
+*/}        <StyleComponent.coverImage
+          alt="cover"
+          src={require("../../assets/" + BookInfo.cover.filename)}
+        ></StyleComponent.coverImage>
+      </StyleComponent.BookDiv>
     );
   }
 }
-export default Book;
+export default connect(mapStatetoProps, mapDispatchToProps)(Book);
