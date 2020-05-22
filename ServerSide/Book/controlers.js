@@ -7,14 +7,28 @@ const create = (req, res) => {
   const bookInfo = req.body.book;
   const book = new Book();
   book.assignInfo(bookInfo);
-  book.save(()=>{
-      res.status(202).send({
-          book:book.toJSON()
-      })
-  })
+  book.save(() => {
+    res.status(202).send({
+      book: book.toJSON(),
+    });
+  });
 };
 const update = (req, res) => {
   const book = req.book;
+  const user = req.query.UserID;
+  const bookInfo = req.body.book;
+  if (!book.owner.equals(user)) {
+    /*Not owner*/
+  }
+  if (req.file) {
+    book.cover = req.file;
+  }
+  book.assignInfo(bookInfo);
+  book.save(() => {
+    res.status(202).send({
+      book: book.toJSON(),
+    });
+  });
 };
 const feed = (req, res) => {};
 const fetch = (req, res) => {

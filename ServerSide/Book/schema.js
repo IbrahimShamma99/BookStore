@@ -36,6 +36,10 @@ BookSchema.methods.toJSON = function () {
     cover: this.cover,
   };
 };
-BookSchema.methods.assignInfo = function (info) {};
+BookSchema.methods.assignInfo = function (info) {
+  Object.keys(info).map(key=>{
+    this[key] = info[key];
+  })
+};
 
 module.exports = BookSchema = mongoose.model("Book", BookSchema);
