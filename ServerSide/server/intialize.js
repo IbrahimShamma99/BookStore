@@ -1,13 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 const session = require("express-session");
-const helmet = require('helmet')
-const cors = require('cors');
+const helmet = require("helmet");
+const cors = require("cors");
 const logger = require("morgan");
-const {paths} = require("../helper/");
+const { paths } = require("../helper/");
 /**NOTE We are passing app to the server because
- * When you call the “require” function in Node, it uses 
- * the path of the required file as a cache key. If you require 
+ * When you call the “require” function in Node, it uses
+ * the path of the required file as a cache key. If you require
  * the same file from multiple other files, you typically
  * get the same cached copy of the module sent back to you.
  */
@@ -20,14 +20,16 @@ app.use(cors());
 app.use(helmet());
 app.use(logger("dev"));
 
-app.use(session({
-    secret: 'Pics-App',
+app.use(
+  session({
+    secret: "Pics-App",
     cookie: { maxAge: 60000 },
     resave: false,
-    saveUninitialized: false
-}));
-  
-//SECTION Requiring DataBase Schemas
-require('../User/schema');
+    saveUninitialized: false,
+  })
+);
 
+//SECTION Requiring DataBase Schemas
+require("../User/schema");
+require("../Book/schema");
 module.exports = app;
