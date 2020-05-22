@@ -33,23 +33,25 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.props.show ? (
-          <div className="alert">
-            <span
-              className="closebtn"
-              onClick="this.parentElement.style.display='none';"
-            >
-              &times;
-            </span>
-            {this.props.error}
-          </div>
-        ) : null}
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
           <this.Styles.ProfileContainer
             primary={this.props.theme === "light" ? true : null}
           >
+
+          {this.props.show ? (
+            <div className="alert">
+              <span
+                className="closebtn"
+                onClick="this.parentElement.style.display='none';"
+              >
+                &times;
+              </span>
+              {this.props.error}
+            </div>
+          ) : null}
+  
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
