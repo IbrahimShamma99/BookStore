@@ -30,10 +30,13 @@ const update = (req, res) => {
     });
   });
 };
-const feed = (req, res) => {};
 const fetch = (req, res) => {
   const book = req.book;
+  res.status(202).send({
+    book: book.toJSON(),
+  });
 };
+const feed = (req, res) => {};
 
 const BookControler = {
   create,
