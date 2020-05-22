@@ -10,7 +10,9 @@ var AvatarStorage = multer.diskStorage({
   },
 });
 
-var uploadAvatar = multer({
+var uploadCover = multer({
   storage: AvatarStorage,
   limits: { fileSize: 1024 * 1024 * 5 },
 });
+
+module.exports = uploadCover;
