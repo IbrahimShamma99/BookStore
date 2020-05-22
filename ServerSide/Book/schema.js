@@ -2,11 +2,16 @@ var mongoose = require("mongoose");
 
 var BookSchema = new mongoose.Schema(
   {
-    title: {},
+    title: { type: String, required: true },
     author: {},
-    reviews: {},
-    brief: {},
-    owner: {},
+    reviews: [
+      {
+        writer: { type: String },
+        body: { type: String },
+      },
+    ],
+    brief: {type:String},
+    owner: {type:mongoose.Types.ObjectId,ref:"User"},
     cover: {
       fieldname: String,
       originalname: String,
@@ -20,5 +25,17 @@ var BookSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+BookSchema.methods.toJSON = function () {
+  return {
+    title: this.title,
+    author: this.author,
+    brief: this.brief,
+    reviews: this.reviews,
+    owner: this.owner,
+    cover: this.cover,
+  };
+};
+BookSchema.methods.assignInfo = function (info) {};
 
 module.exports = BookSchema = mongoose.model("Book", BookSchema);
