@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
-const User = mongoose.model("User");
+const Book = mongoose.model("User");
 
-const userParams = (req, res, next, id) => {
-  User.findById(id)
-    .then(function (user) {
-      if (!user) {
+const bookParams = (req, res, next, id) => {
+  Book.findById(id)
+    .then(function (book) {
+      if (!book) {
         return res.sendStatus(404);
       }
-      req.user = user;
+      req.book = book;
       return next();
     })
     .catch(next);
 };
 
-module.exports = userParams;
+module.exports = bookParams;

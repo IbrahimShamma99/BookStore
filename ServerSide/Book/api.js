@@ -3,9 +3,9 @@ const controlers = require("./controlers");
 const { Routes, params } = require("./constants");
 const helper = require("../helper/helper");
 const uploadCover = require("./upload");
-const userParams = require("./params");
+const bookParams = require("./params");
 
-router.param(params.user, userParams);
+router.param(params.book, bookParams);
 
 //SECTION add book
 router.post(Routes.create,helper.required, controlers.adduser);
