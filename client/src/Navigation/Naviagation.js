@@ -2,6 +2,8 @@
 
 import React from "react";
 import RouteNames from "../USER/constants/user.routes";
+import bookRoutes from '../Book/constants/books.routes';
+
 import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
@@ -73,6 +75,13 @@ class naviagtionBar extends React.Component {
                 <Nav.Link href={"/" + this.props.username}>
                   <Button variant="inherit">
                     <this.Styles.H5>Profile</this.Styles.H5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
+              {auth.isAuthenticated() ? (
+                <Nav.Link href={bookRoutes.feed}>
+                  <Button variant="inherit">
+                    <this.Styles.H5>Explore</this.Styles.H5>
                   </Button>
                 </Nav.Link>
               ) : null}
