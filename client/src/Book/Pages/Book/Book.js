@@ -17,11 +17,13 @@ const BookInfo = {
 
 class Book extends React.Component {
   render() {
-    return <div>{
-      Object.keys(BookInfo).map(key=>{
-        return <p>{BookInfo[key]}</p>
-      })
-    }</div>;
+    return (
+      <div>
+        <h2>{BookInfo.title}</h2>
+        <p>{BookInfo.brief}</p>
+        <p>{BookInfo.author}</p>
+      </div>
+    );
   }
 }
 export default Book;
