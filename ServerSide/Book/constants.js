@@ -5,7 +5,7 @@ const Routes = {
 };
 
 const params = {
-  user: "book",
+  book: "book",
 };
 
 module.exports = { Routes, params };
