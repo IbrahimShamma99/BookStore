@@ -28,14 +28,26 @@ const BookInfo = {
 class Book extends React.Component {
   render() {
     return (
-      <StyleComponent.BookDiv primary={this.props.theme === "light" ? true : null}>
-{/*        <h2>{BookInfo.title}</h2>
-        <p>{BookInfo.brief}</p>
-            <p>{BookInfo.author}</p>
-*/}        <StyleComponent.coverImage
+      <StyleComponent.BookDiv
+        primary={this.props.theme === "light" ? true : null}
+      >
+        <StyleComponent.bookInfo
+          primary={this.props.theme === "light" ? true : null}
+        >
+          <h4>Title:</h4>
+          <p>{BookInfo.title}</p>
+          <h4>Brief:</h4>
+          <p>{BookInfo.brief}</p>
+          <h4>Author:</h4>
+          <p>{BookInfo.author}</p>
+        </StyleComponent.bookInfo>
+        <StyleComponent.coverImage
           alt="cover"
           src={require("../../assets/" + BookInfo.cover.filename)}
         ></StyleComponent.coverImage>
+        <StyleComponent.ButtonWrapper>
+          <button>Button 1</button>
+        </StyleComponent.ButtonWrapper>
       </StyleComponent.BookDiv>
     );
   }

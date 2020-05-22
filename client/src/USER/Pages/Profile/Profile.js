@@ -39,7 +39,6 @@ class Profile extends React.Component {
           <this.Styles.ProfileContainer
             primary={this.props.theme === "light" ? true : null}
           >
-
           {this.props.show ? (
             <div className="alert">
               <span
