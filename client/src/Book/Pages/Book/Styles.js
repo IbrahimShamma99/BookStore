@@ -30,6 +30,11 @@ const coverImage = styled.img`
   border: 3px solid #e93333;
   overflow: visible;
   transition: transform 0.5s ease;
+  &: hover {
+    transition: transform 0.8s ease;
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    transform: scale(1.05);
+  }
 `;
 
 const bookInfo = styled.div`
@@ -37,8 +42,8 @@ const bookInfo = styled.div`
   align-content: middle;
   position: absolute;
   margin: 10px;
-  top: 40%;
-  left: 45%;
+  top: 35%;
+  left: 44%;
   width: 20%;
   height: 60%;
   transform: translateX(-50%) translateY(-50%);
@@ -56,18 +61,36 @@ const bookInfo = styled.div`
   }
   & > h4 {
     margin-left: 5px;
-    font-weight:bolder;
+    font-weight: bolder;
   }
 `;
 
-const ButtonWrapper = styled.div`
-  & > button {
-    position: relative;
-    top:20%;
-    left: 20%;
-  }
-`
+const ButtonWrapper = styled.button`
+  position: relative;
+  top: 30%;
+  left: 8%;
 
-const StyleComponent = {ButtonWrapper, BookDiv, coverImage, bookInfo };
+  color: #494949 !important;
+  text-transform: uppercase;
+  background: #ffffff;
+  padding: 5px;
+  width: 120px;
+  height: 50px;
+  border: 4px solid #e93333 !important;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+  font-weight: bold;
+
+  &: hover {
+    font-weight: bolder;
+    color: black !important;
+    border-radius: 50px;
+    border-color: #494949 !important;
+    transition: all 0.3s ease 0s;
+  }
+`;
+
+const StyleComponent = { ButtonWrapper, BookDiv, coverImage, bookInfo };
 
 export default StyleComponent;

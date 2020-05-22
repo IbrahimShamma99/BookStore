@@ -46,7 +46,7 @@ class Book extends React.Component {
           src={require("../../assets/" + BookInfo.cover.filename)}
         ></StyleComponent.coverImage>
         <StyleComponent.ButtonWrapper>
-          <button>Button 1</button>
+          Buy
         </StyleComponent.ButtonWrapper>
       </StyleComponent.BookDiv>
     );
