@@ -1,5 +1,8 @@
 import React from "react";
 
-const feed = (props) => <div></div>;
-
-export default feed;
+class Feed extends React.Component {
+  render() {
+    return <div>FEED</div>;
+  }
+}
+export default Feed;

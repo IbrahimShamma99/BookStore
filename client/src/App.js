@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 import NavigationBar from "./Navigation";
 import * as utilTypes from "./UtilStore/util.actions";
 
-import UserComponent from "./USER/";
-import BookComponent from './Book/';
+import Switcher from "./Switcher";
+
 const mapStateToProps = (state) => {
   return {
     theme: state.util.theme,
@@ -23,7 +23,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 function App(props) {
   return (
-    <ThemeProvider key={props.theme} theme={props.theme === "light" ? lightTheme : darkTheme}>
+    <ThemeProvider
+      key={props.theme}
+      theme={props.theme === "light" ? lightTheme : darkTheme}>
       <GlobalStyles />
       <React.Fragment>
         <NavigationBar
@@ -31,8 +33,7 @@ function App(props) {
             <Layout checked={props.checked} onChange={props.ToggleTheme} />
           }
         />
-        <BookComponent/>
-        <UserComponent />
+        <Switcher />
       </React.Fragment>
     </ThemeProvider>
   );

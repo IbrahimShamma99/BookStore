@@ -19,7 +19,7 @@ const BaseComponent = {
     border-radius: 5px;
     background: ${props => props.primary? "bisque": "black"};
     font-family: "Times New Roman", Times, serif;
-    overflow: hidden;
-  `,
+    overflow: visible;
+    `,
 };
 export default BaseComponent;

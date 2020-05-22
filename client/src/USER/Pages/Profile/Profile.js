@@ -33,23 +33,23 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.props.show ? 
-          <this.Styles.alert>
-            <div className="alert">
-              <span
-                className="closebtn"
-                onClick="this.parentElement.style.display='none';"
-              >
-                &times;
-              </span>
-              {this.props.error}
-            </div>
-          </this.Styles.alert>
-         : null}
+        {this.props.show ? (
+          <div className="alert">
+            <span
+              className="closebtn"
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {this.props.error}
+          </div>
+        ) : null}
 
         <Breakpoint medium up>
           {/** Desktop & Tablet version */}
-          <this.Styles.ProfileContainer primary={this.props.theme==="light"? true :null}>
+          <this.Styles.ProfileContainer
+            primary={this.props.theme === "light" ? true : null}
+          >
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
                 <div class="view overlay zoom">
@@ -108,7 +108,9 @@ class Profile extends React.Component {
               </this.Styles.InfoH4>
               {this.props.profile.interests ? (
                 <div>
-                  <this.Styles.InfoAttributes>Interests</this.Styles.InfoAttributes>
+                  <this.Styles.InfoAttributes>
+                    Interests
+                  </this.Styles.InfoAttributes>
                   <this.Styles.InfoH4>
                     {this.props.profile.interests.map((intr) => intr)}
                   </this.Styles.InfoH4>
@@ -123,23 +125,25 @@ class Profile extends React.Component {
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
-            {this.props.profile ?
-              this.props.profile.avatar? 
-              <img
-                className="mobile-profile-picture"
-                alt="profile"
-                src={
-                  ServerDir.serverDev + "/" + this.props.profile.avatar.filename
-                }
-              ></img>
-             : (
-              <img
-                className="mobile-profile-picture"
-                alt="profile"
-                src={require("../../Assets/profile.jpg")}
-              ></img>
-            ):null
-          }
+            {this.props.profile ? (
+              this.props.profile.avatar ? (
+                <img
+                  className="mobile-profile-picture"
+                  alt="profile"
+                  src={
+                    ServerDir.serverDev +
+                    "/" +
+                    this.props.profile.avatar.filename
+                  }
+                ></img>
+              ) : (
+                <img
+                  className="mobile-profile-picture"
+                  alt="profile"
+                  src={require("../../Assets/profile.jpg")}
+                ></img>
+              )
+            ) : null}
             <div className="mobile-username-container">
               <span>
                 <h3>

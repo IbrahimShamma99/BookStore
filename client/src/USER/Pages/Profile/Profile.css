@@ -27,7 +27,7 @@
   background: bisque;
   background-color: bisque;
   font-family: "Times New Roman", Times, serif;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .profile-container h4,
@@ -47,7 +47,7 @@
   visibility: visible;
   background: #e93333;
   border: 3px solid #e93333;
-  overflow: hidden;
+  overflow: visible;
   transition: transform 0.5s ease;
 }
 .profile-container img:hover {

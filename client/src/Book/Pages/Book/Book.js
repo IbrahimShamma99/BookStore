@@ -1,7 +1,10 @@
 import React from "react";
 
-const book = (props) => (<div>
-    
-    </div>);
-
-export default book;
+class Book extends React.Component {
+  render() {
+    return (<div>
+            Book
+        </div>);
+  }
+}
+export default Book;
