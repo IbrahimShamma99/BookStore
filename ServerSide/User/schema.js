@@ -46,7 +46,6 @@ var UserSchema = new mongoose.Schema(
     },
     contacts: [],
     bio: String,
-    profileImg: { contentType: String },
     avatar: {
       fieldname: String,
       originalname: String,
@@ -56,11 +55,11 @@ var UserSchema = new mongoose.Schema(
       filename: String,
       path: String,
       size: Number,
-      data: Buffer,
     },
     hash: String,
     salt: String,
     interests: [{ required: false }],
+    books:[{type:mongoose.Types.ObjectId,ref:"Book"}]
   },
   { timestamps: true }
 );
