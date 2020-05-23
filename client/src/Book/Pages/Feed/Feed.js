@@ -29,11 +29,11 @@ const FeedPage = styled.div`
   padding: 2em;
   position: absolute;
   top: 80px;
-  border-radius:5px;
+  border-radius: 5px;
   left: 40px;
   margin-top: 5px;
   margin-bottom: 20px;
-  background-color: ${(props) => (props.primary ? "azure" : "#505050")};
+  background-color: ${(props) => (props.primary ? "bisque" : "#505050")};
   width: auto;
   height: auto;
   max-width: 1100px;
@@ -42,6 +42,7 @@ const FeedPage = styled.div`
     top: 0;
     width: 300px;
     border: 3px solid #73ad21;
+    color: ${(props) => (props.primary ? "bisque" : "#505050")};
   }
 `;
 
@@ -58,19 +59,23 @@ const Book = styled.div`
   font-size: 16px;
   & > img {
     width: 150px;
-    border-radius:5px;
+    border-radius: 5px;
   }
 `;
 
 const BookData = styled.div`
   position: absolute;
-  right: 80px;
+  right: 20px;
   top: 10px;
   & > p {
     margin-top: 5px;
     color: black;
-    margin-left: 10px;
+    font-weight: bold;
   }
+`;
+
+const INFO = styled.p`
+  font-weight: bolder;
 `;
 
 class Feed extends React.Component {
@@ -78,16 +83,22 @@ class Feed extends React.Component {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h2>Books to be explored!</h2>
-        <a href={BookInfo._id}><Book primary={this.props.theme === "light" ? true : null}>
-          <img
-            alt="cover"
-            src={require("../../assets/" + BookInfo.cover.filename)}
-          ></img>
-          <BookData>
-            <p>{BookInfo.title}</p>
-            <p>{BookInfo.author}</p>
-          </BookData>
-        </Book></a>
+        <a href={BookInfo._id}>
+          <Book primary={this.props.theme === "light" ? true : null}>
+            <img
+              alt="cover"
+              src={require("../../assets/" + BookInfo.cover.filename)}
+            ></img>
+            <BookData>
+              <INFO>Title:</INFO>
+              <p>{BookInfo.title}</p>
+              <INFO>Brief:</INFO>
+              <p>{BookInfo.brief}</p>
+              <INFO>Author:</INFO>
+              <p>{BookInfo.author}</p>
+            </BookData>
+          </Book>
+        </a>
       </FeedPage>
     );
   }
