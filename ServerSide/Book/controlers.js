@@ -5,6 +5,7 @@ var Book = mongoose.model("Book");
 const create = (req, res) => {
   const UserID = req.query.user;
   const bookInfo = req.body.book;
+  console.log(bookInfo)
   if (!UserID) {
     return res.status(422).send({ error: "user not found" });
   }
@@ -43,7 +44,7 @@ const update = (req, res) => {
     });
   });
 };
-const fetch = (req, res) => {
+const fetchBook = (req, res) => {
   const book = req.book;
   res.status(202).send({
     book: book.toJSON(),
@@ -59,7 +60,7 @@ const feed = (req, res) => {
 
 const BookControler = {
   create,
-  fetch,
+  fetchBook,
   feed,
   update,
 };

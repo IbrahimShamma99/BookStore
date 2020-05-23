@@ -7,20 +7,22 @@ const reducer = (state = initialState, action) => {
     case BookActions.CREATE_BOOK:
       api.create(state.book,action.user).then(data=>{
         if (data.error){
-          action.asyncDispatch({type:BookActions.SUCCESS,message:data.error})
+          action.asyncDispatch({type:BookActions.ERROR,message:data.error})
         }
         else {
-          if (state.book.cover){
-            api.uploadCover(state.book._id,state.cover)
-          }
-          action.asyncDispatch({type:BookActions.SUCCESS,data})
+          action.asyncDispatch({type:BookActions.CREATE_SUCCESS,data})
         }
       })
       return {...state}
-      case BookActions.SUCCESS:
+      case BookActions.CREATE_SUCCESS:
+        // Handle cover
         return {
           ...state
         }
+    case BookActions.SUCCESS:
+      return {
+        ...state
+      }
     case BookActions.FETCH_BOOK:
       break;
 

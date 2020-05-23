@@ -10,6 +10,7 @@ const Routes = {
 };
 
 const create = (DATA,ID) => {
+  const bookInfo = {book:DATA};
   return fetch(apiNames.serverDev + Routes.create + "?user="+ID, {
     method: "POST",
     headers: {
@@ -19,7 +20,7 @@ const create = (DATA,ID) => {
     },
     withCredentials: true,
     crossdomain: true,
-    body: JSON.stringify(DATA),
+    body: JSON.stringify(bookInfo),
   })
     .then((response) => {
       return response.json();

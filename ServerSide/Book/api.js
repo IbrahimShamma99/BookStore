@@ -19,7 +19,7 @@ router.post(
 router.get(Routes.feed, helper.optional, controlers.feed);
 
 //SECTION fetch book DONE
-router.get(Routes.fetch, helper.optional, controlers.fetch);
+router.get(Routes.fetch, helper.optional, controlers.fetchBook);
 
 //SECTION update book DONE
 router.put(
