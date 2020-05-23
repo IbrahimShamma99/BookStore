@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
+import Button from "react-bootstrap/Button";
+
 const mapStateToProps = (state) => {
   const BookState = {
     ...state.BookState.book
@@ -37,7 +39,7 @@ class Book extends React.Component {
           <label htmlFor="First">First name:</label>
           <br />
           <input
-            value={this.state.user.first_name}
+            value={" "}
             onChange={this.onChangeHandler("first_name")}
             type="text"
             id="First"

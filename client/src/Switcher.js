@@ -30,8 +30,8 @@ class Switcher extends React.Component {
             <Route path={UserRouteNames.login} component={Login} />
             <Route path={UserRouteNames.register} component={Signup} />
             <Route exact path={BookRouteNames.feed} component={Feed} />
+            <Route path={BookRouteNames.create} component={CreateBook} />
             <Route path={BookRouteNames.book} component={Book} />
-            
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
             </Route>
