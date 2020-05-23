@@ -1,21 +1,5 @@
 import * as BookActions from "./book.actions";
-
-const bookState = {
-  _id: "",
-  title: "",
-  brief: "",
-  author: "",
-  owner: "",
-  reviews: [{ writer: "", body: "" }],
-  cover: {
-    filename: "",
-  },
-};
-
-const initialState = {
-  book: { ...bookState },
-  feed: [{ ...bookState }],
-};
+import initialState from './book.constants';
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {

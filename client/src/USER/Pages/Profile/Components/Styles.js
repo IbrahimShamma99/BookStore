@@ -57,7 +57,6 @@ const Styles = (theme) => {
         display: block;
         left: 20%;
         font-size: 60px;
-        color: rgb(30, 30, 30);
         font-weight: bolder;
         max-width: 40%;
       `,

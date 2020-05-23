@@ -18,6 +18,7 @@ import Update from "./USER/Pages/Update";
 //SECTION Pages Book
 import Feed from "./Book/Pages/Feed/";
 import Book from "./Book/Pages/Book/";
+import CreateBook from "./Book/Pages/Create/";
 
 class Switcher extends React.Component {
   render() {
@@ -30,6 +31,7 @@ class Switcher extends React.Component {
             <Route path={UserRouteNames.register} component={Signup} />
             <Route exact path={BookRouteNames.feed} component={Feed} />
             <Route path={BookRouteNames.book} component={Book} />
+            
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
             </Route>

@@ -13,6 +13,7 @@ const bookState = {
 const initialState = {
   book: { ...bookState },
   feed: [{...bookState}],
+  userbooks:[{...bookState}],
 };
 
 export default initialState;
