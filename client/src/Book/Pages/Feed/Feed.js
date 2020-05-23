@@ -2,21 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import * as BookActions from '../../Store/book.actions';
-
-// const BookInfo = {
-//   _id: "0000",
-//   title: "EGO",
-//   brief: "GOOD BOOK",
-//   author: "RYAN",
-//   owner: "jenn",
-//   reviews: [
-//     { writer: "jaaws", body: "Excellent" },
-//     { writer: "easyMoneySniper", body: "Great" },
-//   ],
-//   cover: {
-//     filename: "Ego.jpg",
-//   },
-// };
+import server from '../../../constants/server';
 
 const FeedPage = styled.div`
   padding: 2em;
@@ -100,7 +86,7 @@ class Feed extends React.Component {
               post.cover.filename?
             <img
               alt="cover"
-              src={require("../../assets/" + post.cover.filename)}
+              src={server.serverDev +"/" + post.cover.filename}
             ></img>:
             <img
             alt="cover"

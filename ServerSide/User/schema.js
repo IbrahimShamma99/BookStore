@@ -56,6 +56,7 @@ var UserSchema = new mongoose.Schema(
       path: String,
       size: Number,
     },
+    books:[{type:mongoose.Types.ObjectId,ref:"Book"}],
     hash: String,
     salt: String,
     interests: [{ required: false }],

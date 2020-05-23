@@ -20,6 +20,12 @@ const reducer = (state = initialState, action) => {
           book:action.data.book
         }
     case BookActions.SUCCESS:
+      if (action.data){
+        return {
+          ...state,
+          ...action.data
+        }  
+      }
       return {
         ...state
       }
@@ -36,8 +42,7 @@ const reducer = (state = initialState, action) => {
       }
     case BookActions.FETCH_FEED:
       api.feed().then(data=>{
-        state.feed = data.books;
-        console.log("state=",state)
+        action.asyncDispatch({type:BookActions.SUCCESS,data})
         return {
           ...state
         }
