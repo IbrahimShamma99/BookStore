@@ -14,24 +14,20 @@ const mapStateToProps = (state) => {
   return BookState;
 };
 
-/**
-  title: "",
-  brief: "",
-  author: "",
-  cover: {
-    filename: "",
-  }
- */
 const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (Data) => dispatch({ type: bookTypes.CREATE_BOOK, Data }),
+    submit: () => dispatch({ type: bookTypes.CREATE_BOOK }),
   };
 };
 
 class Book extends React.Component {
   onChangeHandler = (name) => (event) => {
     this.props.change(name, event.target.value);
+  };
+  clickSubmit = (e) => {
+    e.preventDefault();
+    return this.props.submit();
   };
 
   render() {
@@ -63,13 +59,13 @@ class Book extends React.Component {
 
           <label htmlFor="Brief">Brief:</label>
           <br />
-          <input
+          <textarea
             value={this.props.title}
             onChange={this.onChangeHandler("brief")}
             type="text"
             id="Brief"
             name="Brief"
-          ></input>
+          ></textarea>
           <br />
 
           <label htmlFor="Author">Author:</label>
