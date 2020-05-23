@@ -5,8 +5,12 @@ import Button from "react-bootstrap/Button";
 
 const mapStateToProps = (state) => {
   const BookState = {
-    ...state.BookState.book
-};
+    ...state.BookState.book,
+    show: state.show,
+    error: state.error,
+    open: state.open,
+    message: state.message,
+  };
   return BookState;
 };
 
@@ -14,25 +18,25 @@ const mapStateToProps = (state) => {
   title: "",
   brief: "",
   author: "",
-  owner: "",
-  reviews: [{ writer: "", body: "" }],
   cover: {
     filename: "",
   }
  */
 const mapDispatchToProps = (dispatch) => {
   return {
-    change: (name, value) =>
-      dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (Data) => dispatch({ type: bookTypes.CREATE_BOOK, Data })
+    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
+    submit: (Data) => dispatch({ type: bookTypes.CREATE_BOOK, Data }),
   };
 };
 
 class Book extends React.Component {
+  onChangeHandler = (name) => (event) => {
+    this.props.change(name, event.target.value);
+  };
 
   render() {
-      return  (
-        <div className="update-container">
+    return (
+      <div className="update-container">
         <form>
           {this.props.show ? (
             <div className="alert">
@@ -46,109 +50,44 @@ class Book extends React.Component {
             </div>
           ) : null}
 
-          <label htmlFor="First">First name:</label>
+          <label htmlFor="Title">Title:</label>
           <br />
           <input
-            value={" "}
-            onChange={this.onChangeHandler("first_name")}
+            value={this.props.title}
+            onChange={this.onChangeHandler("title")}
             type="text"
-            id="First"
-            name="First"
+            id="Title"
+            name="Title"
           ></input>
           <br />
 
-          <label htmlFor="Last">Last name:</label>
+          <label htmlFor="Brief">Brief:</label>
           <br />
           <input
-            value={this.state.user.last_name}
-            onChange={this.onChangeHandler("last_name")}
+            value={this.props.title}
+            onChange={this.onChangeHandler("brief")}
             type="text"
-            id="Last"
-            name="Last"
+            id="Brief"
+            name="Brief"
           ></input>
           <br />
 
-          <label htmlFor="Username">Username:</label>
+          <label htmlFor="Author">Author:</label>
           <br />
           <input
-            value={this.state.user.username}
-            onChange={this.onChangeHandler("username")}
+            value={this.props.title}
+            onChange={this.onChangeHandler("author")}
             type="text"
-            id="Username"
-            name="Username"
+            id="Author"
+            name="Author"
           ></input>
           <br />
-
-          <label htmlFor="Email">Email</label>
-          <br />
-          <input
-            value={this.state.user.email}
-            onChange={this.onChangeHandler("email")}
-            type="email"
-            id="Email"
-            name="Email"
-          ></input>
-          <br />
-
-          <label htmlFor="Password">Password</label>
-          <br />
-          <input
-            value={this.state.user.password}
-            onChange={this.onChangeHandler("password")}
-            type="password"
-            id="Password"
-            name="Password"
-          ></input>
-          <br />
-
-          <label min="1950-01-01" htmlFor="date">
-            Born
-          </label>
-          <br />
-          <input
-            onChange={this.onChangeHandler("birth_date")}
-            value={this.state.birth_date}
-            type="date"
-            id="date"
-            name="date"
-          ></input>
-          <br />
-
-          <label className="bio-form" htmlFor="Bio">
-            Bio:
-          </label>
-          <br />
-          <textarea
-            value={this.state.user.bio}
-            onChange={this.onChangeHandler("bio")}
-            maxLength="60"
-            type="text"
-            id="Bio"
-            name="Bio"
-          ></textarea>
-          <br />
-
-          <label htmlFor="Pinterest">Pinterest</label>
-          <br />
-          <input type="url" id="Pinterest" name="Pinterest"></input>
-          <br />
-
-          <label htmlFor="LinkedIn">LinkedIn</label>
-          <br />
-          <input type="url" id="LinkedIn" name="LinkedIn"></input>
-          <br />
-
-          <label htmlFor="Github">Github</label>
-          <br />
-          <input type="url" id="Github" name="Github"></input>
-          <br />
-          <label htmlFor="avatar">avatar</label>
 
           <input
             type="file"
             className=""
-            name="avatar"
-            onChange={this.onChangeHandler("avatar")}
+            name="cover"
+            onChange={this.onChangeHandler("cover")}
           />
 
           <Button size="md" variant="flat" onClick={this.clickSubmit}>
@@ -156,8 +95,7 @@ class Book extends React.Component {
           </Button>
         </form>
       </div>
-
-      )
+    );
   }
 }
 

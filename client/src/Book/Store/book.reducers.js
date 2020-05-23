@@ -15,6 +15,16 @@ const reducer = (state = initialState, action) => {
       })
       return {...state}
     case BookActions.FETCH_BOOK:
+      break;
+
+    case BookActions.MODIFY:
+      return {
+        ...state,
+        book:{
+          ...state.book,
+          [action.name]:action.value
+        }
+      }
     default:
       return { ...state };
   }
