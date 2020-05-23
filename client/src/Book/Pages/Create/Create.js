@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 
 const mapStateToProps = (state) => {
   const BookState = {
+    userId:state.UserState.user._id,
     ...state.BookState.book,
     show: state.show,
     error: state.error,
@@ -17,7 +18,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: () => dispatch({ type: bookTypes.CREATE_BOOK }),
+    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK,user:userId }),
   };
 };
 
@@ -27,7 +28,7 @@ class Book extends React.Component {
   };
   clickSubmit = (e) => {
     e.preventDefault();
-    return this.props.submit();
+    return this.props.submit(this.props.userId);
   };
 
   render() {
@@ -60,7 +61,7 @@ class Book extends React.Component {
           <label htmlFor="Brief">Brief:</label>
           <br />
           <textarea
-            value={this.props.title}
+            value={this.props.brief}
             onChange={this.onChangeHandler("brief")}
             type="text"
             id="Brief"
@@ -71,7 +72,7 @@ class Book extends React.Component {
           <label htmlFor="Author">Author:</label>
           <br />
           <input
-            value={this.props.title}
+            value={this.props.author}
             onChange={this.onChangeHandler("author")}
             type="text"
             id="Author"

@@ -9,12 +9,13 @@ const Routes = {
   base: "/",
 };
 
-const create = (DATA) => {
-  return fetch(apiNames.serverDev + Routes.create, {
+const create = (DATA,ID) => {
+  return fetch(apiNames.serverDev + Routes.create + "?user="+ID, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -26,10 +27,9 @@ const create = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-const fetch = (ID) => {
+const fetchBook = (ID) => {
   return fetch(apiNames.serverDev + "/books/" + ID, {
     method: "GET",
-    body: JSON.stringify({}),
   })
     .then((response) => {
       return response.json();
@@ -101,4 +101,4 @@ const fetchViaTitle = (title) => {
     .catch((err) => console.log(err));
 };
 
-export { feed, fetchViaTitle, fetch, create, update, uploadCover };
+export { feed, fetchViaTitle, fetchBook, create, update, uploadCover };
