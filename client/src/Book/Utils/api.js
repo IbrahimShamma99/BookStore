@@ -40,7 +40,7 @@ const fetchBook = (ID) => {
 
 const feed = () => {
   return fetch(apiNames.serverDev + Routes.feed, {
-    method: "POST",
+    method: "GET",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",

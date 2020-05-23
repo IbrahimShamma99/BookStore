@@ -15,9 +15,9 @@ const reducer = (state = initialState, action) => {
       })
       return {...state}
       case BookActions.CREATE_SUCCESS:
-        // Handle cover
         return {
-          ...state
+          ...state,
+          book:action.data.book
         }
     case BookActions.SUCCESS:
       return {
@@ -34,6 +34,15 @@ const reducer = (state = initialState, action) => {
           [action.name]:action.value
         }
       }
+    case BookActions.FETCH_FEED:
+      api.feed().then(data=>{
+        state.feed = data.books;
+        console.log("state=",state)
+        return {
+          ...state
+        }
+      })
+      return {...state}
     default:
       return { ...state };
   }

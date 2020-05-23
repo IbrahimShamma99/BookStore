@@ -12,7 +12,7 @@ const bookState = {
 
 const initialState = {
   book: { ...bookState },
-  feed: [{...bookState}],
+  feed: [],
   userbooks:[{...bookState}],
   show:false,
   open:false,
