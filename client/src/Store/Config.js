@@ -9,6 +9,10 @@ const persistConfig = {
     key: "util",
     storage: storage,
   },
+  book: {
+    key: "book",
+    storage: storage,
+  }
 };
 
 export default persistConfig;

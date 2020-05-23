@@ -34,7 +34,7 @@ const BasicInfoInitState = {
   interests: [],
   email: "",
   location: "",
-  avatar: "",
+  avatar: {},
   _id: "",
 };
 
