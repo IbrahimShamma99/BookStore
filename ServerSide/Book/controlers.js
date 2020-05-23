@@ -49,7 +49,13 @@ const fetch = (req, res) => {
     book: book.toJSON(),
   });
 };
-const feed = (req, res) => {};
+const feed = (req, res) => {
+  Book.find().then((books) => {
+    res.status(202).send({
+      books,
+    });
+  });
+};
 
 const BookControler = {
   create,

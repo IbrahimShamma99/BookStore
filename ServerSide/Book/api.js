@@ -7,7 +7,7 @@ const bookParams = require("./params");
 
 router.param(params.book, bookParams);
 
-//SECTION add book
+//SECTION add book DONE
 router.post(
   Routes.create,
   helper.required,
@@ -15,18 +15,18 @@ router.post(
   controlers.create
 );
 
-//SECTION fetch book
-router.post(Routes.fetch, helper.optional, controlers.fetch);
+//SECTION books feed
+router.get(Routes.feed, helper.optional, controlers.feed);
 
-//SECTION update book
+//SECTION fetch book DONE
+router.get(Routes.fetch, helper.optional, controlers.fetch);
+
+//SECTION update book DONE
 router.put(
   Routes.update,
   helper.required,
   uploadCover.single("cover"),
   controlers.update
 );
-
-//SECTION update book
-router.post(Routes.feed, helper.optional, controlers.feed);
 
 module.exports = router;
