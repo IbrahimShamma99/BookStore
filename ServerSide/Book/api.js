@@ -19,7 +19,7 @@ router.post(
 router.post(Routes.fetch, helper.optional, controlers.fetch);
 
 //SECTION update book
-router.post(
+router.put(
   Routes.update,
   helper.required,
   uploadCover.single("cover"),

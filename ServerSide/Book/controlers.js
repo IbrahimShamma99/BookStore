@@ -24,10 +24,11 @@ const create = (req, res) => {
 };
 const update = (req, res) => {
   const book = req.book;
+  console.log(book);
   const user = req.query.UserID;
   const bookInfo = req.body.book;
   if (!book.owner.equals(user)) {
-    /*Not owner*/
+    return res.status(422).send({ error: "user not owner" });
   }
   if (req.file) {
     book.cover = req.file;

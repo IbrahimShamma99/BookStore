@@ -1,7 +1,7 @@
 const Routes = {
   create: "/books/",
   fetch: "/books/:book/",
-  update: "/books/:book/update/",
+  update: "/books/:book/",
   feed: "/books/feed/",
   base:"/"
 };

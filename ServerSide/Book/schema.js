@@ -28,6 +28,7 @@ var BookSchema = new mongoose.Schema(
 
 BookSchema.methods.toJSON = function () {
   return {
+    _id:this._id,
     title: this.title,
     author: this.author,
     brief: this.brief,
