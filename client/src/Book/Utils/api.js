@@ -1,8 +1,16 @@
 import apiNames from "../../constants/server";
 import axios from "axios";
 
+const Routes = {
+  create: "/books/",
+  fetch: "/books/:book/",
+  update: "/books/:book/update/",
+  feed: "/books/feed/",
+  base: "/",
+};
+
 const create = (DATA) => {
-  return fetch(apiNames.serverDev + "/#", {
+  return fetch(apiNames.serverDev + Routes.create, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -18,8 +26,8 @@ const create = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-const fetch = () => {
-  return fetch(apiNames.serverDev + "/#", {
+const fetch = (ID) => {
+  return fetch(apiNames.serverDev + "/books/" + ID, {
     method: "GET",
     body: JSON.stringify({}),
   })
@@ -30,7 +38,7 @@ const fetch = () => {
 };
 
 const feed = () => {
-  return fetch(apiNames.serverDev + "/#", {
+  return fetch(apiNames.serverDev + Routes.feed, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -45,17 +53,20 @@ const feed = () => {
     .catch((err) => console.log(err));
 };
 
-const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/#/" + DATA.book._id, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
-    },
-    withCredentials: true,
-    crossdomain: true,
-    body: JSON.stringify(DATA),
-  })
+const update = (DATA, userID) => {
+  return fetch(
+    apiNames.serverDev.concat("/books/", DATA.book._id, "?user=", userID),
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      },
+      withCredentials: true,
+      crossdomain: true,
+      body: JSON.stringify(DATA),
+    }
+  )
     .then((response) => {
       return response.json();
     })
@@ -71,7 +82,7 @@ const uploadCover = (ID, cover) => {
       Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
   };
-  axios.put(apiNames.serverDev + "/update/" + ID, formData, config);
+  axios.put(apiNames.serverDev + "/books/" + ID + "/update/", formData, config);
 };
 
 const fetchViaTitle = (title) => {
