@@ -14,6 +14,10 @@ const initialState = {
   book: { ...bookState },
   feed: [{...bookState}],
   userbooks:[{...bookState}],
+  show:false,
+  open:false,
+  error:"",
+  message:""
 };
 
 export default initialState;

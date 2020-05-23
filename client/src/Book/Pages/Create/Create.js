@@ -10,6 +10,16 @@ const mapStateToProps = (state) => {
   return BookState;
 };
 
+/**
+  title: "",
+  brief: "",
+  author: "",
+  owner: "",
+  reviews: [{ writer: "", body: "" }],
+  cover: {
+    filename: "",
+  }
+ */
 const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
