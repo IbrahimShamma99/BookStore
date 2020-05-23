@@ -15,6 +15,7 @@ const create = (req, res) => {
     return res.status(422).send({ error: "book title not provided" });
   }
   const book = new Book();
+  book.owner = UserID;
   book.assignInfo(bookInfo);
   book.save(() => {
     res.status(202).send({
@@ -25,15 +26,17 @@ const create = (req, res) => {
 const update = (req, res) => {
   const book = req.book;
   console.log(book);
-  const user = req.query.UserID;
+  const UserID = req.query.user;
   const bookInfo = req.body.book;
-  if (!book.owner.equals(user)) {
+  if (!book.owner.equals(UserID)) {
     return res.status(422).send({ error: "user not owner" });
   }
   if (req.file) {
     book.cover = req.file;
   }
-  book.assignInfo(bookInfo);
+  if (bookInfo) {
+    book.assignInfo(bookInfo);
+  }
   book.save(() => {
     res.status(202).send({
       book: book.toJSON(),
