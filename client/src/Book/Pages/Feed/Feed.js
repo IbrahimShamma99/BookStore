@@ -29,10 +29,11 @@ const FeedPage = styled.div`
   padding: 2em;
   position: absolute;
   top: 80px;
+  border-radius:5px;
   left: 40px;
   margin-top: 5px;
   margin-bottom: 20px;
-  background: #333333;
+  background-color: ${(props) => (props.primary ? "azure" : "#505050")};
   width: auto;
   height: auto;
   max-width: 1100px;
@@ -51,18 +52,19 @@ const Book = styled.div`
   border-style: solid;
   border-color: #c93333;
   border-radius: 5px;
-  background: #fff;
+  background: ${(props) => (props.primary ? "azure" : "#505050")};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   font-size: 16px;
   & > img {
-    width: 100px;
+    width: 150px;
+    border-radius:5px;
   }
 `;
 
 const BookData = styled.div`
   position: absolute;
-  right: 120px;
+  right: 80px;
   top: 10px;
   & > p {
     margin-top: 5px;
@@ -74,9 +76,9 @@ const BookData = styled.div`
 class Feed extends React.Component {
   render() {
     return (
-      <FeedPage>
+      <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h2>Books to be explored!</h2>
-        <Book>
+        <a href={BookInfo._id}><Book primary={this.props.theme === "light" ? true : null}>
           <img
             alt="cover"
             src={require("../../assets/" + BookInfo.cover.filename)}
@@ -85,7 +87,7 @@ class Feed extends React.Component {
             <p>{BookInfo.title}</p>
             <p>{BookInfo.author}</p>
           </BookData>
-        </Book>
+        </Book></a>
       </FeedPage>
     );
   }
