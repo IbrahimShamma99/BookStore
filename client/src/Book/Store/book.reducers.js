@@ -5,7 +5,7 @@ import * as api from "../Utils/api";
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case BookActions.CREATE_BOOK:
-      api.create().then(data=>{
+      api.create(action.data).then(data=>{
         if (data.error){
           action.asyncDispatch({type:BookActions.SUCCESS,message:data.error})
         }

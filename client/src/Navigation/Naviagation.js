@@ -85,6 +85,13 @@ class naviagtionBar extends React.Component {
                   </Button>
                 </Nav.Link>
               ) : null}
+              {auth.isAuthenticated() ? (
+                <Nav.Link href={bookRoutes.create}>
+                  <Button variant="inherit">
+                    <this.Styles.H5>Add book</this.Styles.H5>
+                  </Button>
+                </Nav.Link>
+              ) : null}
               {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1/">Sports</NavDropdown.Item>
