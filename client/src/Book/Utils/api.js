@@ -74,9 +74,11 @@ const update = (DATA, userID) => {
     .catch((err) => console.log(err));
 };
 
-const uploadCover = (ID, cover) => {
+const uploadCover = (ID, cover,userID) => {
   const formData = new FormData();
   console.log("cover", cover)
+  console.log("ID", ID)
+  console.log("Route",apiNames.serverDev + "/books/" + ID + "/update"+"?user=", userID)
   formData.append("cover", cover);
   const config = {
     headers: {
