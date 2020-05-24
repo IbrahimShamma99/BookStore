@@ -80,7 +80,7 @@ class Feed extends React.Component {
         <h2>Books to be explored!</h2>
         {this.props.feed.map((post) => {
           return (
-            <a href={post._id}>
+            <a href={"/book/"+post._id}>
               <Book primary={this.props.theme === "light" ? true : null}>
                 {post.cover ? (
                   post.cover.filename ? (
