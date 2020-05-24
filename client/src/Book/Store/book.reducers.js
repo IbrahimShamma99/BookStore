@@ -3,6 +3,8 @@ import initialState from "./book.constants";
 import * as api from "../Utils/api";
 
 const reducer = (state = initialState, action) => {
+  const bookInfo = {book:state.book};
+  console.log("bookInfo",bookInfo)
   switch (action.type) {
     case BookActions.CREATE_BOOK:
       api.create(state.book, action.user).then((data) => {
@@ -12,12 +14,14 @@ const reducer = (state = initialState, action) => {
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: BookActions.CREATE_SUCCESS, data });
+          action.asyncDispatch({ type: BookActions.CREATE_SUCCESS, data,user:action.user });
         }
       });
       return { ...state };
     case BookActions.CREATE_SUCCESS:
-      // upload cover BookActions.SUCCESS
+      if (state.book.cover) {
+        api.uploadCover(action.data.book._id, bookInfo.book.cover, action.user);
+      }
       return {
         ...state,
         book: action.data.book,
@@ -41,11 +45,10 @@ const reducer = (state = initialState, action) => {
       };
 
     case BookActions.UPDATE_BOOK:
-      const bookInfo = {book:state.book};
-      if (state.book.cover){
-      api.uploadCover(bookInfo.book._id,bookInfo.book.cover,action.user)
+      if (state.book.cover) {
+        api.uploadCover(bookInfo.book._id, bookInfo.book.cover, action.user);
       }
-      api.update(bookInfo,action.user).then((data) => {
+      api.update(bookInfo, action.user).then((data) => {
         action.asyncDispatch({ type: BookActions.SUCCESS, data: data });
       });
       return {

@@ -76,11 +76,6 @@ const update = (DATA, userID) => {
 
 const uploadCover = (ID, cover,userID) => {
   const formData = new FormData();
-  console.log("cover", cover)
-  console.log("ID", ID)
-  console.log("userID",userID)
-  console.log("Route",apiNames.serverDev , "/books/" , ID , "/update","?user=", userID)
-  console.log("jwt",sessionStorage.getItem("jwt"))
   formData.append("cover", cover);
   const config = {
     headers: {
