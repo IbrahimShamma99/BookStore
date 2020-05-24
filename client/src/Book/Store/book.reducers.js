@@ -42,6 +42,9 @@ const reducer = (state = initialState, action) => {
 
     case BookActions.UPDATE_BOOK:
       const bookInfo = {book:state.book};
+      if (state.book.cover){
+      api.uploadCover(bookInfo.book._id,bookInfo.book.cover)
+      }
       api.update(bookInfo,action.user).then((data) => {
         action.asyncDispatch({ type: BookActions.SUCCESS, data: data });
       });

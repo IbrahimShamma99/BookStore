@@ -76,6 +76,7 @@ const update = (DATA, userID) => {
 
 const uploadCover = (ID, cover) => {
   const formData = new FormData();
+  console.log("cover", cover)
   formData.append("cover", cover);
   const config = {
     headers: {

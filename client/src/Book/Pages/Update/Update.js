@@ -24,11 +24,15 @@ const mapDispatchToProps = (dispatch) => {
 
 class Update extends React.Component {
   onChangeHandler = (name) => (event) => {
+    if (name === "cover") {
+      return this.props.change(name,event.target.files[0]);
+    }
     this.props.change(name, event.target.value);
   };
   clickSubmit = (e) => {
     e.preventDefault();
     this.props.submit(this.props.userId);
+    
   };
 
   render() {
