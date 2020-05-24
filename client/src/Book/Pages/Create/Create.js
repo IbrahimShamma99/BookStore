@@ -28,7 +28,7 @@ class Book extends React.Component {
   };
   clickSubmit = (e) => {
     e.preventDefault();
-    return this.props.submit(this.props.userId);
+    this.props.submit(this.props.userId);
   };
 
   render() {

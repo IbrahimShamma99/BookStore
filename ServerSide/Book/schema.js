@@ -39,6 +39,7 @@ BookSchema.methods.toJSON = function () {
 };
 BookSchema.methods.assignInfo = function (info) {
   Object.keys(info).map(key=>{
+    if (key==="_id"){return}
     this[key] = info[key];
   })
 };

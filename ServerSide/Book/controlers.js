@@ -15,8 +15,8 @@ const create = (req, res) => {
   if (!bookInfo.title) {
     return res.status(422).send({ error: "book title not provided" });
   }
-  User.findOne({ _id: UserID }).then((user) => {
-    if (!user) {
+  User.findOne({_id:UserID}).then(user=>{
+    if (!user){
       return res.status(422).send({ error: "user not found" });
     }
     const book = new Book();
@@ -29,7 +29,8 @@ const create = (req, res) => {
         book: book.toJSON(),
       });
     });
-  });
+  })
+  
 };
 const update = (req, res) => {
   const book = req.book;
@@ -58,9 +59,9 @@ const fetchBook = (req, res) => {
   });
 };
 const feed = (req, res) => {
-  Book.find({}, {}).then((books) => {
+  Book.find({},{}).then((books) => {
     res.status(202).send({
-      feed: books,
+      feed:books,
     });
   });
 };
