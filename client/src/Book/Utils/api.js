@@ -78,15 +78,17 @@ const uploadCover = (ID, cover,userID) => {
   const formData = new FormData();
   console.log("cover", cover)
   console.log("ID", ID)
-  console.log("Route",apiNames.serverDev + "/books/" + ID + "/update"+"?user=", userID)
+  console.log("userID",userID)
+  console.log("Route",apiNames.serverDev , "/books/" , ID , "/update","?user=", userID)
+  console.log("jwt",sessionStorage.getItem("jwt"))
   formData.append("cover", cover);
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      "Authorization": "Token ".concat(sessionStorage.getItem("jwt"))
     },
   };
-  axios.put(apiNames.serverDev + "/books/" + ID + "/update/", formData, config);
+  axios.put(apiNames.serverDev.concat("/books/" , ID , "/update","?user=", userID), formData, config);
 };
 
 const fetchViaTitle = (title) => {
