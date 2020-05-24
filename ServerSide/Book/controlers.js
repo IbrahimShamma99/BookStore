@@ -34,7 +34,6 @@ const create = (req, res) => {
 };
 const update = (req, res) => {
   const book = req.book;
-  console.log(book);
   const UserID = req.query.user;
   const bookInfo = req.body.book;
   if (!book.owner.equals(UserID)) {
@@ -46,6 +45,7 @@ const update = (req, res) => {
   if (bookInfo) {
     book.assignInfo(bookInfo);
   }
+  console.log(book);
   book.save(() => {
     res.status(202).send({
       book: book.toJSON(),
