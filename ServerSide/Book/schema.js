@@ -10,8 +10,8 @@ var BookSchema = new mongoose.Schema(
         body: { type: String },
       },
     ],
-    brief: {type:String},
-    owner: {type:mongoose.Types.ObjectId,ref:"User"},
+    brief: { type: String },
+    owner: { type: mongoose.Types.ObjectId, ref: "User" },
     cover: {
       fieldname: String,
       originalname: String,
@@ -28,7 +28,7 @@ var BookSchema = new mongoose.Schema(
 
 BookSchema.methods.toJSON = function () {
   return {
-    _id:this._id,
+    _id: this._id,
     title: this.title,
     author: this.author,
     brief: this.brief,
@@ -38,10 +38,15 @@ BookSchema.methods.toJSON = function () {
   };
 };
 BookSchema.methods.assignInfo = function (info) {
-  Object.keys(info).map(key=>{
-    if (key==="_id"){return}
+  Object.keys(info).map((key) => {
+    if (key === "cover") {
+      return;
+    }
+    if (key === "_id") {
+      return;
+    }
     this[key] = info[key];
-  })
+  });
 };
 
 module.exports = BookSchema = mongoose.model("Book", BookSchema);
