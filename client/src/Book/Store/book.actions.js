@@ -5,3 +5,4 @@ export const MODIFY = () => "MODIFY";
 export const SUCCESS = () => "SUCCESS";
 export const ERROR = () => "ERROR";
 export const CREATE_SUCCESS = () => "CREATE_SUCCESS";
+export const UPDATE_BOOK = () => "UPDATE_BOOK";

@@ -33,14 +33,21 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
     case BookActions.FETCH_BOOK:
-      api.fetchBook(action.ID).then(data=>{
-        action.asyncDispatch({type:BookActions.SUCCESS,data:data})
+      api.fetchBook(action.ID).then((data) => {
+        action.asyncDispatch({ type: BookActions.SUCCESS, data: data });
       });
-
       return {
         ...state,
       };
 
+    case BookActions.UPDATE_BOOK:
+      const bookInfo = {book:state.book};
+      api.update(bookInfo,action.user).then((data) => {
+        action.asyncDispatch({ type: BookActions.SUCCESS, data: data });
+      });
+      return {
+        ...state,
+      };
     case BookActions.MODIFY:
       return {
         ...state,

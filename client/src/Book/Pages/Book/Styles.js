@@ -68,7 +68,7 @@ const bookInfo = styled.div`
 const ButtonWrapper = styled.button`
   position: relative;
   top: 30%;
-  left: 8%;
+  left: 3%;
 
   color: #494949 !important;
   text-transform: uppercase;

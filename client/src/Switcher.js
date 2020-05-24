@@ -19,6 +19,7 @@ import Update from "./USER/Pages/Update";
 import Feed from "./Book/Pages/Feed/";
 import Book from "./Book/Pages/Book/";
 import CreateBook from "./Book/Pages/Create/";
+import UpdateBook from './Book/Pages/Update/'
 
 class Switcher extends React.Component {
   render() {
@@ -31,6 +32,7 @@ class Switcher extends React.Component {
             <Route path={UserRouteNames.register} component={Signup} />
             <Route exact path={BookRouteNames.feed} component={Feed} />
             <Route path={BookRouteNames.create} component={CreateBook} />
+            <Route path={BookRouteNames.update} component={UpdateBook} />
             <Route path={BookRouteNames.book} component={Book} />
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />

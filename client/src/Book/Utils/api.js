@@ -56,7 +56,7 @@ const feed = () => {
 
 const update = (DATA, userID) => {
   return fetch(
-    apiNames.serverDev.concat("/books/", DATA.book._id, "?user=", userID),
+    apiNames.serverDev.concat("/books/", DATA.book._id+"/update", "?user=", userID),
     {
       method: "PUT",
       headers: {
