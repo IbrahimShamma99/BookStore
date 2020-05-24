@@ -12,14 +12,14 @@ const FeedPage = styled.div`
   left: 40px;
   margin-top: 5px;
   background-color: ${(props) => (props.primary ? "bisque" : "#505050")};
-  width: auto;
+  width: 100%;
   height: auto;
   max-width: 1100px;
   & > h1 {
     left: 0;
     top: 0;
     width: 300px;
-    height: 400px;
+    height:400px;
     border: 3px solid #73ad21;
     color: ${(props) => (props.primary ? "bisque" : "#505050")};
   }
@@ -30,17 +30,19 @@ const Book = styled.div`
   position: relative;
   border-width: 1px 2px 2px 4px; /*top left bottom right */
   border-style: solid;
+  width: 20%;
+  margin-right:10px;
   border-color: #c93333;
   border-radius: 5px;
   background: ${(props) => (props.primary ? "azure" : "#021030")};
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05);
   margin-bottom: 10px;
   white-space: initial;
-  font-size: 16px;
+  font-size: 12px;
   display: inline-block;
   & > img {
     display: inline-block;
-    align: middle;
+    align:middle;
     width: 150px;
     height: 200px;
     border-radius: 5px;
@@ -49,8 +51,8 @@ const Book = styled.div`
 
 const BookData = styled.div`
   & > p {
-    margin-bottom: 5px;
-    word-wrap: break-word;
+    margin-bottom:5px;
+        word-wrap: break-word;
   }
   & > span {
     display: block;
@@ -84,7 +86,7 @@ class Feed extends React.Component {
         <h2>Books to be explored!</h2>
         {this.props.feed.map((post) => {
           return (
-            <a href={"/book/" + post._id}>
+            <a href={"/book/"+post._id}>
               <Book primary={this.props.theme === "light" ? true : null}>
                 {post.cover ? (
                   post.cover.filename ? (
@@ -107,9 +109,7 @@ class Feed extends React.Component {
                   ></img>
                 )}
                 <BookData>
-                  <p>
-                    <span>{post.title}</span>
-                  </p>
+                  <p><span>{post.title}</span></p>
                   {post.author ? (
                     <div>
                       <p>{post.author}</p>
