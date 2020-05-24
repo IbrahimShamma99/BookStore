@@ -19,7 +19,7 @@ const FeedPage = styled.div`
     left: 0;
     top: 0;
     width: 300px;
-    height:400px;
+    height: 400px;
     border: 3px solid #73ad21;
     color: ${(props) => (props.primary ? "bisque" : "#505050")};
   }
@@ -40,7 +40,7 @@ const Book = styled.div`
   display: inline-block;
   & > img {
     display: inline-block;
-    align:middle;
+    align: middle;
     width: 150px;
     height: 200px;
     border-radius: 5px;
@@ -49,7 +49,11 @@ const Book = styled.div`
 
 const BookData = styled.div`
   & > p {
-    margin-bottom:5px
+    margin-bottom: 5px;
+    word-wrap: break-word;
+  }
+  & > span {
+    display: block;
   }
 `;
 
@@ -80,7 +84,7 @@ class Feed extends React.Component {
         <h2>Books to be explored!</h2>
         {this.props.feed.map((post) => {
           return (
-            <a href={"/book/"+post._id}>
+            <a href={"/book/" + post._id}>
               <Book primary={this.props.theme === "light" ? true : null}>
                 {post.cover ? (
                   post.cover.filename ? (
@@ -103,7 +107,9 @@ class Feed extends React.Component {
                   ></img>
                 )}
                 <BookData>
-                  <p>{post.title}</p>
+                  <p>
+                    <span>{post.title}</span>
+                  </p>
                   {post.author ? (
                     <div>
                       <p>{post.author}</p>
