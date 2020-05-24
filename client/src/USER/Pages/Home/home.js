@@ -2,12 +2,12 @@ import React from "react";
 import "./home.scss";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
+import styled from 'styled-components';
 
 const mapStatetoProps = (state) => {
-  //TODO list of whatever the project wants
   return {
-    open: state.open,
-    error: state.error,
+    open: state.UserState.open,
+    error: state.UserState.error,
   };
 };
 
@@ -17,14 +17,16 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
+const HomePage = styled.div`
+
+`;
+
 class Home extends React.Component {
   render() {
     return (
-      <div className="container">
-      <div className="col">
-          <div className="row"></div>{" "}
-        </div>{" "}
-      </div>
+      <HomePage>
+        <img src={require("../../../logos/home.jpg")}></img>
+      </HomePage>
     );
   }
 }
