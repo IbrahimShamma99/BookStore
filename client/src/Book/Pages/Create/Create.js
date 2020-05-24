@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
+    change: (name,value) => dispatch({ type: bookTypes.MODIFY, name, value }),
     submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK,user:userId }),
   };
 };
