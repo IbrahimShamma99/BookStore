@@ -4,11 +4,13 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
 import auth from "../../../USER/Utils/auth-helper";
+import { Breakpoint } from "react-socks";
 
 const mapStatetoProps = (state) => {
   return {
     open: state.UserState.open,
     error: state.UserState.error,
+    theme: state.util.theme,
   };
 };
 
@@ -32,6 +34,7 @@ const TextArea = styled.div`
     position: absolute;
     left: 35%;
     top: 50px;
+    color: ${(props) => (props.primary ? "azure" : "black")};
   }
   & button {
   }
@@ -56,23 +59,27 @@ const BaseButton = styled.button`
   border-radius: 8px;
   font-weight: bold;
   outline: invert;
+  border-color: beige;
   margin-left: 75px;
   margin-right: auto;
-  color:azure;
   &: hover {
     background-color: azure;
     font-weight: bolder;
-    color:rgb(180, 55, 55);
+    color: rgb(180, 55, 55);
     border-color: rgb(180, 55, 55);
   }
 `;
 const Button = styled(BaseButton)`
   position: absolute;
-  left: 38%;
+  left: 36%;
   top: 57%;
+  width:180px;
+  height:45px;
+  border-radius: 12px;
+
 `;
 
-const CreateButton = styled( BaseButton)`
+const CreateButton = styled(BaseButton)`
   position: absolute;
   left: 30%;
   top: 58%;
@@ -82,37 +89,39 @@ const ExploreButton = styled(BaseButton)`
   position: absolute;
   left: 42%;
   top: 58%;
-  background:azure;
-  color:rgb(180, 55, 55);
+  background: azure;
+  color: rgb(180, 55, 55);
   border-color: rgb(180, 55, 55);
   &: hover {
-    color:azure;
+    color: azure;
     background-color: rgb(180, 55, 55);
     border-color: azure;
   }
 `;
 
-const Tips = styled(TextArea)`
-
-`;
-
+const Tips = styled(TextArea)``;
 
 class Home extends React.Component {
   render() {
     return (
       <div>
+      <Breakpoint medium up>
         {auth.isAuthenticated() ? (
           <HomePage>
             <img
               alt="Home-background"
               src={require("../../../logos/library.jpg")}
             ></img>
-            <TextArea>
+            <TextArea primary={this.props.theme === "light" ? true : null}>
               <h1>
                 <Span>Explore Now!</Span>
               </h1>
               <a href="/book/create">
-                <CreateButton>Add books!</CreateButton>
+                <CreateButton
+                  primary={this.props.theme === "light" ? true : null}
+                >
+                  Add books!
+                </CreateButton>
               </a>
               <a href="/book/feed">
                 <ExploreButton>Explore!</ExploreButton>
@@ -125,16 +134,25 @@ class Home extends React.Component {
               alt="Home-background"
               src={require("../../../logos/home.jpg")}
             ></img>
-            <TextArea>
+            <TextArea 
+            >
               <h1>
                 <Span>Welcome to BookStore</Span>
               </h1>
               <a href="/register">
-                <Button>Join Now</Button>
+                <Button primary={this.props.theme === "light" ? true : null}>
+                  Join Now
+                </Button>
               </a>
             </TextArea>
           </HomePage>
         )}
+        </Breakpoint>
+        <Breakpoint small down>
+        {/**
+          TODO
+        */}
+        </Breakpoint>
       </div>
     );
   }
