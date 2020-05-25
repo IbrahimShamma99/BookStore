@@ -40,7 +40,7 @@ class naviagtionBar extends React.Component {
       <div className="navbar">
         <Navbar fixed="top" className="input" bg="black" expand="lg">
           <Navbar.Brand href={RouteNames.base}>
-            <this.Styles.H4>App</this.Styles.H4>
+            <this.Styles.H4>Home</this.Styles.H4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

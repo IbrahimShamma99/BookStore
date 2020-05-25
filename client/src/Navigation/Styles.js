@@ -6,10 +6,12 @@ const Styles = (theme) => {
       H4: styled.h4`
         font-family: "Times New Roman", Times, serif;
         color: black;
+        font-weight:bold;
       `,
       H5: styled.h5`
         font-family: "Times New Roman", Times, serif;
         color: black;
+        font-weight:bold;
       `,
     };
   } else {
@@ -17,10 +19,12 @@ const Styles = (theme) => {
       H4: styled.h4`
         font-family: "Times New Roman", Times, serif;
         color: azure;
+        font-weight:bold;
       `,
       H5: styled.h5`
         font-family: "Times New Roman", Times, serif;
         color: azure;
+        font-weight:bold;
       `,
     };
   }
