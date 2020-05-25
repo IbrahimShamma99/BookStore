@@ -3,7 +3,7 @@ import "./home.scss";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
-import auth from '../../../USER/Utils/auth-helper';
+import auth from "../../../USER/Utils/auth-helper";
 
 const mapStatetoProps = (state) => {
   return {
@@ -45,15 +45,11 @@ const Span = styled.span`
   background: rgba(0, 0, 0, 0.7);
   padding: 10px;
 `;
-
-const Button = styled.button`
-  position: absolute;
-  left: 38%;
-  top: 57%;
+const BaseButton = styled.button`
   background-color: rgb(180, 55, 55);
   color: black;
   width: 130px;
-  font-weight:bold;
+  font-weight: bold;
   height: 42px;
   border-radius: 6px;
   font-weight: bold;
@@ -62,32 +58,72 @@ const Button = styled.button`
   margin-right: auto;
   &: hover {
     background-color: azure;
-    font-weight:bolder;
-    border-color:rgb(180, 55, 55);
+    font-weight: bolder;
+    border-color: rgb(180, 55, 55);
   }
 `;
+const Button = styled(BaseButton)`
+  position: absolute;
+  left: 38%;
+  top: 57%;
+`;
 
+const CreateButton = styled( BaseButton)`
+  position: absolute;
+  left: 30%;
+  top: 58%;
+`;
+
+const ExploreButton = styled(BaseButton)`
+  position: absolute;
+  left: 42%;
+  top: 58%;
+  background:azure;
+  border-color: rgb(180, 55, 55);
+  &: hover {
+    background-color: rgb(180, 55, 55);
+    border-color: azure;
+  }
+`;
 
 class Home extends React.Component {
   render() {
     return (
       <div>
-      {auth.isAuthenticated() ?
-        <div>
-        Home
-        </div>
-      :<HomePage>
-        <img alt="Home-background"
-        src={require("../../../logos/home.jpg")}></img>
-        <TextArea>
-          <h1>
-            <Span>Welcome to BookStore</Span>
-          </h1>
-          <a href="/register"
-          ><Button>Join Now</Button></a>
-        </TextArea>
-      </HomePage>
-      }
+        {auth.isAuthenticated() ? (
+          <HomePage>
+            <img
+              alt="Home-background"
+              src={require("../../../logos/library.jpg")}
+            ></img>
+            <TextArea>
+              <h1>
+                <Span>Explore Now!</Span>
+              </h1>
+              <a href="/book/create">
+                <CreateButton>Add books!</CreateButton>
+              </a>
+              <a href="/book/feed">
+                <ExploreButton>Explore!</ExploreButton>
+              </a>
+            </TextArea>
+          </HomePage>
+        ) : (
+          <HomePage>
+            <img
+              alt="Home-background"
+              src={require("../../../logos/home.jpg")}
+            ></img>
+            <TextArea>
+              <h1>
+                <Span>Welcome to BookStore</Span>
+              </h1>
+              <a href="/register">
+                <Button>Join Now</Button>
+              </a>
+            </TextArea>
+          </HomePage>
+        )}
       </div>
     );
   }
