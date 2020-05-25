@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 
 const mapStateToProps = (state) => {
   const BookState = {
-    userId:state.UserState.user._id,
+    userId: state.UserState.user._id,
     ...state.BookState.book,
     show: state.show,
     error: state.error,
@@ -17,15 +17,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    change: (name,value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK,user:userId }),
+    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
+    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
   };
 };
 
 class Book extends React.Component {
   onChangeHandler = (name) => (event) => {
     if (name === "cover") {
-      return this.props.change(name,event.target.files[0]);
+      return this.props.change(name, event.target.files[0]);
     }
     this.props.change(name, event.target.value);
   };

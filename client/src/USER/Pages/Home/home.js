@@ -3,6 +3,7 @@ import "./home.scss";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
+import auth from '../../../USER/Utils/auth-helper';
 
 const mapStatetoProps = (state) => {
   return {
@@ -66,11 +67,18 @@ const Button = styled.button`
   }
 `;
 
+
 class Home extends React.Component {
   render() {
     return (
-      <HomePage>
-        <img src={require("../../../logos/home.jpg")}></img>
+      <div>
+      {auth.isAuthenticated() ?
+        <div>
+        Home
+        </div>
+      :<HomePage>
+        <img alt="Home-background"
+        src={require("../../../logos/home.jpg")}></img>
         <TextArea>
           <h1>
             <Span>Welcome to BookStore</Span>
@@ -79,6 +87,8 @@ class Home extends React.Component {
           ><Button>Join Now</Button></a>
         </TextArea>
       </HomePage>
+      }
+      </div>
     );
   }
 }
