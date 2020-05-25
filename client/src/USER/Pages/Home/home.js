@@ -48,17 +48,21 @@ const Span = styled.span`
 const BaseButton = styled.button`
   background-color: rgb(180, 55, 55);
   color: black;
-  width: 130px;
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-weight: bold;
   height: 42px;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
   outline: invert;
   margin-left: 75px;
   margin-right: auto;
+  color:azure;
   &: hover {
     background-color: azure;
     font-weight: bolder;
+    color:rgb(180, 55, 55);
     border-color: rgb(180, 55, 55);
   }
 `;
@@ -79,12 +83,19 @@ const ExploreButton = styled(BaseButton)`
   left: 42%;
   top: 58%;
   background:azure;
+  color:rgb(180, 55, 55);
   border-color: rgb(180, 55, 55);
   &: hover {
+    color:azure;
     background-color: rgb(180, 55, 55);
     border-color: azure;
   }
 `;
+
+const Tips = styled(TextArea)`
+
+`;
+
 
 class Home extends React.Component {
   render() {
