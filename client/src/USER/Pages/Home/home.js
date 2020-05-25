@@ -39,6 +39,11 @@ const TextArea = styled.div`
   & button {
   }
 `;
+const TipTextArea = styled(TextArea)`
+  & > h1 {
+    left: 1%;
+  }
+`;
 
 const Span = styled.span`
   color: white;
@@ -47,8 +52,12 @@ const Span = styled.span`
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.7);
   padding: 10px;
+  & > a{
+    color:rgb(180, 55, 55);
+  }
 `;
 const BaseButton = styled.button`
+  position: absolute;
   background-color: rgb(180, 55, 55);
   color: black;
   width: 150px;
@@ -57,36 +66,31 @@ const BaseButton = styled.button`
   font-weight: bold;
   height: 42px;
   border-radius: 8px;
-  font-weight: bold;
+  font-weight: 900;
   outline: invert;
   border-color: beige;
   margin-left: 75px;
   margin-right: auto;
   &: hover {
-    background-color: azure;
-    font-weight: bolder;
+    background-color: beige;
     color: rgb(180, 55, 55);
     border-color: rgb(180, 55, 55);
   }
 `;
 const Button = styled(BaseButton)`
-  position: absolute;
   left: 36%;
   top: 57%;
-  width:180px;
-  height:45px;
+  width: 180px;
+  height: 45px;
   border-radius: 12px;
-
 `;
 
 const CreateButton = styled(BaseButton)`
-  position: absolute;
   left: 30%;
   top: 58%;
 `;
 
 const ExploreButton = styled(BaseButton)`
-  position: absolute;
   left: 42%;
   top: 58%;
   background: azure;
@@ -105,51 +109,66 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-      <Breakpoint medium up>
-        {auth.isAuthenticated() ? (
-          <HomePage>
-            <img
-              alt="Home-background"
-              src={require("../../../logos/library.jpg")}
-            ></img>
-            <TextArea primary={this.props.theme === "light" ? true : null}>
-              <h1>
-                <Span>Explore Now!</Span>
-              </h1>
-              <a href="/book/create">
-                <CreateButton
-                  primary={this.props.theme === "light" ? true : null}
-                >
-                  Add books!
-                </CreateButton>
-              </a>
-              <a href="/book/feed">
-                <ExploreButton>Explore!</ExploreButton>
-              </a>
-            </TextArea>
-          </HomePage>
-        ) : (
-          <HomePage>
-            <img
-              alt="Home-background"
-              src={require("../../../logos/home.jpg")}
-            ></img>
-            <TextArea 
-            >
-              <h1>
-                <Span>Welcome to BookStore</Span>
-              </h1>
-              <a href="/register">
-                <Button primary={this.props.theme === "light" ? true : null}>
-                  Join Now
-                </Button>
-              </a>
-            </TextArea>
-          </HomePage>
-        )}
+        <Breakpoint medium up>
+          {auth.isAuthenticated() ? (
+            <HomePage>
+              <img
+                alt="Home-background"
+                src={require("../../../logos/library.jpg")}
+              ></img>
+
+              <TipTextArea primary={this.props.theme === "light" ? true : null}>
+                <h1>
+                  <Span>
+                    Here you can expolre
+                    <a href="/book/feed">
+                      {" "}
+                      <br /> your favorite books
+                    </a>
+                    <a href="/book/create">
+                      <br /> and add yours
+                    </a>
+                  </Span>
+                </h1>
+              </TipTextArea>
+
+              <TextArea primary={this.props.theme === "light" ? true : null}>
+                <h1>
+                  <Span>Explore Now!</Span>
+                </h1>
+                <a href="/book/create">
+                  <CreateButton
+                    primary={this.props.theme === "light" ? true : null}
+                  >
+                    Add books!
+                  </CreateButton>
+                </a>
+                <a href="/book/feed">
+                  <ExploreButton>Explore!</ExploreButton>
+                </a>
+              </TextArea>
+            </HomePage>
+          ) : (
+            <HomePage>
+              <img
+                alt="Home-background"
+                src={require("../../../logos/home.jpg")}
+              ></img>
+              <TextArea>
+                <h1>
+                  <Span>Welcome to BookStore</Span>
+                </h1>
+                <a href="/register">
+                  <Button primary={this.props.theme === "light" ? true : null}>
+                    Join Now
+                  </Button>
+                </a>
+              </TextArea>
+            </HomePage>
+          )}
         </Breakpoint>
         <Breakpoint small down>
-        {/**
+          {/**
           TODO
         */}
         </Breakpoint>
