@@ -90,7 +90,7 @@ class Book extends React.Component {
           >
             <option value="philosphy">Philosphy</option>
             <option value="software_development">Software_development</option>
-            <option value="self_improvementl">Self_improvement</option>
+            <option value="self_improvement">Self_improvement</option>
           </select>
 
           <br />
