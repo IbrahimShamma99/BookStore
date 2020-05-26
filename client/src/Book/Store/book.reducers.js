@@ -4,7 +4,6 @@ import * as api from "../Utils/api";
 
 const reducer = (state = initialState, action) => {
   const bookInfo = {book:state.book};
-  console.log("bookInfo",bookInfo)
   switch (action.type) {
     case BookActions.CREATE_BOOK:
       api.create(state.book, action.user).then((data) => {

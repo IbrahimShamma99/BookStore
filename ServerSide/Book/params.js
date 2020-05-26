@@ -16,17 +16,14 @@ const bookParams = (req, res, next, _id) => {
 const bookgenre = (req, res, next, genre) => {
   Book.find({ genre: genre })
     .then((books) => {
-      console.log(genre)
       if (!books) {
         return res.sendStatus(404);
       }
       return res.status(202).send({
-        feed:books
-      })
+        feed: books,
+      });
     })
     .catch(next);
 };
 
-
-
-module.exports = {bookParams,bookgenre};
+module.exports = { bookParams, bookgenre };

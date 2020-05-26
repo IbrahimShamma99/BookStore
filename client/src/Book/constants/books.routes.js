@@ -1,9 +1,10 @@
 const RouteNames = {
-  feed: "/book/feed",
+  feed: "/books/feed/",
+  genre: "/books/feed/:genre",
   book: "/book/:book",
   base: "/",
-  create:"/book/create",
-  update:"/book/:book/update",
+  create: "/book/create",
+  update: "/book/:book/update",
 };
 
 export default RouteNames;

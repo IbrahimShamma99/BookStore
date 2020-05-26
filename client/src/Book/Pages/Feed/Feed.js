@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
 import "bootstrap/dist/css/bootstrap.min.css";
-import './Feed.css';
+import "./Feed.css";
 
 const FeedPage = styled.div`
   padding: 2em;
@@ -79,25 +79,21 @@ const mapDispatchToProps = (dispatch) => {
 
 class Feed extends React.Component {
   componentDidMount() {
-    this.props.fetchFeed();
+    const param = this.props.match.params.genre;
+    console.log("param=",param)
+    this.props.fetchFeed(param);
   }
-
-  /**
-   * 
-    background: #cfd7ff;
-    color: #0a0a0a;
-    border: 1px solid #4e57ef;
-    box-shadow: 3px 4px 0px #4e57ef;
-
-   */
   render() {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h3>
           <div className="feed-nav">
-            <a href="/book/feed/?Philosphy">Philosphy</a><span className="sperator"></span>
-            <a>Software Development</a><span className="sperator"></span>
-            <a>Self Improvement</a><span className="sperator"></span>
+            <a href="/book/feed/Philosphy">Philosphy</a>
+            <span className="sperator"></span>
+            <a>Software Development</a>
+            <span className="sperator"></span>
+            <a>Self Improvement</a>
+            <span className="sperator"></span>
             <a>Psychology</a>
           </div>
         </h3>
@@ -111,7 +107,6 @@ class Feed extends React.Component {
                       alt="cover"
                       src={server.serverDev + "/" + post.cover.filename}
                     >
-                      {console.log(post)}
                     </img>
                   ) : (
                     <img
