@@ -54,6 +54,9 @@ const Book = styled.div`
     height: 200px;
     border-radius: 5px;
   }
+  &:hover {
+
+  }
   & > span {
     display: block;
     white-space: initial;
@@ -69,28 +72,27 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFeed: () => dispatch({ type: BookActions.FETCH_FEED }),
+    fetchFeed: (genre) => dispatch({ type: BookActions.FETCH_FEED,genre }),
   };
 };
 
 class Feed extends React.Component {
   componentDidMount() {
-    const param = this.props.match.params.genre;
-    console.log("param=", this.props.match.params.genre);
-    this.props.fetchFeed(param);
+    this.props.fetchFeed(this.props.match.params.genre);
   }
   render() {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h3>
+        {//TODO fix routes}
           <div className="feed-nav">
-            <a href="/book/feed/Philosphy">Philosphy</a>
+            <a href="/books/feed/philosphy">Philosphy</a>
             <span className="sperator"></span>
-            <a href="/book/feed/Software_Development">Software Development</a>
+            <a href="/books/feed/software_development">Software Development</a>
             <span className="sperator"></span>
-            <a href="/book/feed/Self_Improvement">Self Improvement</a>
+            <a href="/books/feed/self_improvement">Self Improvement</a>
             <span className="sperator"></span>
-            <a href="/book/feed/Psychology">Psychology</a>
+            <a href="/books/feed/psychology">Psychology</a>
           </div>
         </h3>
         {this.props.feed.map((post) => {

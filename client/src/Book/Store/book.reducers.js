@@ -3,7 +3,7 @@ import initialState from "./book.constants";
 import * as api from "../Utils/api";
 
 const reducer = (state = initialState, action) => {
-  const bookInfo = {book:state.book};
+  const bookInfo = { book: state.book };
   switch (action.type) {
     case BookActions.CREATE_BOOK:
       api.create(state.book, action.user).then((data) => {
@@ -13,7 +13,11 @@ const reducer = (state = initialState, action) => {
             message: data.error,
           });
         } else {
-          action.asyncDispatch({ type: BookActions.CREATE_SUCCESS, data,user:action.user });
+          action.asyncDispatch({
+            type: BookActions.CREATE_SUCCESS,
+            data,
+            user: action.user,
+          });
         }
       });
       return { ...state };
@@ -62,10 +66,11 @@ const reducer = (state = initialState, action) => {
         },
       };
     case BookActions.FETCH_FEED:
-      api.feed().then((data) => {
+      api.feed(action.genre).then((data) => {
         action.asyncDispatch({ type: BookActions.SUCCESS, data });
         return {
           ...state,
+          feed:{}
         };
       });
       return { ...state };

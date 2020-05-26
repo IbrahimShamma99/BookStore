@@ -88,9 +88,9 @@ class Book extends React.Component {
             id="genre"
             onChange={this.onChangeHandler("genre")}
           >
-            <option value="Philosphy">Philosphy</option>
-            <option value="Software development">Software development</option>
-            <option value="Self improvementl">Self improvement</option>
+            <option value="philosphy">Philosphy</option>
+            <option value="software_development">Software_development</option>
+            <option value="self_improvementl">Self_improvement</option>
           </select>
 
           <br />

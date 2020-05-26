@@ -9,9 +9,9 @@ const Routes = {
   base: "/",
 };
 
-const create = (DATA,ID) => {
-  const bookInfo = {book:DATA};
-  return fetch(apiNames.serverDev + Routes.create + "?user="+ID, {
+const create = (DATA, ID) => {
+  const bookInfo = { book: DATA };
+  return fetch(apiNames.serverDev + Routes.create + "?user=" + ID, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -38,8 +38,15 @@ const fetchBook = (ID) => {
     .catch((err) => console.log(err));
 };
 
-const feed = () => {
-  return fetch(apiNames.serverDev + Routes.feed, {
+const feed = (genre) => {
+  var url = undefined;
+  if (genre) {
+    url = apiNames.serverDev.concat(Routes.feed, genre);
+  } else {
+    url = apiNames.serverDev.concat(Routes.feed);
+  }
+  console.log("url=",url)
+  return fetch(url, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -56,7 +63,12 @@ const feed = () => {
 
 const update = (DATA, userID) => {
   return fetch(
-    apiNames.serverDev.concat("/books/", DATA.book._id+"/update", "?user=", userID),
+    apiNames.serverDev.concat(
+      "/books/",
+      DATA.book._id + "/update",
+      "?user=",
+      userID
+    ),
     {
       method: "PUT",
       headers: {
@@ -74,16 +86,20 @@ const update = (DATA, userID) => {
     .catch((err) => console.log(err));
 };
 
-const uploadCover = (ID, cover,userID) => {
+const uploadCover = (ID, cover, userID) => {
   const formData = new FormData();
   formData.append("cover", cover);
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      "Authorization": "Token ".concat(sessionStorage.getItem("jwt"))
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
   };
-  axios.put(apiNames.serverDev.concat("/books/" , ID , "/update","?user=", userID), formData, config);
+  axios.put(
+    apiNames.serverDev.concat("/books/", ID, "/update", "?user=", userID),
+    formData,
+    config
+  );
 };
 
 const fetchViaTitle = (title) => {
