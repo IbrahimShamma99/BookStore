@@ -83,9 +83,12 @@ class Book extends React.Component {
             name="Author"
           ></input>
           <br />
-
           <label for="genre">Choose genre:</label>
-          <select name="genre" id="genre" onChange={this.onChangeHandler("genre")}>
+          <select
+            name="genre"
+            id="genre"
+            onChange={this.onChangeHandler("genre")}
+          >
             <option value="Philosphy">Philosphy</option>
             <option value="Software development">Software development</option>
             <option value="Self improvementl">Self improvement</option>

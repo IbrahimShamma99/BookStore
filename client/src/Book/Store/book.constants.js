@@ -6,7 +6,7 @@ const bookState = {
   owner: "",
   reviews: [],
   cover: {},
-  genre:""
+  genre: "",
 };
 
 const initialState = {
