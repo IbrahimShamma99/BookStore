@@ -22,6 +22,7 @@ var BookSchema = new mongoose.Schema(
       path: String,
       size: Number,
     },
+    genre:{type:String}
   },
   { timestamps: true }
 );
@@ -29,6 +30,7 @@ var BookSchema = new mongoose.Schema(
 BookSchema.methods.toJSON = function () {
   return {
     _id: this._id,
+    genre:this.genre,
     title: this.title,
     author: this.author,
     brief: this.brief,

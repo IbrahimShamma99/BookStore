@@ -59,6 +59,7 @@ const fetchBook = (req, res) => {
     book: book.toJSON(),
   });
 };
+
 const feed = (req, res) => {
   Book.find({}, {}).then((books) => {
     res.status(202).send({
@@ -67,10 +68,18 @@ const feed = (req, res) => {
   });
 };
 
+const genrefeed = (req, res) => {
+  Book.find({genre:req.query.genre}, {}).then((books) => {
+    res.status(202).send({
+      feed: books,
+    });
+  });
+};
 const BookControler = {
   create,
   fetchBook,
   feed,
+  genrefeed,
   update,
 };
 
