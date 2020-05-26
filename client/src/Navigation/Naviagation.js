@@ -2,8 +2,7 @@
 
 import React from "react";
 import RouteNames from "../USER/constants/user.routes";
-import bookRoutes from '../Book/constants/books.routes';
-
+import bookRoutes from "../Book/constants/books.routes";
 import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
@@ -14,6 +13,8 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
+
+import styled from "styled-components";
 
 const mapStatetoProps = (state) => {
   return {
@@ -46,10 +47,10 @@ class naviagtionBar extends React.Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               {!auth.isAuthenticated() ? (
-                <Nav.Link href={RouteNames.register}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>Register</this.Styles.H5>
-                  </Button>
+                <Nav.Link href={RouteNames.register}>             
+                    <Button variant="inherit">
+                      <this.Styles.H5>Register</this.Styles.H5>
+                    </Button>
                 </Nav.Link>
               ) : null}
               {!auth.isAuthenticated() ? (

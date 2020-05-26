@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
 import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
 
 const mapStateToProps = (state) => {
   const BookState = {
@@ -83,6 +84,14 @@ class Book extends React.Component {
           ></input>
           <br />
 
+          <label for="genre">Choose genre:</label>
+          <select name="genre" id="genre" onChange={this.onChangeHandler("genre")}>
+            <option value="Philosphy">Philosphy</option>
+            <option value="Software development">Software development</option>
+            <option value="Self improvementl">Self improvement</option>
+          </select>
+
+          <br />
           <input
             type="file"
             className=""
