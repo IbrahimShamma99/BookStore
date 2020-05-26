@@ -84,7 +84,8 @@ class Feed extends React.Component {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h3>
-        {//TODO fix routes}
+        {//TODO fix routes
+        }
           <div className="feed-nav">
             <a href="/books/feed/philosphy">Philosphy</a>
             <span className="sperator"></span>
