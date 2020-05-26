@@ -24,7 +24,6 @@ const create = (req, res) => {
     user.books.push(book._id);
     user.save();
     book.save(() => {
-      console.log(book)
       res.status(202).send({
         book: book.toJSON(),
       });
@@ -44,9 +43,6 @@ const update = (req, res) => {
   if (bookInfo) {
     book.assignInfo(bookInfo);
   }
-  console.log(req.file);
-  console.log(book);
-  console.log(UserID);
   book.save(() => {
     res.status(202).send({
       book: book.toJSON(),
