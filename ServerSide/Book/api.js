@@ -19,7 +19,7 @@ router.post(
 router.get(Routes.feed, helper.optional, controlers.feed);
 
 //SECTION books feed based on genre
-router.get(Routes.feed, helper.optional, controlers.feed);
+router.get(Routes.feed, helper.optional, controlers.genrefeed);
 
 //SECTION fetch book DONE
 router.get(Routes.fetch, helper.optional, controlers.fetchBook);
