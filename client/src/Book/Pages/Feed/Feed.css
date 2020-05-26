@@ -1,0 +1,23 @@
+.feed-nav a:hover {
+  opacity: 1;
+  background: #4e57ef;
+  color: white;
+  border: 1px solid #cfd7ff;
+  box-shadow: 3px 4px 0px #cfd7ff;
+}
+
+.feed-nav a:selection {
+  margin-left: 30px;
+  position: relative;
+  background: #cfd7ff;
+  color: #cfd7ff;
+  border: 1px solid #4e57ef;
+  box-shadow: 3px 4px 0px #4e57ef;
+}
+
+.sperator {
+  border-left: 2px solid #dbdbdb;
+  display: inline-block;
+  margin: 0px 7px;
+  height: 15px;
+}

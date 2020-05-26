@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
+import './Feed.css';
 
 const FeedPage = styled.div`
   padding: 2em;
@@ -27,7 +25,9 @@ const FeedPage = styled.div`
   & > span {
     opacity: 1;
     background: #4e57ef;
-    color: white;
+    background: #cfd7ff;
+    border: 1px solid #4e57ef;
+    box-shadow: 3px 4px 0px #4e57ef;
     border: 1px solid #cfd7ff;
     box-shadow: 3px 4px 0px #cfd7ff;
   }
@@ -81,20 +81,26 @@ class Feed extends React.Component {
   componentDidMount() {
     this.props.fetchFeed();
   }
+
+  /**
+   * 
+    background: #cfd7ff;
+    color: #0a0a0a;
+    border: 1px solid #4e57ef;
+    box-shadow: 3px 4px 0px #4e57ef;
+
+   */
   render() {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h3>
-          <div className="navbar">
-            <genre>Philosphy </genre>
-            <genre>Software Development</genre>
-            <genre> Self Improvement</genre>
+          <div className="feed-nav">
+            <a href="/book/feed/?Philosphy">Philosphy</a><span className="sperator"></span>
+            <a>Software Development</a><span className="sperator"></span>
+            <a>Self Improvement</a><span className="sperator"></span>
+            <a>Psychology</a>
           </div>
         </h3>
-        {/**        <genre href="#" primary={this.props.theme === "light" ? true : null}>
-          <a>Mental</a><a> Code</a><a> Philosphy</a>
-        </genre>
-     */}
         {this.props.feed.map((post) => {
           return (
             <a href={"/book/" + post._id}>

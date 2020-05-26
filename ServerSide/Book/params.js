@@ -13,4 +13,20 @@ const bookParams = (req, res, next, _id) => {
     .catch(next);
 };
 
-module.exports = bookParams;
+const bookgenre = (req, res, next, genre) => {
+  Book.find({ genre: genre })
+    .then((books) => {
+      console.log(genre)
+      if (!books) {
+        return res.sendStatus(404);
+      }
+      return res.status(202).send({
+        feed:books
+      })
+    })
+    .catch(next);
+};
+
+
+
+module.exports = {bookParams,bookgenre};
