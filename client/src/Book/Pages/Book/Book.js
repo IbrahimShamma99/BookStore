@@ -3,7 +3,7 @@ import StyleComponent from "./Styles";
 import { connect } from "react-redux";
 import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
-import auth from '../../../USER/Utils/auth-helper';
+//TODO import auth from '../../../USER/Utils/auth-helper';
 
 const mapStatetoProps = (state) => {
   return {
@@ -42,7 +42,7 @@ class Book extends React.Component {
         {this.props.book.cover.filename ? (
           <StyleComponent.coverImage
             alt="cover"
-            src={server.serverDev + "/" + this.props.book.cover.filename}
+            src={server.serverDev.concat("/",this.props.book.cover.filename)}
           ></StyleComponent.coverImage>
         ) : (
           <StyleComponent.coverImage
@@ -51,7 +51,7 @@ class Book extends React.Component {
           ></StyleComponent.coverImage>
         )}
         <StyleComponent.ButtonWrapper>Buy</StyleComponent.ButtonWrapper>
-        <a href={"/book/"+this.props.match.params.book +"/"+"update"}
+        <a href={"/book/".concat(this.props.match.params.book ,"/","update")}
         ><StyleComponent.ButtonWrapper>EDIT Book</StyleComponent.ButtonWrapper></a>
       </StyleComponent.BookDiv>
     );

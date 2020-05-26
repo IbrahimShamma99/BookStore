@@ -52,8 +52,8 @@ const Span = styled.span`
   background: rgb(0, 0, 0); /* fallback color */
   background: rgba(0, 0, 0, 0.7);
   padding: 10px;
-  & > a{
-    color:rgb(180, 55, 55);
+  & > a {
+    color: rgb(180, 55, 55);
   }
 `;
 const BaseButton = styled.button`
@@ -102,8 +102,6 @@ const ExploreButton = styled(BaseButton)`
     border-color: azure;
   }
 `;
-
-const Tips = styled(TextArea)``;
 
 class Home extends React.Component {
   render() {

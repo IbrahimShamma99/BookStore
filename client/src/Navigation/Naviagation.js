@@ -1,5 +1,3 @@
-//FIXME
-
 import React from "react";
 import RouteNames from "../USER/constants/user.routes";
 import bookRoutes from "../Book/constants/books.routes";
@@ -13,8 +11,6 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
-
-import styled from "styled-components";
 
 const mapStatetoProps = (state) => {
   return {

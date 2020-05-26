@@ -60,10 +60,6 @@ const Book = styled.div`
   }
 `;
 
-const INFO = styled.p`
-  font-weight: bolder;
-`;
-
 const mapStatetoProps = (state) => {
   return {
     theme: state.util.theme,
@@ -80,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
 class Feed extends React.Component {
   componentDidMount() {
     const param = this.props.match.params.genre;
-    console.log("param=",param)
+    console.log("param=", param);
     this.props.fetchFeed(param);
   }
   render() {
@@ -90,11 +86,11 @@ class Feed extends React.Component {
           <div className="feed-nav">
             <a href="/book/feed/Philosphy">Philosphy</a>
             <span className="sperator"></span>
-            <a>Software Development</a>
+            <a href="/book/feed/Software_Development">Software Development</a>
             <span className="sperator"></span>
-            <a>Self Improvement</a>
+            <a href="/book/feed/Self_Improvement">Self Improvement</a>
             <span className="sperator"></span>
-            <a>Psychology</a>
+            <a href="/book/feed/Psychology">Psychology</a>
           </div>
         </h3>
         {this.props.feed.map((post) => {
@@ -106,8 +102,7 @@ class Feed extends React.Component {
                     <img
                       alt="cover"
                       src={server.serverDev + "/" + post.cover.filename}
-                    >
-                    </img>
+                    ></img>
                   ) : (
                     <img
                       alt="cover"

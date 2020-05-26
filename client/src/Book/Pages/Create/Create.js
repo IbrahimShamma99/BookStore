@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
 
 const mapStateToProps = (state) => {
   const BookState = {
