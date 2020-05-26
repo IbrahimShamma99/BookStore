@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => {
 class Feed extends React.Component {
   componentDidMount() {
     const param = this.props.match.params.genre;
-    console.log("param=", param);
+    console.log("param=", this.props.match.params.genre);
     this.props.fetchFeed(param);
   }
   render() {
