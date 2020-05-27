@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
 const HomePage = styled.div`
   & > img {
     position: absolute;
-    top: 70px;
+    top: 0px;
     left: 0px;
     width: 100%;
     height: 100%;
