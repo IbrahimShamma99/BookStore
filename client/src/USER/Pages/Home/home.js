@@ -32,17 +32,23 @@ const HomePage = styled.div`
 const TextArea = styled.div`
   & > h1 {
     position: relative;
-    left:42%;
+
     color: ${(props) => (props.primary ? "azure" : "black")};
   }
   & button {
+  }
+`;
+
+const TextAreaAuth = styled(TextArea)`
+  & > h1 {
+    left: 42%;
   }
 `;
 const TipTextArea = styled(TextArea)`
   & > h1 {
     position: absolute;
     left: 1%;
-    top:50%;
+    top: 50%;
   }
 `;
 
@@ -105,7 +111,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-      <Breakpoint medium up>
+        <Breakpoint medium up>
           {auth.isAuthenticated() ? (
             <HomePage>
               <img
@@ -128,7 +134,7 @@ class Home extends React.Component {
                 </h1>
               </TipTextArea>
 
-              <TextArea primary={this.props.theme === "light" ? true : null}>
+              <TextAreaAuth primary={this.props.theme === "light" ? true : null}>
                 <h1>
                   <Span>Explore Now!</Span>
                 </h1>
@@ -142,7 +148,7 @@ class Home extends React.Component {
                 <a href="/book/feed">
                   <ExploreButton>Explore!</ExploreButton>
                 </a>
-              </TextArea>
+              </TextAreaAuth>
             </HomePage>
           ) : (
             <HomePage>
@@ -152,7 +158,11 @@ class Home extends React.Component {
               ></img>
               <TextArea>
                 <h1>
-                  <Span>Welcome to BookStore here you &nbsp;<br/>&nbsp;can explore and add your books&nbsp;</Span>
+                  <Span>
+                    Welcome to BookStore here you &nbsp;
+                    <br />
+                    &nbsp;can explore and add your books&nbsp;
+                  </Span>
                 </h1>
                 <a href="/register">
                   <Button primary={this.props.theme === "light" ? true : null}>
@@ -162,10 +172,9 @@ class Home extends React.Component {
               </TextArea>
             </HomePage>
           )}
-         </Breakpoint>
-        <Breakpoint small down>
         </Breakpoint>
-        </div>
+        <Breakpoint small down></Breakpoint>
+      </div>
     );
   }
 }
