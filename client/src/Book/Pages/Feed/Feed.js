@@ -16,7 +16,7 @@ const FeedPage = styled.div`
   background-color: ${(props) => (props.primary ? "bisque" : "#202c3d")};
   width: 100%;
   height: auto;
-  max-width: 1100px;
+  max-width: 95%;
   & > h3 {
     left: 0;
     top: 0;
@@ -36,7 +36,7 @@ const Book = styled.div`
   padding: 1em;
   border-width: 1px 1px 1px 2px; /*top left bottom right */
   border-style: solid;
-  width: 18%;
+  width: 180px;
   height: 260px;
   margin-right: 10px;
   border-color: #141f2d;
@@ -74,7 +74,7 @@ const mapStatetoProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFeed: (genre) => dispatch({ type: BookActions.FETCH_FEED,genre }),
+    fetchFeed: (genre) => dispatch({ type: BookActions.FETCH_FEED, genre }),
   };
 };
 
@@ -86,8 +86,9 @@ class Feed extends React.Component {
     return (
       <FeedPage primary={this.props.theme === "light" ? true : null}>
         <h3>
-        {//TODO fix routes
-        }
+          {
+            //TODO fix routes
+          }
           <div className="feed-nav">
             <a href="/books/feed/philosphy">Philosphy</a>
             <span className="sperator"></span>
