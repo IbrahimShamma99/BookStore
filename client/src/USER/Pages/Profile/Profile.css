@@ -60,28 +60,7 @@
   margin-top: 20px;
 }
 
-.username-container p {
-  position: absolute;
-  top: 50%;
-  left: 25%;
-  font-size: 24px;
-  color: rgb(30, 30, 30);
-  font-weight: lighter;
-  max-width: 40%;
-  overflow: visible;
-}
 
-.username-container h3 {
-  position: absolute;
-  top: 10%;
-  word-break: break-word;
-  display: block;
-  left: 20%;
-  font-size: 60px;
-  color: rgb(30, 30, 30);
-  font-weight: bolder;
-  max-width: 40%;
-}
 
 .username-container img {
   width: 50px;
@@ -182,6 +161,7 @@ mark {
 .mobile-contacts-container img {
   height: 18px;
   width: 18px;
+  border-radius: 50%;
 }
 
 .mobile-info-container {

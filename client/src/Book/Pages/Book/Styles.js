@@ -81,7 +81,7 @@ const bookInfo = styled.div`
   border-style: solid;
   border-color: beige;
   border-radius: 5px;
-  background-color: ${(props) => (props.primary ? "azure" : "rgb(40,51,85);")};
+  background-color: ${(props) => (props.primary ? "azure" : "rgb(40,51,85)")};
   font-family: "Times New Roman", Times, serif;
   overflow: visible;
   & > p {
