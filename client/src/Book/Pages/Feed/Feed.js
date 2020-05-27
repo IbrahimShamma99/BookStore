@@ -10,7 +10,7 @@ const FeedPage = styled.div`
   padding: 2em;
   position: absolute;
   top: 80px;
-  border-radius: 5px;
+  border-radius: 6px;
   left: 40px;
   margin-top: 5px;
   background-color: ${(props) => (props.primary ? "bisque" : "#202c3d")};
@@ -55,7 +55,9 @@ const Book = styled.div`
     border-radius: 5px;
   }
   &:hover {
-
+    transition: transform 0.8s ease;
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    transform: scale(1.05);
   }
   & > span {
     display: block;

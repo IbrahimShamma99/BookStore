@@ -1,5 +1,5 @@
 import React from "react";
-import "./home.scss";
+//import "./home.scss";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
@@ -31,9 +31,7 @@ const HomePage = styled.div`
 `;
 const TextArea = styled.div`
   & > h1 {
-    position: absolute;
-    left: 35%;
-    top: 50px;
+    position: relative;
     color: ${(props) => (props.primary ? "azure" : "black")};
   }
   & button {
@@ -57,7 +55,7 @@ const Span = styled.span`
   }
 `;
 const BaseButton = styled.button`
-  position: absolute;
+  position: relative;
   background-color: rgb(180, 55, 55);
   color: black;
   width: 150px;
@@ -78,8 +76,7 @@ const BaseButton = styled.button`
   }
 `;
 const Button = styled(BaseButton)`
-  left: 36%;
-  top: 57%;
+  top: 60%;
   width: 180px;
   height: 45px;
   border-radius: 12px;
@@ -107,7 +104,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Breakpoint medium up>
+        <Breakpoint med>
           {auth.isAuthenticated() ? (
             <HomePage>
               <img
@@ -154,7 +151,10 @@ class Home extends React.Component {
               ></img>
               <TextArea>
                 <h1>
-                  <Span>Welcome to BookStore</Span>
+                  <Span>
+                    Welcome to BookStore here you <br />
+                    can explore and add your books
+                  </Span>
                 </h1>
                 <a href="/register">
                   <Button primary={this.props.theme === "light" ? true : null}>
@@ -165,11 +165,7 @@ class Home extends React.Component {
             </HomePage>
           )}
         </Breakpoint>
-        <Breakpoint small down>
-          {/**
-          TODO
-        */}
-        </Breakpoint>
+        <Breakpoint small down></Breakpoint>
       </div>
     );
   }

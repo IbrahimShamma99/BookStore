@@ -86,8 +86,7 @@ class Book extends React.Component {
           <select
             name="genre"
             id="genre"
-            onChange={this.onChangeHandler("genre")}
-          >
+            onChange={this.onChangeHandler("genre")}>
             <option value="philosphy">Philosphy</option>
             <option value="software_development">Software_development</option>
             <option value="self_improvement">Self_improvement</option>
