@@ -138,14 +138,14 @@ class Home extends React.Component {
                 <h1>
                   <Span>Explore Now!</Span>
                 </h1>
-                <a href="/book/create">
+                <a href="/books/create">
                   <CreateButton
                     primary={this.props.theme === "light" ? true : null}
                   >
                     Add books!
                   </CreateButton>
                 </a>
-                <a href="/book/feed">
+                <a href="books/feed/">
                   <ExploreButton>Explore!</ExploreButton>
                 </a>
               </TextAreaAuth>

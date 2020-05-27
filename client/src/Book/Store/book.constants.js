@@ -14,7 +14,8 @@ const initialState = {
   feed: [],
   userbooks: [{ ...bookState }],
   show: false,
-  open: false,
+  open_error:false,
+  open_message:false,
   error: "",
   message: "",
 };

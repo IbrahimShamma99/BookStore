@@ -8,6 +8,13 @@
   margin-bottom: 15px;
 }
 
+.alert-success {
+  padding: 20px;
+  background-color: #43f436; 
+  color: white;
+  margin-bottom: 15px;
+}
+
 .profile-container {
   vertical-align: middle;
   align-content: middle;

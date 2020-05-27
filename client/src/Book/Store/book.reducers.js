@@ -5,17 +5,24 @@ import * as api from "../Utils/api";
 const reducer = (state = initialState, action) => {
   const bookInfo = { book: state.book };
   switch (action.type) {
+    case BookActions.ERROR:
+      return {
+        ...state,
+        open_error:true,
+        error:action.error
+      };
     case BookActions.CREATE_BOOK:
       api.create(state.book, action.user).then((data) => {
         if (data.error) {
           action.asyncDispatch({
             type: BookActions.ERROR,
-            message: data.error,
+            error: data.error
           });
         } else {
           action.asyncDispatch({
             type: BookActions.CREATE_SUCCESS,
             data,
+            message:"Book added successfully",
             user: action.user,
           });
         }
@@ -28,6 +35,9 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         book: action.data.book,
+        message:action.message,
+        open_message:true,
+        open_error:false,
       };
     case BookActions.SUCCESS:
       if (action.data) {

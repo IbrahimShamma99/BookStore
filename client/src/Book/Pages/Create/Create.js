@@ -7,10 +7,10 @@ const mapStateToProps = (state) => {
   const BookState = {
     userId: state.UserState.user._id,
     ...state.BookState.book,
-    show: state.show,
-    error: state.error,
-    open: state.open,
-    message: state.message,
+    error: state.BookState.error,
+    open_error: state.BookState.open_error,
+    open_message: state.BookState.open_message,
+    message: state.BookState.message,
   };
   return BookState;
 };
@@ -38,15 +38,26 @@ class Book extends React.Component {
     return (
       <div className="update-container">
         <form>
-          {this.props.show ? (
+          {this.props.open_error ? (
             <div className="alert">
+              <span
+                className="closebtn"
+              >
+                &times;
+              </span>
+              {this.props.error}
+            </div>
+          ) : null}
+
+          {this.props.open_message ? (
+            <div className="alert-success">
               <span
                 className="closebtn"
                 onClick="this.parentElement.style.display='none';"
               >
                 &times;
               </span>
-              {this.props.error}
+              {this.props.message}
             </div>
           ) : null}
 
@@ -82,11 +93,12 @@ class Book extends React.Component {
             name="Author"
           ></input>
           <br />
-          <label for="genre">Choose genre:</label>
+          <label htmlFor="genre">Choose genre:</label>
           <select
             name="genre"
             id="genre"
-            onChange={this.onChangeHandler("genre")}>
+            onChange={this.onChangeHandler("genre")}
+          >
             <option value="philosphy">Philosphy</option>
             <option value="software_development">Software_development</option>
             <option value="self_improvement">Self_improvement</option>
