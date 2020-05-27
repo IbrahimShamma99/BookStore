@@ -1,35 +1,35 @@
 import styled from "styled-components";
 
 const BookDiv = styled.div`
-  vertical-align: middle;
-  align-content: middle;
   position: absolute;
   margin: 10px;
-  width: 95%;
+  width: 90%;
   height: 80%;
+  top:40%;
   transform: translateX(-50%) translateY(-50%);
-  max-width: 95%;
-  max-height: 80%;
+  max-width: 1400px;
+  max-height: 600px;
   border-width: 2px 4px 4px 2px; /*top left bottom right */
   border-style: solid;
-  border-color: #c93333;
+  border-color: rgb(40,51,85);
   border-radius: 5px;
-  background: ${(props) => (props.primary ? "bisque" : "#333333")};
+  background: ${(props) => (props.primary ? "bisque" : "rgb(30,41,55)")};
   font-family: "Times New Roman", Times, serif;
   overflow: hidden;
 `;
 
 const coverImage = styled.img`
-  margin-top: 40px;
+  margin-top: 2%;
+  margin-left: 2%;
   top: 10px;
   left: 10px;
-  margin-left: 40px;
   position: absolute;
   height: 430px;
   width: 350px;
   visibility: visible;
-  background: #e93333;
-  border: 3px solid #e93333;
+  background: rgb(40,51,85);;
+  border: 3px solid rgb(40,51,85);;
+  border-color: rgb(40,51,85);
   overflow: visible;
   transition: transform 0.5s ease;
   &: hover {
@@ -44,8 +44,9 @@ const ButtonWrapper = styled.button`
   width: 160px;
   height: 50px;
   padding: 5px;
+  bottom:-120px;
+  left:10%;
   font-size: x-large;
-  position: relative;
   font-weight: bolder;
   color: rgb(0, 0, 0);
   background-color: #c93333;
@@ -68,23 +69,24 @@ const bookInfo = styled.div`
   vertical-align: middle;
   align-content: middle;
   position: relative;
-  margin: 10px;
-  top: 35%;
-  left: 44%;
+  left:45%;
+  top:45%;
+  margin: 15px;
   width: 20%;
   height: 60%;
   transform: translateX(-50%) translateY(-50%);
   max-width: 95%;
-  max-height: 100%;
-  border-width: 1px 2px 2px 4px; /*top left bottom right */
+  max-height:350px;
+  border-width: 2px 4px 2px 4px; /*top left bottom right */
   border-style: solid;
-  border-color: #c93333;
+  border-color: beige;
   border-radius: 5px;
-  background-color: ${(props) => (props.primary ? "azure" : "#505050")};
+  background-color: ${(props) => (props.primary ? "azure" : "rgb(40,51,85);")};
   font-family: "Times New Roman", Times, serif;
   overflow: visible;
   & > p {
     margin-left: 7px;
+    font-wight:bold;
   }
   & > h4 {
     margin-left: 5px;
