@@ -123,7 +123,7 @@ const reducers = (state = intialState, action) => {
       });
       return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:
-      localStorage.clear();
+      sessionStorage.clear();
       auth.signout(() => {
         return {
           open: true,
