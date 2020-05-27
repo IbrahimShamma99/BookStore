@@ -5,11 +5,11 @@ const BookDiv = styled.div`
   align-content: middle;
   position: absolute;
   margin: 10px;
-  width: 100%;
+  width: 95%;
   height: 80%;
   transform: translateX(-50%) translateY(-50%);
   max-width: 95%;
-  max-height: 100%;
+  max-height: 80%;
   border-width: 2px 4px 4px 2px; /*top left bottom right */
   border-style: solid;
   border-color: #c93333;
@@ -21,8 +21,10 @@ const BookDiv = styled.div`
 
 const coverImage = styled.img`
   margin-top: 40px;
+  top: 10px;
+  left: 10px;
   margin-left: 40px;
-  position: relative;
+  position: absolute;
   height: 430px;
   width: 350px;
   visibility: visible;
@@ -37,10 +39,35 @@ const coverImage = styled.img`
   }
 `;
 
+const ButtonWrapper = styled.button`
+  position: relative;
+  width: 160px;
+  height: 50px;
+  padding: 5px;
+  font-size: x-large;
+  position: relative;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  background-color: #c93333;
+  margin-top: auto;
+  margin-left: 5px;
+  border-radius: 8px;
+  &: hover {
+    text-shadow: 0 0 2em rgba(255, 255, 255, 1);
+    color: rgb(50, 0, 0);
+    border-color: rgb(202, 28, 28);
+    background-color: #ffffff;
+    border: #c93333 sInfoH4olid 2px;
+    width: 160px;
+    height: 50px;
+  }
+`;
+
+
 const bookInfo = styled.div`
   vertical-align: middle;
   align-content: middle;
-  position: absolute;
+  position: relative;
   margin: 10px;
   top: 35%;
   left: 44%;
@@ -62,32 +89,6 @@ const bookInfo = styled.div`
   & > h4 {
     margin-left: 5px;
     font-weight: bolder;
-  }
-`;
-
-const ButtonWrapper = styled.button`
-  position: relative;
-  top: 30%;
-  left: 3%;
-
-  color: #494949 !important;
-  text-transform: uppercase;
-  background: #ffffff;
-  padding: 5px;
-  width: 120px;
-  height: 50px;
-  border: 4px solid #e93333 !important;
-  border-radius: 6px;
-  display: inline-block;
-  transition: all 0.3s ease 0s;
-  font-weight: bold;
-
-  &: hover {
-    font-weight: bolder;
-    color: black !important;
-    border-radius: 50px;
-    border-color: #494949 !important;
-    transition: all 0.3s ease 0s;
   }
 `;
 
