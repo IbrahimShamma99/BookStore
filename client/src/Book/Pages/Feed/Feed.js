@@ -28,8 +28,6 @@ const FeedPage = styled.div`
     background: #cfd7ff;
     border: 1px solid #4e57ef;
     box-shadow: 3px 4px 0px #4e57ef;
-    border: 1px solid #cfd7ff;
-    box-shadow: 3px 4px 0px #cfd7ff;
   }
 `;
 const Book = styled.div`

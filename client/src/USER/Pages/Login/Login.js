@@ -27,6 +27,7 @@ const Label = styled.label`
   color: black;
   font-weight: bold;
 `;
+
 const mapStateToProps = (state) => {
   return {
     email: state.UserState.user.email,
