@@ -32,6 +32,7 @@ const HomePage = styled.div`
 const TextArea = styled.div`
   & > h1 {
     position: relative;
+    left:42%;
     color: ${(props) => (props.primary ? "azure" : "black")};
   }
   & button {
@@ -39,7 +40,9 @@ const TextArea = styled.div`
 `;
 const TipTextArea = styled(TextArea)`
   & > h1 {
+    position: absolute;
     left: 1%;
+    top:50%;
   }
 `;
 
@@ -83,13 +86,11 @@ const Button = styled(BaseButton)`
 `;
 
 const CreateButton = styled(BaseButton)`
-  left: 30%;
-  top: 58%;
+  top: 60%;
 `;
 
 const ExploreButton = styled(BaseButton)`
-  left: 42%;
-  top: 58%;
+  top: 60%;
   background: azure;
   color: rgb(180, 55, 55);
   border-color: rgb(180, 55, 55);
@@ -104,7 +105,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Breakpoint med>
+      <Breakpoint medium up>
           {auth.isAuthenticated() ? (
             <HomePage>
               <img
@@ -151,10 +152,7 @@ class Home extends React.Component {
               ></img>
               <TextArea>
                 <h1>
-                  <Span>
-                    Welcome to BookStore here you <br />
-                    can explore and add your books
-                  </Span>
+                  <Span>Welcome to BookStore here you &nbsp;<br/>&nbsp;can explore and add your books&nbsp;</Span>
                 </h1>
                 <a href="/register">
                   <Button primary={this.props.theme === "light" ? true : null}>
@@ -164,9 +162,10 @@ class Home extends React.Component {
               </TextArea>
             </HomePage>
           )}
+         </Breakpoint>
+        <Breakpoint small down>
         </Breakpoint>
-        <Breakpoint small down></Breakpoint>
-      </div>
+        </div>
     );
   }
 }
