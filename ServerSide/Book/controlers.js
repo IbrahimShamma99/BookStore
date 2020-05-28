@@ -76,20 +76,24 @@ const commentBook = (req, res) => {
   const book = req.book;
   const comment = req.body.comment;
   const UserID = req.query.user;
-  User.findOne({_id:UserID }).then(user=>{
-    book.addComment(comment);
-
-  })
+  User.findOne({ _id: UserID }).then((user) => {
+    book.addComment(comment, user._id);
+    book.save().then(() => {
+      return res.status(202).send({});
+    });
+  });
 };
 
 const reactBook = (req, res) => {
   const book = req.book;
   const react = req.query.react;
   const UserID = req.query.user;
-  User.findOne({_id:UserID }).then(user=>{
-    book.addReact(react);
-
-  })
+  User.findOne({ _id: UserID }).then((user) => {
+    book.addReact(react, user._id);
+    book.save().then(() => {
+      return res.status(202).send({});
+    });
+  });
 };
 
 const BookControler = {

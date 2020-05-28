@@ -82,7 +82,7 @@ BookSchema.methods.assignInfo = function (info) {
 BookSchema.methods.addComment = function (info, owner) {
   this.initializeProp("comments");
   this.comments.push({
-    text: info.textm,
+    text: info.text,
     owner,
   });
 };
