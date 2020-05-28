@@ -20,22 +20,22 @@ var UserSchema = new mongoose.Schema(
       type: String,
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
-      trim:true
+      trim: true,
     },
     last_name: {
-      trim:true,
+      trim: true,
       type: String,
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
     },
     username: {
-      trim:true,
+      trim: true,
       type: String,
       unique: true,
       required: [true, "can't be blank"],
       match: [/^[a-zA-Z0-9]+$/, "is invalid"],
     },
-    birth_date:{type:String},
+    birth_date: { type: String },
     email: {
       type: String,
       lowercase: true,
@@ -56,11 +56,14 @@ var UserSchema = new mongoose.Schema(
       path: String,
       size: Number,
     },
-    books:[{type:mongoose.Types.ObjectId,ref:"Book"}],
+    books: [{ type: mongoose.Types.ObjectId, ref: "Book" }],
+    reading_list: [{ type: mongoose.Types.ObjectId, ref: "Book" }],
+    books_read: [{ type: mongoose.Types.ObjectId, ref: "Book" }],
+    comments: [{ type: mongoose.Types.ObjectId }],
     hash: String,
     salt: String,
     interests: [{ required: false }],
-    books:[{type:mongoose.Types.ObjectId,ref:"Book"}]
+    books: [{ type: mongoose.Types.ObjectId, ref: "Book" }],
   },
   { timestamps: true }
 );
@@ -85,7 +88,7 @@ UserSchema.methods.toJSON = function () {
     username: this.username,
     email: this.email,
     avatar: this.avatar,
-    birth_date:this.birth_date,
+    birth_date: this.birth_date,
     _id: this._id,
     bio: this.bio,
     interests: this.interests,
@@ -109,14 +112,14 @@ UserSchema.methods.toAuthJSON = function () {
   };
 };
 
-UserSchema.methods.initInfo = function(info){
+UserSchema.methods.initInfo = function (info) {
   this.first_name = info.first_name;
   this.email = info.email;
   this.last_name = info.last_name;
   this.username = info.username;
   this.token = this.generateJWT();
   this.setPassword(info.password);
-}
+};
 
 UserSchema.methods.assignInfo = function (info) {
   Object.keys(info).map((key) => {

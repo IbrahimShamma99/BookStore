@@ -22,6 +22,24 @@ var BookSchema = new mongoose.Schema(
       path: String,
       size: Number,
     },
+    reacts:{
+      heart:[{
+        type:Number
+      }],
+      read_later:[{
+        type:Number
+      }],
+      unicorn:[{
+        type:Number
+      }],
+      star:[{
+        type:Number
+      }]
+    },
+    comments:[{
+      owner: { type: mongoose.Types.ObjectId, ref: "User" },
+      text:{type:String}
+    }],
     genre:{type:String}
   },
   { timestamps: true }
