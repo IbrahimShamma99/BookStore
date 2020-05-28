@@ -5,13 +5,13 @@ const BookDiv = styled.div`
   margin: 10px;
   width: 90%;
   height: 80%;
-  top:40%;
+  top: 40%;
   transform: translateX(-50%) translateY(-50%);
   max-width: 1400px;
   max-height: 600px;
   border-width: 2px 4px 4px 2px; /*top left bottom right */
   border-style: solid;
-  border-color: rgb(40,51,85);
+  border-color: rgb(40, 51, 85);
   border-radius: 5px;
   background: ${(props) => (props.primary ? "bisque" : "rgb(30,41,55)")};
   font-family: "Times New Roman", Times, serif;
@@ -27,9 +27,9 @@ const coverImage = styled.img`
   height: 430px;
   width: 350px;
   visibility: visible;
-  background: rgb(40,51,85);;
-  border: 3px solid rgb(40,51,85);;
-  border-color: rgb(40,51,85);
+  background: rgb(40, 51, 85);
+  border: 3px solid rgb(40, 51, 85);
+  border-color: rgb(40, 51, 85);
   overflow: visible;
   transition: transform 0.5s ease;
   &: hover {
@@ -39,13 +39,40 @@ const coverImage = styled.img`
   }
 `;
 
+const react = styled.div`
+  position: relative;
+  left:40%;
+  top: 50px;
+  border-radius: 50%;
+  & > button {
+    position: relative;
+    margin-left: 10px;
+    border-radius: 50%;
+    background: ${(props) => (props.primary ? "bisque" : "rgb(30,41,55)")};
+    width: 42px;
+    height: 42px;
+    &:hover {
+      boder: 2px 2px 2px 2px ;
+      border-color:purple;
+      border-radius: 50%;
+    }
+    & > img {
+      left:50%;
+      border-radius: 50%;
+      top:50%;
+      width: 28px;
+      height: 28px;
+    }
+  }
+`;
+
 const ButtonWrapper = styled.button`
   position: relative;
   width: 160px;
   height: 50px;
   padding: 5px;
-  bottom:-120px;
-  left:10%;
+  bottom: -120px;
+  left: 10%;
   font-size: x-large;
   font-weight: bolder;
   color: rgb(0, 0, 0);
@@ -64,19 +91,18 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-
 const bookInfo = styled.div`
   vertical-align: middle;
   align-content: middle;
   position: relative;
-  left:45%;
-  top:45%;
+  left: 45%;
+  top: 45%;
   margin: 15px;
   width: 20%;
   height: 60%;
   transform: translateX(-50%) translateY(-50%);
   max-width: 95%;
-  max-height:350px;
+  max-height: 350px;
   border-width: 2px 4px 2px 4px; /*top left bottom right */
   border-style: solid;
   border-color: beige;
@@ -86,7 +112,7 @@ const bookInfo = styled.div`
   overflow: visible;
   & > p {
     margin-left: 7px;
-    font-wight:bold;
+    font-wight: bold;
   }
   & > h4 {
     margin-left: 5px;
@@ -94,6 +120,6 @@ const bookInfo = styled.div`
   }
 `;
 
-const StyleComponent = { ButtonWrapper, BookDiv, coverImage, bookInfo };
+const StyleComponent = { react, ButtonWrapper, BookDiv, coverImage, bookInfo };
 
 export default StyleComponent;

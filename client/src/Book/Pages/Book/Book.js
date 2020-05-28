@@ -3,13 +3,16 @@ import StyleComponent from "./Styles";
 import { connect } from "react-redux";
 import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
-import auth from '../../../USER/Utils/auth-helper';
+import auth from "../../../USER/Utils/auth-helper";
+import heart from "../../../logos/heart.png";
+import read_later from "../../../logos/read_later.png";
+import unicorn from "../../../logos/unicorn.png";
 
 const mapStatetoProps = (state) => {
   return {
     theme: state.util.theme,
     book: state.BookState.book,
-    user:state.UserState.user
+    user: state.UserState.user,
   };
 };
 
@@ -43,7 +46,7 @@ class Book extends React.Component {
         {this.props.book.cover.filename ? (
           <StyleComponent.coverImage
             alt="cover"
-            src={server.serverDev.concat("/",this.props.book.cover.filename)}
+            src={server.serverDev.concat("/", this.props.book.cover.filename)}
           ></StyleComponent.coverImage>
         ) : (
           <StyleComponent.coverImage
@@ -54,10 +57,31 @@ class Book extends React.Component {
         {/*
         <StyleComponent.ButtonWrapper>Buy</StyleComponent.ButtonWrapper>
         */}
-        {auth.isAuthenticated() && this.props.book.owner === this.props.user._id?( 
-        <a href={"/book/".concat(this.props.match.params.book ,"/","update")}
-        ><StyleComponent.ButtonWrapper>EDIT Book</StyleComponent.ButtonWrapper></a>):null
-        }
+        {auth.isAuthenticated() &&
+        this.props.book.owner === this.props.user._id ? (
+          <a
+            href={"/book/".concat(this.props.match.params.book, "/", "update")}
+          >
+            <StyleComponent.ButtonWrapper>
+              EDIT Book
+            </StyleComponent.ButtonWrapper>
+          </a>
+        ) : null}
+        <div className="reacts">
+          <StyleComponent.react
+            primary={this.props.theme === "light" ? true : null}
+          >
+            <button>
+              <img alt="heart" src={heart}></img>
+            </button>
+            <button>
+              <img alt="read_later" src={read_later}></img>
+            </button>
+            <button>
+              <img alt="unicorn" src={unicorn}></img>
+            </button>
+          </StyleComponent.react>
+        </div>
       </StyleComponent.BookDiv>
     );
   }
