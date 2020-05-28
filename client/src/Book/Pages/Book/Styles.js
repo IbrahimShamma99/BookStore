@@ -132,6 +132,27 @@ const bookInfo = styled.div`
   }
 `;
 
-const StyleComponent = { react, ButtonWrapper, BookDiv, coverImage, bookInfo };
+const Comment = styled.div`
+  postion: absolute;
+  top: 1000px;
+  left: 1000px;
+  & > img {
+    postion: relative;
+    top: 1000px;
+    left: 1000px;
+  }
+`;
+
+const CommentForm = styled.form``;
+
+const StyleComponent = {
+  Comment,
+  CommentForm,
+  react,
+  ButtonWrapper,
+  BookDiv,
+  coverImage,
+  bookInfo,
+};
 
 export default StyleComponent;
