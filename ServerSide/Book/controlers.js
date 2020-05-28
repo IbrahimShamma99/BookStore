@@ -65,14 +65,37 @@ const feed = (req, res) => {
 };
 
 const genrefeed = (req, res) => {
-  Book.find({genre:req.query.genre}, {}).then((books) => {
+  Book.find({ genre: req.query.genre }, {}).then((books) => {
     res.status(202).send({
       feed: books,
     });
   });
 };
+
+const commentBook = (req, res) => {
+  const book = req.book;
+  const comment = req.body.comment;
+  const UserID = req.query.user;
+  User.findOne({_id:UserID }).then(user=>{
+    book.addComment(comment);
+
+  })
+};
+
+const reactBook = (req, res) => {
+  const book = req.book;
+  const react = req.query.react;
+  const UserID = req.query.user;
+  User.findOne({_id:UserID }).then(user=>{
+    book.addReact(react);
+
+  })
+};
+
 const BookControler = {
   create,
+  commentBook,
+  reactBook,
   fetchBook,
   feed,
   genrefeed,

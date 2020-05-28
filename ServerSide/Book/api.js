@@ -8,7 +8,7 @@ const {bookParams,bookgenre} = require("./params");
 router.param(params.book, bookParams);
 router.param(params.genre, bookgenre);
 
-//SECTION add book DONE
+//SECTION add book 
 router.post(
   Routes.create,
   helper.required,
@@ -22,10 +22,17 @@ router.get(Routes.feed, helper.optional, controlers.feed);
 //SECTION books feed based on genre
 router.get(Routes.genre, helper.optional, controlers.genrefeed);
 
-//SECTION fetch book DONE
+//SECTION fetch book 
 router.get(Routes.fetch, helper.optional, controlers.fetchBook);
 
-//SECTION update book DONE
+//SECTION comment on book
+router.get(Routes.comment, helper.optional, controlers.commentBook);
+
+//SECTION react book 
+router.get(Routes.react, helper.optional, controlers.reactBook);
+
+
+//SECTION update book 
 router.put(
   Routes.update,
   helper.required,

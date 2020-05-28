@@ -22,25 +22,35 @@ var BookSchema = new mongoose.Schema(
       path: String,
       size: Number,
     },
-    reacts:{
-      heart:[{
-        type:Number
-      }],
-      read_later:[{
-        type:Number
-      }],
-      unicorn:[{
-        type:Number
-      }],
-      star:[{
-        type:Number
-      }]
+    reacts: {
+      heart: [
+        {
+          type: Number,
+        },
+      ],
+      read_later: [
+        {
+          type: Number,
+        },
+      ],
+      unicorn: [
+        {
+          type: Number,
+        },
+      ],
+      star: [
+        {
+          type: Number,
+        },
+      ],
     },
-    comments:[{
-      owner: { type: mongoose.Types.ObjectId, ref: "User" },
-      text:{type:String}
-    }],
-    genre:{type:String}
+    comments: [
+      {
+        owner: { type: mongoose.Types.ObjectId, ref: "User" },
+        text: { type: String },
+      },
+    ],
+    genre: { type: String },
   },
   { timestamps: true }
 );
@@ -48,7 +58,7 @@ var BookSchema = new mongoose.Schema(
 BookSchema.methods.toJSON = function () {
   return {
     _id: this._id,
-    genre:this.genre,
+    genre: this.genre,
     title: this.title,
     author: this.author,
     brief: this.brief,
@@ -68,5 +78,17 @@ BookSchema.methods.assignInfo = function (info) {
     this[key] = info[key];
   });
 };
+
+BookSchema.methods.addComment = function (info,owner) {
+  if (!this.comments) {
+    this.comments = [];
+  }
+  this.comments.push({
+    text:info.textm,
+    owner
+  })
+};
+
+BookSchema.methods.addreact = function (info) {};
 
 module.exports = BookSchema = mongoose.model("Book", BookSchema);
