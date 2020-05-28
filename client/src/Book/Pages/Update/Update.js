@@ -2,10 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
 import Button from "react-bootstrap/Button";
-
+import auth from "../../../USER/Utils/auth-helper";
 const mapStateToProps = (state) => {
   const BookState = {
-    userId:state.UserState.user._id,
+    user: state.UserState.user,
     ...state.BookState.book,
     show: state.show,
     error: state.error,
@@ -18,21 +18,25 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (userId) => dispatch({ type: bookTypes.UPDATE_BOOK,user:userId }),
+    submit: (userId) => dispatch({ type: bookTypes.UPDATE_BOOK, user: userId }),
   };
 };
 
 class Update extends React.Component {
+  componentWillMount() {
+    const authentication =
+      auth.isAuthenticated() && this.props.book.owner === this.props.user._id;
+    return authentication;
+  }
   onChangeHandler = (name) => (event) => {
     if (name === "cover") {
-      return this.props.change(name,event.target.files[0]);
+      return this.props.change(name, event.target.files[0]);
     }
     this.props.change(name, event.target.value);
   };
   clickSubmit = (e) => {
     e.preventDefault();
-    this.props.submit(this.props.userId);
-    
+    this.props.submit(this.props.user._id);
   };
 
   render() {
