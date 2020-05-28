@@ -19,13 +19,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
     submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
-    refreshBook:()=>dispatch({ type: bookTypes.REFRESH_BOOK}),
+    refreshBook: () => dispatch({ type: bookTypes.REFRESH_BOOK }),
   };
 };
 
 class Book extends React.Component {
-  componentDidMount(){}
-
+  componentDidMount() {
+    this.props.refreshBook();
+  }
 
   onChangeHandler = (name) => (event) => {
     if (name === "cover") {
@@ -44,11 +45,7 @@ class Book extends React.Component {
         <form>
           {this.props.open_error ? (
             <div className="alert">
-              <span
-                className="closebtn"
-              >
-                &times;
-              </span>
+              <span className="closebtn">&times;</span>
               {this.props.error}
             </div>
           ) : null}

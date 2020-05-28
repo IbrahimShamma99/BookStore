@@ -8,7 +8,10 @@ const reducer = (state = initialState, action) => {
     case BookActions.REFRESH_BOOK:
       return {
         ...state,
-        
+        open_message:false,
+        open_error:false,
+        error:"",
+        message:""        
       }
     case BookActions.ERROR:
       return {
@@ -49,6 +52,9 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           ...action.data,
+          message:action.message,
+          open_message:true,
+          open_error:false,  
         };
       }
       return {
@@ -67,7 +73,13 @@ const reducer = (state = initialState, action) => {
         api.uploadCover(bookInfo.book._id, bookInfo.book.cover, action.user);
       }
       api.update(bookInfo, action.user).then((data) => {
-        action.asyncDispatch({ type: BookActions.SUCCESS, data: data });
+        if (data.error){
+          action.asyncDispatch({
+            type: BookActions.ERROR,
+            error: data.error
+          });
+        }
+        action.asyncDispatch({ type: BookActions.SUCCESS,message:"updated successfully" ,data: data });
       });
       return {
         ...state,
