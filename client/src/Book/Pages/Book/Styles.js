@@ -44,11 +44,13 @@ const react = styled.div`
   left:40%;
   top: 50px;
   border-radius: 50%;
+  background:transparent;
   & > button {
-    position: relative;
-    margin-left: 10px;
+    padding:4px;
+    background:transparent;
+    position: relative;red
+    margin-left: 15px;
     border-radius: 50%;
-    background: ${(props) => (props.primary ? "bisque" : "rgb(30,41,55)")};
     width: 42px;
     height: 42px;
     &:hover {
@@ -56,12 +58,22 @@ const react = styled.div`
       border-color:purple;
       border-radius: 50%;
     }
+    &:focus {
+      boder: 2px 2px 2px 2px ;
+      background:#958aee;
+      border-radius: 50%;
+    }
+    &::selected {
+      boder: 2px 2px 2px 2px ;
+      background:#958aee;
+      border-radius: 50%;
+    }
     & > img {
       left:50%;
       border-radius: 50%;
       top:50%;
-      width: 28px;
-      height: 28px;
+      width: 23px;
+      height: 23px;
     }
   }
 `;
