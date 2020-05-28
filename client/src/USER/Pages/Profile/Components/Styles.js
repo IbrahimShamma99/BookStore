@@ -43,7 +43,7 @@ const Styles = (theme) => {
       usernameContainerP: styled.p`
         position: absolute;
         top: 50%;
-        left: 25%;
+        left: 20%;
         font-size: 24px;
         color: rgb(30, 30, 30);
         font-weight: lighter;

@@ -9,6 +9,7 @@ const mapStatetoProps = (state) => {
   return {
     theme: state.util.theme,
     book: state.BookState.book,
+    user:state.UserState.user
   };
 };
 
