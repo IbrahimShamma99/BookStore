@@ -79,16 +79,43 @@ BookSchema.methods.assignInfo = function (info) {
   });
 };
 
-BookSchema.methods.addComment = function (info,owner) {
-  if (!this.comments) {
-    this.comments = [];
-  }
+BookSchema.methods.addComment = function (info, owner) {
+  this.initializeProp("comments");
   this.comments.push({
-    text:info.textm,
-    owner
-  })
+    text: info.textm,
+    owner,
+  });
+};
+BookSchema.methods.initializeProp = function (prop) {
+  switch (prop) {
+    case "react":
+      this["react"] = [];
+      this.reacts.read_later = [];
+      this.reacts.star = [];
+      this.reacts.unicorn = [];
+      this.reacts.heart = [];
+    case "comments":
+      if (this["comments"]) {
+        return;
+      } else {
+        this["comments"] = [];
+      }
+  }
 };
 
-BookSchema.methods.addreact = function (info) {};
+BookSchema.methods.addReact = function (info, owner) {
+  switch (info) {
+    case "heart":
+      this.reacts.heart.push(owner);
+    case "read_later":
+      this.reacts.read_later.push(owner);
+    case "unicorn":
+      this.reacts.unicorn.push(owner);
+    case "unicorn":
+      this.reacts.unicorn.push(owner);
+    default:
+      return;
+  }
+};
 
 module.exports = BookSchema = mongoose.model("Book", BookSchema);
