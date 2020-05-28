@@ -3,7 +3,7 @@ import StyleComponent from "./Styles";
 import { connect } from "react-redux";
 import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
-//TODO import auth from '../../../USER/Utils/auth-helper';
+import auth from '../../../USER/Utils/auth-helper';
 
 const mapStatetoProps = (state) => {
   return {
@@ -53,8 +53,10 @@ class Book extends React.Component {
         {/*
         <StyleComponent.ButtonWrapper>Buy</StyleComponent.ButtonWrapper>
         */}
+        {auth.isAuthenticated() && this.props.book.owner === this.props.user._id?( 
         <a href={"/book/".concat(this.props.match.params.book ,"/","update")}
-        ><StyleComponent.ButtonWrapper>EDIT Book</StyleComponent.ButtonWrapper></a>
+        ><StyleComponent.ButtonWrapper>EDIT Book</StyleComponent.ButtonWrapper></a>):null
+        }
       </StyleComponent.BookDiv>
     );
   }
