@@ -19,10 +19,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
     submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
+    refreshBook:()=>dispatch({ type: bookTypes.REFRESH_BOOK}),
   };
 };
 
 class Book extends React.Component {
+  componentDidMount(){}
+
+
   onChangeHandler = (name) => (event) => {
     if (name === "cover") {
       return this.props.change(name, event.target.files[0]);

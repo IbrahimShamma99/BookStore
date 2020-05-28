@@ -5,6 +5,11 @@ import * as api from "../Utils/api";
 const reducer = (state = initialState, action) => {
   const bookInfo = { book: state.book };
   switch (action.type) {
+    case BookActions.REFRESH_BOOK:
+      return {
+        ...state,
+        
+      }
     case BookActions.ERROR:
       return {
         ...state,

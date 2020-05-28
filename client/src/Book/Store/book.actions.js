@@ -7,3 +7,4 @@ export const ERROR = () => "ERROR";
 export const CREATE_SUCCESS = () => "CREATE_SUCCESS";
 export const UPDATE_BOOK = () => "UPDATE_BOOK";
 export const UPLOAD_COVER = () => "UPLOAD_COVER";
+export const REFRESH_BOOK = () => "REFRESH_BOOK";
