@@ -23,26 +23,10 @@ var BookSchema = new mongoose.Schema(
       size: Number,
     },
     reacts: {
-      heart: [
-        {
-          type: Number,
-        },
-      ],
-      read_later: [
-        {
-          type: Number,
-        },
-      ],
-      unicorn: [
-        {
-          type: Number,
-        },
-      ],
-      star: [
-        {
-          type: Number,
-        },
-      ],
+      heart: [],
+      read_later: [],
+      unicorn: [],
+      star: [],
     },
     comments: [
       {
@@ -65,6 +49,8 @@ BookSchema.methods.toJSON = function () {
     reviews: this.reviews,
     owner: this.owner,
     cover: this.cover,
+    comments: this.comments,
+    reacts: this.reacts,
   };
 };
 BookSchema.methods.assignInfo = function (info) {
@@ -88,31 +74,41 @@ BookSchema.methods.addComment = function (info, owner) {
 };
 BookSchema.methods.initializeProp = function (prop) {
   switch (prop) {
-    case "react":
-      this["react"] = [];
+    case "reacts":
+      if (this["reacts"]) {
+        return;
+      }
+      this["reacts"] = [];
       this.reacts.read_later = [];
       this.reacts.star = [];
       this.reacts.unicorn = [];
       this.reacts.heart = [];
+      return;
     case "comments":
       if (this["comments"]) {
         return;
       } else {
         this["comments"] = [];
+        return;
       }
   }
 };
 
 BookSchema.methods.addReact = function (info, owner) {
+  this.initializeProp("reacts");
   switch (info) {
     case "heart":
       this.reacts.heart.push(owner);
+      return;
     case "read_later":
       this.reacts.read_later.push(owner);
+      return;
     case "unicorn":
       this.reacts.unicorn.push(owner);
-    case "unicorn":
-      this.reacts.unicorn.push(owner);
+      return;
+    case "star":
+      this.reacts.star.push(owner);
+      return;
     default:
       return;
   }

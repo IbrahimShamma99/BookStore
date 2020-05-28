@@ -79,7 +79,9 @@ const commentBook = (req, res) => {
   User.findOne({ _id: UserID }).then((user) => {
     book.addComment(comment, user._id);
     book.save().then(() => {
-      return res.status(202).send({});
+      return res.status(202).send({
+        book
+      });
     });
   });
 };
@@ -91,7 +93,7 @@ const reactBook = (req, res) => {
   User.findOne({ _id: UserID }).then((user) => {
     book.addReact(react, user._id);
     book.save().then(() => {
-      return res.status(202).send({});
+      return res.status(202).send({book});
     });
   });
 };
