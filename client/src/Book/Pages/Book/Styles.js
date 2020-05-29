@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+const Page = styled.div``
+
+
 const BookDiv = styled.div`
   position: absolute;
   margin: 10px;
@@ -89,7 +92,7 @@ const ButtonWrapper = styled.button`
   font-weight: bolder;
   color: rgb(0, 0, 0);
   background-color: #c93333;
-  margin-top: auto;
+  margin-top: 1%;
   margin-left: 5px;
   border-radius: 8px;
   &: hover {
@@ -134,16 +137,35 @@ const bookInfo = styled.div`
 
 const Comment = styled.div`
   margin: 10px;
+  background: ${(props) => (props.primary ? "bisque" : "rgb(30,41,55)")};
+  width: 450px;
+  margin-top: 7%;
+  height: 100px;
   position: absolute;
-  top: 80%;
-  left: 30%;
+  top: 65%;
+  border-radius: 10%;
+  left: 25%;
   & > img {
+    margin-top: 10px;
+    margin-left: 5px;
     width: 64px;
+    height: 64px;
     border-radius: 50%;
   }
 `;
 
-const CommentForm = styled.form``;
+const CommentForm = styled.textarea`
+  position: absolute;
+  margin-left: 10px;
+  top: 10%;
+  color: ${(props) => (props.primary ? "rgb(30,41,55)" : "bisque")};
+  font-weight: bold;
+  border-color: ${(props) => (props.primary ? "rgb(20,31,45)" : "azure")};
+  background: ${(props) => (props.primary ? "azure" : "rgb(20,31,45)")};
+  border-radius: 5px;
+  height: auto;
+  width: 70%;
+`;
 
 const StyleComponent = {
   Comment,
@@ -151,6 +173,7 @@ const StyleComponent = {
   react,
   ButtonWrapper,
   BookDiv,
+  Page,
   coverImage,
   bookInfo,
 };
