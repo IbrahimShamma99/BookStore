@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     fetchBook: (ID) => {
       dispatch({ type: BookActions.FETCH_BOOK, ID });
     },
+    comment: (comment, ID,userID) => {
+      dispatch({ type: BookActions.COMMENT, ID, comment ,userID});
+    },
   };
 };
 
@@ -29,6 +32,21 @@ class Book extends React.Component {
   componentDidMount() {
     this.props.fetchBook(this.props.match.params.book);
   }
+  state = {
+    comment: {
+      text: "",
+    },
+  };
+  onChangehandler = (event) => {
+    this.setState({
+      comment: {
+        text: event.target.value,
+      },
+    });
+  };
+  onSubmitComment = (event) => {
+    this.props.comment(this.state,this.props.match.params.book,this.props.user._id);
+  };
   render() {
     return (
       <div>
@@ -98,27 +116,23 @@ class Book extends React.Component {
           <StyleComponent.Comment
             primary={this.props.theme === "light" ? true : null}
           >
+            {console.log("state=", this.state)}
             <img
               alt="commenter"
               src="http://localhost:5000/1590204224682-mar.jpg"
             ></img>
             <StyleComponent.CommentForm
+              onChange={this.onChangehandler}
               primary={this.props.theme === "light" ? true : null}
             ></StyleComponent.CommentForm>
             <StyleComponent.media>
-              <img
-                alt="media"
-                src={media}
-              ></img>
-
+              <img alt="media" src={media}></img>
             </StyleComponent.media>
-            <StyleComponent.submit>
-            <img
-              alt="submit"
-              src={submit}
-            ></img>
-            
-          </StyleComponent.submit>
+            <StyleComponent.submit
+            onClick={this.onSubmitComment()}
+            >
+              <img alt="submit" src={submit}></img>
+            </StyleComponent.submit>
           </StyleComponent.Comment>
         </StyleComponent.Page>
       </div>

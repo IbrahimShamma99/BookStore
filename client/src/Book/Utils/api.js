@@ -105,7 +105,7 @@ const uploadCover = (ID, cover, userID) => {
 const fetchViaTitle = (title) => {
   const QueryRoute = apiNames.serverDev.concat("/#/", "?title=", title);
   return fetch(QueryRoute, {
-    method: "get",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
     },

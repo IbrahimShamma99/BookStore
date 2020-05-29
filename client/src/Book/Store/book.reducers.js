@@ -6,7 +6,7 @@ const reducer = (state = initialState, action) => {
   const bookInfo = { book: state.book };
   switch (action.type) {
     case BookActions.COMMENT:
-
+      api.comment(action.ID,action.userID,action.comment)
       return {...state}
     case BookActions.REACT: 
         return {...state}  

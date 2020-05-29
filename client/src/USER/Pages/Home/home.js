@@ -5,7 +5,8 @@ import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
 import auth from "../../../USER/Utils/auth-helper";
 import { Breakpoint } from "react-socks";
-
+import home from "../../../logos/home.jpg";
+import library from "../../../logos/library.jpg";
 const mapStatetoProps = (state) => {
   return {
     open: state.UserState.open,
@@ -116,7 +117,7 @@ class Home extends React.Component {
             <HomePage>
               <img
                 alt="Home-background"
-                src={require("../../../logos/library.jpg")}
+                src={library}
               ></img>
 
               <TipTextArea primary={this.props.theme === "light" ? true : null}>
@@ -134,7 +135,9 @@ class Home extends React.Component {
                 </h1>
               </TipTextArea>
 
-              <TextAreaAuth primary={this.props.theme === "light" ? true : null}>
+              <TextAreaAuth
+                primary={this.props.theme === "light" ? true : null}
+              >
                 <h1>
                   <Span>Explore Now!</Span>
                 </h1>
@@ -152,10 +155,7 @@ class Home extends React.Component {
             </HomePage>
           ) : (
             <HomePage>
-              <img
-                alt="Home-background"
-                src={require("../../../logos/home.jpg")}
-              ></img>
+              <img alt="Home-background" src={home}></img>
               <TextArea>
                 <h1>
                   <Span>
