@@ -260,18 +260,22 @@ const submit = styled.button`
   left: 63%;
   top: 35%;
   width: 50px;
+  background:transparent;
+  border-radius:50%;
   & > img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 `;
 const media = styled.button`
   position: relative;
   left: 73%;
+  border-radius:50%;
+  background:transparent;
   width: 50px;
   & > img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
