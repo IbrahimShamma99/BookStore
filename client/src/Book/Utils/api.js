@@ -128,7 +128,7 @@ const comment = (ID,userID,comment) => {
     },
     withCredentials: true,
     crossdomain: true,
-    body:JSON.stringify(comment)
+    comment:JSON.stringify(comment)
   })
     .then((response) => {
       return response.json();
