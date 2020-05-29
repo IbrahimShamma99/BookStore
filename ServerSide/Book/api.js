@@ -26,7 +26,7 @@ router.get(Routes.genre, helper.optional, controlers.genrefeed);
 router.get(Routes.fetch, helper.optional, controlers.fetchBook);
 
 //SECTION comment on book
-router.get(Routes.comment, helper.required, controlers.commentBook);
+router.post(Routes.comment, helper.required, controlers.commentBook);
 
 //SECTION react book 
 router.get(Routes.react, helper.required, controlers.reactBook);

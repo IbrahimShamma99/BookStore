@@ -6,7 +6,13 @@ const reducer = (state = initialState, action) => {
   const bookInfo = { book: state.book };
   switch (action.type) {
     case BookActions.COMMENT:
-      api.comment(action.ID,action.userID,action.comment)
+      api.comment(action.ID,action.userID,action.comment).then(data=>{
+        console.log("data",data)
+        action.asyncDispatch({
+          type:BookActions.SUCCESS,
+          data
+        })
+      })
       return {...state}
     case BookActions.REACT: 
         return {...state}  
@@ -59,7 +65,7 @@ const reducer = (state = initialState, action) => {
           ...action.data,
           message:action.message,
           open_message:true,
-          open_error:false,  
+          open_error:false,
         };
       }
       return {

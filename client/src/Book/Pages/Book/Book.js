@@ -44,8 +44,8 @@ class Book extends React.Component {
       },
     });
   };
-  onSubmitComment = (event) => {
-    this.props.comment(this.state,this.props.match.params.book,this.props.user._id);
+  onSubmitComment = () => {
+    this.props.comment(this.state.comment,this.props.match.params.book,this.props.user._id);
   };
   render() {
     return (
@@ -116,7 +116,6 @@ class Book extends React.Component {
           <StyleComponent.Comment
             primary={this.props.theme === "light" ? true : null}
           >
-            {console.log("state=", this.state)}
             <img
               alt="commenter"
               src="http://localhost:5000/1590204224682-mar.jpg"
@@ -129,7 +128,7 @@ class Book extends React.Component {
               <img alt="media" src={media}></img>
             </StyleComponent.media>
             <StyleComponent.submit
-            onClick={this.onSubmitComment()}
+            onClick={this.onSubmitComment}
             >
               <img alt="submit" src={submit}></img>
             </StyleComponent.submit>

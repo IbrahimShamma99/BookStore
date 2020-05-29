@@ -118,17 +118,21 @@ const fetchViaTitle = (title) => {
     .catch((err) => console.log(err));
 };
 
-const comment = (ID,userID,comment) => {
+const comment = (ID,userID,commentText) => {
+  console.log(comment)
+  const commentBody = {
+    comment:commentText
+  }
   const QueryRoute = apiNames.serverDev.concat("/books/", ID, "/comment","?user=",userID);
   return fetch(QueryRoute, {
-    method: "get",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
-    comment:JSON.stringify(comment)
+    body:JSON.stringify(commentBody)
   })
     .then((response) => {
       return response.json();
