@@ -7,6 +7,7 @@ const bookState = {
   reviews: [],
   cover: {},
   genre: "",
+  comments:[]
 };
 
 const initialState = {

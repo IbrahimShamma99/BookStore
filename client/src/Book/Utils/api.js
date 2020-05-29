@@ -45,7 +45,7 @@ const feed = (genre) => {
   } else {
     url = apiNames.serverDev.concat(Routes.feed);
   }
-  console.log("url=",url)
+  console.log("url=", url);
   return fetch(url, {
     method: "GET",
     headers: {
@@ -103,7 +103,7 @@ const uploadCover = (ID, cover, userID) => {
 };
 
 const fetchViaTitle = (title) => {
-  const QueryRoute = apiNames.serverDev.concat("/#/", "?title=" + title);
+  const QueryRoute = apiNames.serverDev.concat("/#/", "?title=", title);
   return fetch(QueryRoute, {
     method: "get",
     headers: {
@@ -118,4 +118,47 @@ const fetchViaTitle = (title) => {
     .catch((err) => console.log(err));
 };
 
-export { feed, fetchViaTitle, fetchBook, create, update, uploadCover };
+const comment = (ID,userID,comment) => {
+  const QueryRoute = apiNames.serverDev.concat("/books/", ID, "/comment","?user=",userID);
+  return fetch(QueryRoute, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+    },
+    withCredentials: true,
+    crossdomain: true,
+    body:JSON.stringify(comment)
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+const react = (ID,userID) => {
+  const QueryRoute = apiNames.serverDev.concat("/books/", ID, "/react","?user=",userID);
+  return fetch(QueryRoute, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+    },
+    withCredentials: true,
+    crossdomain: true,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+export {
+  feed,
+  fetchViaTitle,
+  fetchBook,
+  create,
+  update,
+  uploadCover,
+  react,
+  comment,
+};
