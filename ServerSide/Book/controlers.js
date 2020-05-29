@@ -51,6 +51,7 @@ const update = (req, res) => {
 };
 const fetchBook = (req, res) => {
   const book = req.book;
+  console.log(book.toJSON())
   res.status(202).send({
     book: book.toJSON(),
   });

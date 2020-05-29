@@ -50,7 +50,7 @@ class Book extends React.Component {
               alt="cover"
               src={server.serverDev.concat(
                 "/",
-                this.buttonprops.book.cover.filename
+                this.props.book.cover.filename
               )}
             ></StyleComponent.coverImage>
           ) : (

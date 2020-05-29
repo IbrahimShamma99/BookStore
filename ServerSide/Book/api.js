@@ -26,10 +26,10 @@ router.get(Routes.genre, helper.optional, controlers.genrefeed);
 router.get(Routes.fetch, helper.optional, controlers.fetchBook);
 
 //SECTION comment on book
-router.get(Routes.comment, helper.optional, controlers.commentBook);
+router.get(Routes.comment, helper.required, controlers.commentBook);
 
 //SECTION react book 
-router.get(Routes.react, helper.optional, controlers.reactBook);
+router.get(Routes.react, helper.required, controlers.reactBook);
 
 
 //SECTION update book 

@@ -1,13 +1,11 @@
 import styled from "styled-components";
-
-const Page = styled.div`
-`;
+const Page = styled.div``;
 
 const BookDiv = styled.div`
   position: absolute;
   margin: 10px;
   width: 90%;
-  height: 80%;
+  height: 50%;
   top: 40%;
   transform: translateX(-50%) translateY(-50%);
   max-width: 1400px;
@@ -27,8 +25,9 @@ const coverImage = styled.img`
   top: 10px;
   left: 10px;
   position: absolute;
-  height: 430px;
-  width: 350px;
+  height: auto;
+  max-height: 430px;
+  max-width: 350px;
   visibility: visible;
   background: rgb(40, 51, 85);
   border: 3px solid rgb(40, 51, 85);
@@ -87,7 +86,8 @@ const ButtonWrapper = styled.button`
   height: 50px;
   padding: 5px;
   bottom: -120px;
-  left: 10%;
+  left: 4%;
+  top: 5%;
   font-size: x-large;
   font-weight: bolder;
   color: rgb(0, 0, 0);
@@ -107,17 +107,15 @@ const ButtonWrapper = styled.button`
 `;
 
 const bookInfo = styled.div`
-  vertical-align: middle;
-  align-content: middle;
-  position: relative;
-  left: 45%;
-  top: 45%;
-  margin: 15px;
-  width: 20%;
-  height: 60%;
+  margin-top: 2%;
+  margin-left: 2%;
+  top: 30%;
+  left: 30%;
+  position: absolute;
+  height: auto;
+  max-height: 430px;
+  max-width: 350px;
   transform: translateX(-50%) translateY(-50%);
-  max-width: 95%;
-  max-height: 350px;
   border-width: 2px 4px 2px 4px; /*top left bottom right */
   border-style: solid;
   border-color: beige;
