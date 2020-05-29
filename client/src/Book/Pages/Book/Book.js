@@ -30,7 +30,8 @@ class Book extends React.Component {
   }
   render() {
     return (
-      <div>
+      
+      <div className="book-container">
         <StyleComponent.BookDiv
           primary={this.props.theme === "light" ? true : null}
         >
@@ -91,11 +92,13 @@ class Book extends React.Component {
             </StyleComponent.react>
           </div>
         </StyleComponent.BookDiv>
-        
-          <img alt="commenter" src="localhost:5000/1590204224682-mar.jpg"></img>
-
-        
-      </div>
+        <StyleComponent.Comment>
+        <img
+          alt="commenter"
+          src="http://localhost:5000/1590204224682-mar.jpg"
+        ></img>
+        </StyleComponent.Comment>
+      //</div>
     );
   }
 }

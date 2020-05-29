@@ -133,13 +133,13 @@ const bookInfo = styled.div`
 `;
 
 const Comment = styled.div`
-  postion: absolute;
-  top: 1000px;
-  left: 1000px;
+  margin: 10px;
+  position: absolute;
+  top: 80%;
+  left: 30%;
   & > img {
-    postion: relative;
-    top: 1000px;
-    left: 1000px;
+    width: 64px;
+    border-radius: 50%;
   }
 `;
 
