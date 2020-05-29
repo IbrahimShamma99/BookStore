@@ -257,7 +257,22 @@ const Comment = styled.div`
 
 const submit = styled.button`
   position: relative;
-  left: 80%;
+  left: 63%;
+  top: 35%;
+  width: 50px;
+  & > img {
+    width: 32px;
+    height: 32px;
+  }
+`;
+const media = styled.button`
+  position: relative;
+  left: 73%;
+  width: 50px;
+  & > img {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 const CommentForm = styled.textarea`
@@ -283,6 +298,7 @@ const StyleComponent = {
   submit,
   coverImage,
   bookInfo,
+  media,
 };
 
 export default StyleComponent;

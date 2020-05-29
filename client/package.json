@@ -37,6 +37,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "file-loader": "^6.0.0",
     "react-scripts": "latest"
   },
   "eslintConfig": {

@@ -7,7 +7,9 @@ import auth from "../../../USER/Utils/auth-helper";
 import heart from "../../../logos/heart.png";
 import read_later from "../../../logos/read_later.png";
 import unicorn from "../../../logos/unicorn.png";
-import submit from "logos/photo-video-solid.svg";
+import media from "../../../logos/photo-video-solid.svg";
+import submit from "../../../logos/paper-plane-regular.svg";
+
 const mapStatetoProps = (state) => {
   return {
     theme: state.util.theme,
@@ -103,12 +105,20 @@ class Book extends React.Component {
             <StyleComponent.CommentForm
               primary={this.props.theme === "light" ? true : null}
             ></StyleComponent.CommentForm>
-            <StyleComponent.submit>
+            <StyleComponent.media>
               <img
-                alt="commenter"
-                src={submit}
+                alt="media"
+                src={media}
               ></img>
-            </StyleComponent.submit>
+
+            </StyleComponent.media>
+            <StyleComponent.submit>
+            <img
+              alt="submit"
+              src={submit}
+            ></img>
+            
+          </StyleComponent.submit>
           </StyleComponent.Comment>
         </StyleComponent.Page>
       </div>
