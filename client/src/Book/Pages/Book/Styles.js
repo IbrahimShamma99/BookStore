@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const Page = styled.div``
-
+const Page = styled.div`
+`;
 
 const BookDiv = styled.div`
   position: absolute;
