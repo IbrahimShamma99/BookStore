@@ -261,10 +261,67 @@ const briefInfo = styled(bookInfo)`
   }
 `;
 
-const comment = styled(bookInfo)`
-  position: relative;
-  overflow: hidden;
-  width: auto;
+const comment = styled.div`
+  margin: 10px;
+  height: auto;
+  position: static;
+  max-height: 430px;
+  max-width: 350px;
+  border-width: 2px 4px 2px 4px; /*top left bottom right */
+  border-style: solid;
+  border-color: beige;
+  border-radius: 5px;
+  background-color: ${(props) => (props.primary ? "azure" : "rgb(40,51,85)")};
+  font-family: "Times New Roman", Times, serif;
+  & > p {
+    margin-left: 2px;
+    margin-bottom: 2px;
+  }
+`;
+
+const commentDiv = styled(bookInfo)`
+  height: auto;
+  overflow-y: scroll;
+  @media (min-width: 320px) {
+    top: 65%;
+    left: 40%;
+    width: 200px;
+    min-width: 200px;
+    height: auto;
+  }
+  @media (min-width: 425px) {
+    top: 25%;
+    left: 75%;
+    min-width: auto;
+    width: auto;
+  }
+  @media (min-width: 640px) {
+    top: 25%;
+    left: 60%;
+    width: auto;
+  }
+  @media (min-width: 768px) {
+    top: 60%;
+    left: 80%;
+    min-width: 200px;
+  }
+  @media (min-width: 896px) {
+    top: 25%;
+    left: 40%;
+    width: auto;
+  }
+  @media (min-width: 1024px) {
+    top: 50%;
+    left: 70%;
+    min-width: 200px;
+    width: 100%;
+  }
+  @media (min-width: 1115px) {
+    top: 50%;
+    left: 80%;
+    min-width: 200px;
+    width: 100%;
+  }
 `;
 
 const Comment = styled.div`
@@ -308,8 +365,8 @@ const Comment = styled.div`
 
 const submit = styled.button`
   position: relative;
-  left: 63%;
-  top: 35%;
+  left: 73%;
+  top: 39%;
   width: 50px;
   background: transparent;
   border-radius: 50%;
@@ -356,6 +413,7 @@ const StyleComponent = {
   bookInfo,
   media,
   comment,
+  commentDiv,
 };
 
 export default StyleComponent;
