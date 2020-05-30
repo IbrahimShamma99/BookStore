@@ -3,27 +3,9 @@ import "./Profile.css";
 import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
-import { connect } from "react-redux";
 import auth from "../../Utils/auth-helper";
-import * as actionTypes from "../../Store/user.actions";
 import ServerDir from "../../../constants/server";
 import StyleComponents from "./Components/Styles";
-
-const mapStatetoProps = (state) => {
-  return {
-    ...state.UserState,
-    theme: state.util.theme,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUser: (username) => {
-      dispatch({ type: actionTypes.USERNAME_FETCH, username });
-    },
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 class Profile extends React.Component {
   componentWillMount() {
@@ -229,4 +211,4 @@ class Profile extends React.Component {
     );
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(Profile);
+export default Profile;

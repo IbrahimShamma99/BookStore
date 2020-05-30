@@ -5,8 +5,6 @@ import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/user.routes";
-import { connect } from "react-redux";
-import * as actionTypes from "../../Store/user.actions";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -28,26 +26,6 @@ const Label = styled.label`
   font-weight: bold;
 `;
 
-const mapStateToProps = (state) => {
-  return {
-    email: state.UserState.user.email,
-    password: state.UserState.user.password,
-    error: state.UserState.error,
-    open: state.UserState.open,
-    show: state.UserState.show,
-  };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) =>
-      dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (cb) => dispatch({ type: actionTypes.LOGIN }),
-    InitState: () => dispatch({ type: actionTypes.REFRESH }),
-    ExternalError: (value) =>
-      dispatch({ type: actionTypes.ExternalError, message: value }),
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 class Login extends React.PureComponent {
   constructor(props) {
@@ -153,5 +131,4 @@ Login.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
 };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
