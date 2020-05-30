@@ -21,7 +21,7 @@ const reducers = (state = intialState, action) => {
         ...action.data,
         show: false,
         error: "",
-        message:"",
+        message: "",
         open: false,
         success: "",
       };
@@ -112,14 +112,14 @@ const reducers = (state = intialState, action) => {
       });
       return state;
     case actionTypes.FETCH_UPDATE:
-      auth.authenticate(action.user.token, () => {
-        return { ...state, ...action.user, profile: {}, open: true };
-      });
+      auth.authenticate(action.user.token, () => {});
       return { ...state, ...action.user, profile: {}, open: true };
 
     case actionTypes.SUCCESS:
       auth.authenticate(action.user.token, () => {
-        return { ...state, ...action, profile: {}, open: true };
+        setTimeout(() => {
+          window.location.reload(false);
+        }, 100);
       });
       return { ...state, ...action, profile: {}, open: true };
     case actionTypes.LOGOUT:

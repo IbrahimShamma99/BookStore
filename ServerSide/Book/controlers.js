@@ -76,10 +76,6 @@ const commentBook = (req, res) => {
   const book = req.book;
   const comment = req.body.comment;
   const UserID = req.query.user;
-  console.log("book",book)
-  console.log("comment",comment)
-  console.log("UserID",UserID)
-  console.log("UserID",req.body)
   User.findOne({ _id: UserID }).then((user) => {
     book.addComment(comment, user._id);
     book.save().then(() => {
