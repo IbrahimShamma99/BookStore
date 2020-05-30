@@ -1,4 +1,4 @@
-import apiNames from "../../constants/server";
+import url from "../../constants/server";
 import axios from "axios";
 
 const Routes = {
@@ -11,7 +11,7 @@ const Routes = {
 
 const create = (DATA, ID) => {
   const bookInfo = { book: DATA };
-  return fetch(apiNames.serverDev + Routes.create + "?user=" + ID, {
+  return fetch(url + Routes.create + "?user=" + ID, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -29,7 +29,7 @@ const create = (DATA, ID) => {
 };
 
 const fetchBook = (ID) => {
-  return fetch(apiNames.serverDev + "/books/" + ID, {
+  return fetch(url + "/books/" + ID, {
     method: "GET",
   })
     .then((response) => {
@@ -39,14 +39,13 @@ const fetchBook = (ID) => {
 };
 
 const feed = (genre) => {
-  var url = undefined;
+  var urlFeed = undefined;
   if (genre) {
-    url = apiNames.serverDev.concat(Routes.feed, genre);
+    urlFeed = url.concat(Routes.feed, genre);
   } else {
-    url = apiNames.serverDev.concat(Routes.feed);
+    urlFeed = url.concat(Routes.feed);
   }
-  console.log("url=", url);
-  return fetch(url, {
+  return fetch(urlFeed, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -63,7 +62,7 @@ const feed = (genre) => {
 
 const update = (DATA, userID) => {
   return fetch(
-    apiNames.serverDev.concat(
+    url.concat(
       "/books/",
       DATA.book._id + "/update",
       "?user=",
@@ -96,14 +95,14 @@ const uploadCover = (ID, cover, userID) => {
     },
   };
   axios.put(
-    apiNames.serverDev.concat("/books/", ID, "/update", "?user=", userID),
+    url.concat("/books/", ID, "/update", "?user=", userID),
     formData,
     config
   );
 };
 
 const fetchViaTitle = (title) => {
-  const QueryRoute = apiNames.serverDev.concat("/#/", "?title=", title);
+  const QueryRoute = url.concat("/#/", "?title=", title);
   return fetch(QueryRoute, {
     method: "post",
     headers: {
@@ -123,7 +122,7 @@ const comment = (ID,userID,commentText) => {
   const commentBody = {
     comment:commentText
   }
-  const QueryRoute = apiNames.serverDev.concat("/books/", ID, "/comment","?user=",userID);
+  const QueryRoute = url.concat("/books/", ID, "/comment","?user=",userID);
   return fetch(QueryRoute, {
     method: "post",
     headers: {
@@ -141,7 +140,7 @@ const comment = (ID,userID,commentText) => {
 };
 
 const react = (ID,userID) => {
-  const QueryRoute = apiNames.serverDev.concat("/books/", ID, "/react","?user=",userID);
+  const QueryRoute = url.concat("/books/", ID, "/react","?user=",userID);
   return fetch(QueryRoute, {
     method: "get",
     headers: {

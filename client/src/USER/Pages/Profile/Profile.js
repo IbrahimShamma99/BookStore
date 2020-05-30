@@ -4,7 +4,7 @@ import { Breakpoint } from "react-socks";
 import ContactLogo from "./contacts";
 // import RouteNames from "../../constants/routes";
 import auth from "../../Utils/auth-helper";
-import ServerDir from "../../../constants/server";
+import url from "../../../constants/server";
 import StyleComponents from "./Components/Styles";
 
 class Profile extends React.Component {
@@ -39,9 +39,7 @@ class Profile extends React.Component {
                     className="profile-picture"
                     alt="profile"
                     src={
-                      ServerDir.serverDev +
-                      "/" +
-                      this.props.profile.avatar.filename
+                      url.concat("/" ,this.props.profile.avatar.filename)
                     }
                   ></this.Styles.Img>
                 </div>
@@ -113,9 +111,7 @@ class Profile extends React.Component {
                   className="mobile-profile-picture"
                   alt="profile"
                   src={
-                    ServerDir.serverDev +
-                    "/" +
-                    this.props.profile.avatar.filename
+                    url.concat("/" ,this.props.profile.avatar.filename)
                   }
                 ></img>
               ) : (

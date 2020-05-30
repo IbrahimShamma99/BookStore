@@ -1,8 +1,8 @@
-import apiNames from "../../constants/server";
+import url from "../../constants/server";
 import axios from "axios";
 
 const login = (DATA) => {
-  return fetch(apiNames.serverDev + "/login", {
+  return fetch(url + "/login", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -19,7 +19,7 @@ const login = (DATA) => {
 };
 
 const logout = () => {
-  return fetch(apiNames.serverDev + "/logout", {
+  return fetch(url + "/logout", {
     method: "GET",
     body:JSON.stringify({})
   })
@@ -30,7 +30,7 @@ const logout = () => {
 };
 
 const register = (user) => {
-  return fetch(apiNames.serverDev + "/register", {
+  return fetch(url + "/register", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -47,7 +47,7 @@ const register = (user) => {
 };
 
 const signout = () => {
-  return fetch(apiNames.serverDev + "/logout", {
+  return fetch(url + "/logout", {
     method: "GET",
   })
     .then((response) => {
@@ -57,7 +57,7 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(apiNames.serverDev + "/update/" + DATA.user._id, {
+  return fetch(url + "/update/" + DATA.user._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -82,11 +82,11 @@ const uploadAvatar = (ID, avatar) => {
       Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
     },
   };
-  axios.put(apiNames.serverDev + "/update/" + ID, formData, config);
+  axios.put(url + "/update/" + ID, formData, config);
 };
 
 const fetchViaUsername = (username) => {
-  const QueryRoute = apiNames.serverDev.concat(
+  const QueryRoute = url.concat(
     "/fetch/",
     "?username=" + username
   );
