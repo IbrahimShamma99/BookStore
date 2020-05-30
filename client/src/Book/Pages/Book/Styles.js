@@ -218,6 +218,7 @@ const bookInfo = styled.div`
 `;
 
 const briefInfo = styled(bookInfo)`
+  overflow:hidden;
   @media (min-width: 320px) {
     top: 65%;
     left: 40%;

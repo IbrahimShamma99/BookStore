@@ -63,7 +63,14 @@ class Book extends React.Component {
               ></StyleComponent.coverImage>
             )}
             <StyleComponent.briefInfo>
-              <h4>Brief:</h4>
+              <h4>Brief:</h4> <a href={"/book/".concat(
+                this.props.match.params.book,
+                "/",
+                "brief"
+              )}>Read More</a><br/>
+              It’s bad enough that so many trends are prioritized ahead of deep work, but to add insult to injury, many of these trends actively decrease one’s ability to go deep. Open offices, for example, might create more opportunities for collaboration, * but they do so at the cost of “massive distraction,” to quote the results of experiments conducted for a British TV special titled The Secret Life of Office Buildings. “If you are just getting into some work and a phone goes off in the background, it ruins what you are concentrating on,” said the neuroscientist who ran the experiments for the show. “Even though you are not aware at the time, the brain responds to distractions.”
+              
+              
               <p>{this.props.book.brief}</p>
             </StyleComponent.briefInfo>
 
