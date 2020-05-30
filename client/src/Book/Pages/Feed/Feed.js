@@ -105,7 +105,7 @@ class Feed extends React.Component {
                   post.cover.filename ? (
                     <img
                       alt="cover"
-                      src={server.serverDev + "/" + post.cover.filename}
+                      src={server.concat("/" , post.cover.filename)}
                     ></img>
                   ) : (
                     <img

@@ -8,7 +8,6 @@ import unicorn from "../../../logos/unicorn.png";
 import media from "../../../logos/photo-video-solid.svg";
 import submit from "../../../logos/paper-plane-regular.svg";
 
-
 class Book extends React.Component {
   componentDidMount() {
     this.props.fetchBook(this.props.match.params.book);
@@ -55,10 +54,7 @@ class Book extends React.Component {
             {this.props.book.cover.filename ? (
               <StyleComponent.coverImage
                 alt="cover"
-                src={server.serverDev.concat(
-                  "/",
-                  this.props.book.cover.filename
-                )}
+                src={server.concat("/", this.props.book.cover.filename)}
               ></StyleComponent.coverImage>
             ) : (
               <StyleComponent.coverImage
