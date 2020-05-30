@@ -20,7 +20,7 @@ import Feed from "./Book/Pages/Feed/";
 import Book from "./Book/Pages/Book/";
 import CreateBook from "./Book/Pages/Create/";
 import UpdateBook from './Book/Pages/Update/'
-
+import BookBrief from './Book/Pages/Brief/'
 class Switcher extends React.Component {
   render() {
     return (
@@ -34,6 +34,7 @@ class Switcher extends React.Component {
             <Route path={BookRouteNames.genre} component={Feed} />
             <Route path={BookRouteNames.create} component={CreateBook} />
             <Route path={BookRouteNames.update} component={UpdateBook} />
+            <Route path={BookRouteNames.brief} component={BookBrief} />
             <Route path={BookRouteNames.book} component={Book} />
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />

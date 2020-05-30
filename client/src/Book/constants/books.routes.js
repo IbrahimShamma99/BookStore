@@ -5,6 +5,8 @@ const RouteNames = {
   base: "/",
   create: "/book/create",
   update: "/book/:book/update",
+  brief: "/book/:book/brief",
+
 };
 
 export default RouteNames;

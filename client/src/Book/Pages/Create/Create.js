@@ -1,29 +1,7 @@
 import React from "react";
-import { connect } from "react-redux";
-import * as bookTypes from "../../Store/book.actions";
 import Button from "react-bootstrap/Button";
 
-const mapStateToProps = (state) => {
-  const BookState = {
-    userId: state.UserState.user._id,
-    ...state.BookState.book,
-    error: state.BookState.error,
-    open_error: state.BookState.open_error,
-    open_message: state.BookState.open_message,
-    message: state.BookState.message,
-  };
-  return BookState;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
-    refreshBook: () => dispatch({ type: bookTypes.REFRESH_BOOK }),
-  };
-};
-
-class Book extends React.Component {
+class CreateBook extends React.Component {
   componentDidMount() {
     this.props.refreshBook();
   }
@@ -121,5 +99,5 @@ class Book extends React.Component {
     );
   }
 }
+export default CreateBook;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Book);
