@@ -16,7 +16,7 @@ const create = (DATA, ID) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -72,7 +72,7 @@ const update = (DATA, userID) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+        Authorization: "Token ".concat(localStorage.getItem("jwt")),
       },
       withCredentials: true,
       crossdomain: true,
@@ -91,7 +91,7 @@ const uploadCover = (ID, cover, userID) => {
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
   };
   axios.put(
@@ -127,7 +127,7 @@ const comment = (ID,userID,commentText) => {
     method: "post",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -145,7 +145,7 @@ const react = (ID,userID) => {
     method: "get",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,

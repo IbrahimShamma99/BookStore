@@ -218,7 +218,7 @@ const bookInfo = styled.div`
 `;
 
 const briefInfo = styled(bookInfo)`
-  overflow:hidden;
+  overflow: hidden;
   @media (min-width: 320px) {
     top: 65%;
     left: 40%;
@@ -259,6 +259,12 @@ const briefInfo = styled(bookInfo)`
     min-width: 200px;
     width: 100%;
   }
+`;
+
+const comment = styled(bookInfo)`
+  position: relative;
+  overflow: hidden;
+  width: auto;
 `;
 
 const Comment = styled.div`
@@ -349,6 +355,7 @@ const StyleComponent = {
   coverImage,
   bookInfo,
   media,
+  comment,
 };
 
 export default StyleComponent;
