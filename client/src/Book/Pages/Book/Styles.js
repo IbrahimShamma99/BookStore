@@ -189,7 +189,7 @@ const bookInfo = styled.div`
   @media (min-width: 768px) {
     top: 25%;
     left: 50%;
-    width: auto;
+    min-width: 200px;
   }
   @media (min-width: 896px) {
     top: 25%;
@@ -198,7 +198,8 @@ const bookInfo = styled.div`
   }
   @media (min-width: 1024px) {
     top: 25%;
-    left: 30%;
+    left: 38%;
+    min-width: 200px;
   }
   @media (min-width: 1115px) {
     top: 25%;
@@ -213,6 +214,49 @@ const bookInfo = styled.div`
   & > h4 {
     font-weight: bolder;
     margin-left: 2px;
+  }
+`;
+
+const briefInfo = styled(bookInfo)`
+  @media (min-width: 320px) {
+    top: 65%;
+    left: 40%;
+    width: 200px;
+    min-width: 200px;
+    height: auto;
+  }
+  @media (min-width: 425px) {
+    top: 25%;
+    left: 75%;
+    min-width: auto;
+    width: auto;
+  }
+  @media (min-width: 640px) {
+    top: 25%;
+    left: 60%;
+    width: auto;
+  }
+  @media (min-width: 768px) {
+    top: 60%;
+    left: 80%;
+    min-width: 200px;
+  }
+  @media (min-width: 896px) {
+    top: 25%;
+    left: 40%;
+    width: auto;
+  }
+  @media (min-width: 1024px) {
+    top: 50%;
+    left: 70%;
+    min-width: 200px;
+    width: 100%;
+  }
+  @media (min-width: 1115px) {
+    top: 50%;
+    left: 50%;
+    min-width: 200px;
+    width: 100%;
   }
 `;
 
@@ -260,8 +304,8 @@ const submit = styled.button`
   left: 63%;
   top: 35%;
   width: 50px;
-  background:transparent;
-  border-radius:50%;
+  background: transparent;
+  border-radius: 50%;
   & > img {
     width: 24px;
     height: 24px;
@@ -270,8 +314,8 @@ const submit = styled.button`
 const media = styled.button`
   position: relative;
   left: 73%;
-  border-radius:50%;
-  background:transparent;
+  border-radius: 50%;
+  background: transparent;
   width: 50px;
   & > img {
     width: 24px;
@@ -294,6 +338,7 @@ const CommentForm = styled.textarea`
 
 const StyleComponent = {
   Comment,
+  briefInfo,
   CommentForm,
   react,
   ButtonWrapper,

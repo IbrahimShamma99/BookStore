@@ -22,8 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchBook: (ID) => {
       dispatch({ type: BookActions.FETCH_BOOK, ID });
     },
-    comment: (comment, ID,userID) => {
-      dispatch({ type: BookActions.COMMENT, ID, comment ,userID});
+    comment: (comment, ID, userID) => {
+      dispatch({ type: BookActions.COMMENT, ID, comment, userID });
     },
   };
 };
@@ -45,7 +45,11 @@ class Book extends React.Component {
     });
   };
   onSubmitComment = () => {
-    this.props.comment(this.state.comment,this.props.match.params.book,this.props.user._id);
+    this.props.comment(
+      this.state.comment,
+      this.props.match.params.book,
+      this.props.user._id
+    );
   };
   render() {
     return (
@@ -61,8 +65,9 @@ class Book extends React.Component {
             >
               <h4>Title:</h4>
               <p>{this.props.book.title}</p>
-              <h4>Brief:</h4>
+              {/*             <h4>Brief:</h4>
               <p>{this.props.book.brief}</p>
+*/}
               <h4>Author:</h4>
               <p>{this.props.book.author}</p>
             </StyleComponent.bookInfo>
@@ -83,6 +88,11 @@ class Book extends React.Component {
             {/*
         <StyleComponent.ButtonWrapper>Buy</StyleComponent.ButtonWrapper>
         */}
+            <StyleComponent.briefInfo>
+              <h4>Brief:</h4>
+              <p>{this.props.book.brief}</p>
+            </StyleComponent.briefInfo>
+
             {auth.isAuthenticated() &&
             this.props.book.owner === this.props.user._id ? (
               <a
@@ -127,9 +137,7 @@ class Book extends React.Component {
             <StyleComponent.media>
               <img alt="media" src={media}></img>
             </StyleComponent.media>
-            <StyleComponent.submit
-            onClick={this.onSubmitComment}
-            >
+            <StyleComponent.submit onClick={this.onSubmitComment}>
               <img alt="submit" src={submit}></img>
             </StyleComponent.submit>
           </StyleComponent.Comment>

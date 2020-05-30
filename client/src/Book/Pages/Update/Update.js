@@ -76,6 +76,7 @@ class Update extends React.Component {
           <label htmlFor="Brief">Brief:</label>
           <br />
           <textarea
+            maxLength="700"
             value={this.props.brief}
             onChange={this.onChangeHandler("brief")}
             type="text"
