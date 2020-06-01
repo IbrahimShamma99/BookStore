@@ -2,7 +2,6 @@ import React from "react";
 import "./Update.css";
 import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
-import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import url from "../../../constants/server";
 
@@ -13,9 +12,7 @@ class Update extends React.Component {
     user: { ...this.props.user },
     avatar: this.props.user.avatar,
   };
-  componentWillMount() {
-    return true;
-  }
+
   componentDidMount() {
     this.props.InitState();
     this.props.fetchUser(this.props.match.params.user);
@@ -26,10 +23,15 @@ class Update extends React.Component {
       this.setState({
         avatar: event.target.files[0],
       });
-      setTimeout(()=>{
-      uploadAvatar(this.state.user._id, this.state.avatar, () => {
-        this.props.fetchUser(this.props.match.params.user)
-      },5)
+      setTimeout(() => {
+        uploadAvatar(
+          this.state.user._id,
+          this.state.avatar,
+          () => {
+            this.props.fetchUser(this.props.match.params.user);
+          },
+          5
+        );
       });
     }
     return this.setState({
@@ -42,8 +44,8 @@ class Update extends React.Component {
   clickSubmit = (e) => {
     e.preventDefault();
     uploadAvatar(this.state.user._id, this.state.avatar, () => {
-        this.props.fetchUser(this.props.match.params.user);
-      });
+      this.props.fetchUser(this.props.match.params.user);
+    });
     return this.props.submit(this.state);
   };
   render() {
@@ -135,6 +137,7 @@ class Update extends React.Component {
 
           <label htmlFor="Password">Password</label>
           <br />
+          {console.log("state=",this.state)}
           <input
             value={this.state.user.password}
             onChange={this.onChangeHandler("password")}
@@ -143,15 +146,14 @@ class Update extends React.Component {
             name="Password"
           ></input>
           <br />
-          {console.log(this.state)}
+
           <label htmlFor="location">Location:</label>
           <br />
-          <Dropdown
+          <input
             options={options}
+            onChange={this.onChangeHandler("location")}
+            type="text"
             id="location"
-            onChange={() => this.onChangeHandler("location")}
-            value={this.state.user.location}
-            placeholder="Select an option"
             name="location"
           />
           <label min="1950-01-01" htmlFor="date">
