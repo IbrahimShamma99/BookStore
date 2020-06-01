@@ -4,7 +4,7 @@ import bookRoutes from "../Book/constants/books.routes";
 import auth from "../USER/Utils/auth-helper";
 import * as actionTypes from "../USER/Store/user.actions";
 import { connect } from "react-redux";
-import url from '../constants/server'
+import url from "../constants/server";
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
@@ -15,7 +15,7 @@ import StyleComponent from "./Styles";
 const mapStatetoProps = (state) => {
   return {
     username: state.UserState.user.username,
-    user:state.UserState.user,
+    user: state.UserState.user,
     theme: state.util.theme,
   };
 };
@@ -44,10 +44,10 @@ class naviagtionBar extends React.Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               {!auth.isAuthenticated() ? (
-                <Nav.Link href={RouteNames.register}>             
-                    <Button variant="inherit">
-                      <this.Styles.H5>Register</this.Styles.H5>
-                    </Button>
+                <Nav.Link href={RouteNames.register}>
+                  <Button variant="inherit">
+                    <this.Styles.H5>Register</this.Styles.H5>
+                  </Button>
                 </Nav.Link>
               ) : null}
               {!auth.isAuthenticated() ? (
@@ -69,7 +69,7 @@ class naviagtionBar extends React.Component {
                   </Button>
                 </Nav.Link>
               ) : null}
-              
+
               {auth.isAuthenticated() ? (
                 <Nav.Link href={bookRoutes.feed}>
                   <Button variant="inherit">
@@ -102,11 +102,14 @@ class naviagtionBar extends React.Component {
               <Nav.Link href={"/" + this.props.username}>
                 <Button variant="inherit">
                   <this.Styles.H5>
-                  {this.props.user.avatar?(
-                    <img alt="profile" src={url.concat("/",this.props.user.avatar.filename) }></img>
-                  ):(
-                  <img alt="profile"></img>)
-                  }
+                    {this.props.user.avatar ? (
+                      <img
+                        alt="profile"
+                        src={url.concat("/", this.props.user.avatar.filename)}
+                      ></img>
+                    ) : (
+                      <img alt="profile"></img>
+                    )}
                   </this.Styles.H5>
                 </Button>
               </Nav.Link>

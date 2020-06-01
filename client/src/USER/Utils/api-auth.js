@@ -61,7 +61,7 @@ const update = (DATA) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
     withCredentials: true,
     crossdomain: true,
@@ -79,7 +79,7 @@ const uploadAvatar = (ID, avatar) => {
   const config = {
     headers: {
       "content-type": "multipart/form-data",
-      Authorization: "Token ".concat(sessionStorage.getItem("jwt")),
+      Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
   };
   axios.put(url + "/update/" + ID, formData, config);

@@ -1,34 +1,15 @@
 import React from "react";
 import "./Update.css";
-import { connect } from "react-redux";
-import * as actionTypes from "../../Store/user.actions";
 import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
 
-const mapStateToProps = (state) => {
-  const UpdateState = {
-    user:state.UserState.user,
-    profile: state.UserState.profile,
-    open: state.open,
-    error: state.error,
-    show: state.show,
-    submitted: state.submitted,
-  };
-  return UpdateState;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) =>
-      dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (Data) => dispatch({ type: actionTypes.UPDATE, Data }),
-    InitState: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
+const options = ["one", "two", "three"];
 
 class Update extends React.Component {
   state = {
-    user: {...this.props.user},
+    user: { ...this.props.user },
     avatar: this.props.user.avatar,
   };
   componentWillMount() {
@@ -126,7 +107,17 @@ class Update extends React.Component {
             name="Password"
           ></input>
           <br />
-
+          {console.log(this.state)}
+          <label htmlFor="location">Location:</label>
+          <br />
+          <Dropdown
+            options={options}
+            id="location"
+            onChange={() => this.onChangeHandler("location")}
+            value={this.state.user.location}
+            placeholder="Select an option"
+            name="location"
+          />
           <label min="1950-01-01" htmlFor="date">
             Born
           </label>
