@@ -6,6 +6,7 @@ import ContactLogo from "./contacts";
 import auth from "../../Utils/auth-helper";
 import url from "../../../constants/server";
 import StyleComponents from "./Components/Styles";
+import NotFound from '../404/'
 
 class Profile extends React.Component {
   componentWillMount() {
@@ -15,7 +16,10 @@ class Profile extends React.Component {
   render() {
     return (
       <div className="container">
+      
         <Breakpoint medium up>
+        {!this.props.show ?(
+          <div>
           {/** Desktop & Tablet version */}
           <this.Styles.ProfileContainer
             primary={this.props.theme === "light" ? true : null}
@@ -102,6 +106,10 @@ class Profile extends React.Component {
               </this.Styles.InfoH4>
             </this.Styles.InfoContainer>
           </this.Styles.ProfileContainer>
+          </div>
+          ):
+        <NotFound/>
+        }
         </Breakpoint>
         <Breakpoint small down>
           <div className="mobile-profile-container container-fluid">
