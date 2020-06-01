@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import url from "../../../constants/server";
 
 const options = ["one", "two", "three"];
 
@@ -17,12 +18,18 @@ class Update extends React.Component {
   }
   componentDidMount() {
     this.props.InitState();
+    this.props.fetchUser(this.props.match.params.user);
   }
   onChangeHandler = (name) => (event) => {
     event.preventDefault();
     if (name === "avatar") {
-      return this.setState({
+      this.setState({
         avatar: event.target.files[0],
+      });
+      setTimeout(()=>{
+      uploadAvatar(this.state.user._id, this.state.avatar, () => {
+        this.props.fetchUser(this.props.match.params.user)
+      },5)
       });
     }
     return this.setState({
@@ -34,7 +41,9 @@ class Update extends React.Component {
   };
   clickSubmit = (e) => {
     e.preventDefault();
-    uploadAvatar(this.state.user._id, this.state.avatar);
+    uploadAvatar(this.state.user._id, this.state.avatar, () => {
+        this.props.fetchUser(this.props.match.params.user);
+      });
     return this.props.submit(this.state);
   };
   render() {
@@ -52,6 +61,33 @@ class Update extends React.Component {
               {this.props.error}
             </div>
           ) : null}
+
+          <label htmlFor="avatar">avatar</label>
+
+          <input
+            type="file"
+            className=""
+            name="avatar"
+            onChange={this.onChangeHandler("avatar")}
+          />
+          {this.props.profile.avatar ? (
+            this.props.profile.avatar.filename ? (
+              <div class="view overlay zoom">
+                <img
+                  className="profile-picture"
+                  alt="profile"
+                  src={url.concat("/", this.props.profile.avatar.filename)}
+                ></img>
+              </div>
+            ) : (
+              <img
+                className="profile-picture"
+                alt="profile"
+                src={require("../../Assets/profile.jpg")}
+              ></img>
+            )
+          ) : null}
+          <br />
 
           <label htmlFor="First">First name:</label>
           <br />
@@ -159,14 +195,6 @@ class Update extends React.Component {
           <br />
           <input type="url" id="Github" name="Github"></input>
           <br />
-          <label htmlFor="avatar">avatar</label>
-
-          <input
-            type="file"
-            className=""
-            name="avatar"
-            onChange={this.onChangeHandler("avatar")}
-          />
 
           <Button size="md" variant="flat" onClick={this.clickSubmit}>
             Submit
@@ -177,4 +205,4 @@ class Update extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Update);
+export default Update;

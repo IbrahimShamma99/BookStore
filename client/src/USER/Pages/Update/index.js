@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
+    fetchUser: (username) => {
+      dispatch({ type: actionTypes.USERNAME_FETCH, username });
+    },
     submit: (Data) => dispatch({ type: actionTypes.UPDATE, Data }),
     InitState: () => dispatch({ type: actionTypes.REFRESH }),
   };

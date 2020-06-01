@@ -48,6 +48,18 @@ input[type="submit"] {
   width: 100px;
 }
 
+.profile-picture {
+  margin-top: 40px;
+  margin-left: 40px;
+  border-radius: 50%;
+  position: relative;
+  height: 100px;
+  width: 100px;
+  visibility: visible;
+  background: #e93333;
+  border: 3px solid #e93333;
+}
+
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,

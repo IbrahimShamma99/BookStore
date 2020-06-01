@@ -21,7 +21,7 @@ const login = (DATA) => {
 const logout = () => {
   return fetch(url + "/logout", {
     method: "GET",
-    body:JSON.stringify({})
+    body: JSON.stringify({}),
   })
     .then((response) => {
       return response.json();
@@ -73,7 +73,7 @@ const update = (DATA) => {
     .catch((err) => console.log(err));
 };
 
-const uploadAvatar = (ID, avatar) => {
+const uploadAvatar = (ID, avatar, cb) => {
   const formData = new FormData();
   formData.append("avatar", avatar);
   const config = {
@@ -83,13 +83,11 @@ const uploadAvatar = (ID, avatar) => {
     },
   };
   axios.put(url + "/update/" + ID, formData, config);
+  cb();
 };
 
 const fetchViaUsername = (username) => {
-  const QueryRoute = url.concat(
-    "/fetch/",
-    "?username=" + username
-  );
+  const QueryRoute = url.concat("/fetch/", "?username=" + username);
   return fetch(QueryRoute, {
     method: "get",
     headers: {
