@@ -23,11 +23,16 @@ const mapDispatchToProps = (dispatch) => {
 
 const HomePage = styled.div`
   & > img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;  
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 100%;
     height: 100%;
+    @media (min-width:768px){
+      width: 100%;
+    }
   }
 `;
 const TextArea = styled.div`
@@ -47,9 +52,14 @@ const TextAreaAuth = styled(TextArea)`
 `;
 const TipTextArea = styled(TextArea)`
   & > h1 {
-    position: absolute;
-    left: 1%;
-    top: 50%;
+    @media (min-width: 368px) {
+      position: absolute;
+    }
+    @media (min-width: 768px) {
+      position: absolute;
+      left: 1%;
+      top: 50%;
+    }
   }
 `;
 
@@ -68,11 +78,11 @@ const BaseButton = styled.button`
   position: relative;
   background-color: rgb(180, 55, 55);
   color: black;
-  width: 150px;
+  width: 9rem;
+  height: 2.5rem;
   margin-left: 10px;
   margin-right: 10px;
   font-weight: bold;
-  height: 42px;
   border-radius: 8px;
   font-weight: 900;
   outline: invert;
@@ -87,8 +97,6 @@ const BaseButton = styled.button`
 `;
 const Button = styled(BaseButton)`
   top: 60%;
-  width: 180px;
-  height: 45px;
   border-radius: 12px;
 `;
 
@@ -112,13 +120,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Breakpoint medium up>
           {auth.isAuthenticated() ? (
             <HomePage>
-              <img
-                alt="Home-background"
-                src={library}
-              ></img>
+              <img alt="Home-background" src={library}></img>
 
               <TipTextArea primary={this.props.theme === "light" ? true : null}>
                 <h1>
@@ -172,8 +176,6 @@ class Home extends React.Component {
               </TextArea>
             </HomePage>
           )}
-        </Breakpoint>
-        <Breakpoint small down></Breakpoint>
       </div>
     );
   }
