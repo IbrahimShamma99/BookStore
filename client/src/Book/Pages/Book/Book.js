@@ -127,13 +127,12 @@ class Book extends React.Component {
           <StyleComponent.Comment
             primary={this.props.theme === "light" ? true : null}
           >
-            <div>
-              {this.props.profile ? (
-                this.props.profile.avatar ? (
+            
+               {
+                this.props.user.avatar ? (
                   <img
-                    className="mobile-profile-picture"
                     alt="profile"
-                    src={url.concat("/", this.props.profile.avatar.filename)}
+                    src={url.concat("/", this.props.user.avatar.filename)}
                   ></img>
                 ) : (
                   <img
@@ -142,12 +141,7 @@ class Book extends React.Component {
                     src={require("../../Assets/profile.jpg")}
                   ></img>
                 )
-              ) : null}
-            </div>
-            <img
-              alt="commenter"
-              src="http://localhost:5000/1590204224682-mar.jpg"
-            ></img>
+              }
             <StyleComponent.CommentForm
               onChange={this.onChangehandler}
               primary={this.props.theme === "light" ? true : null}

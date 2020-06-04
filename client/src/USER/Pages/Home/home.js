@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
 import auth from "../../../USER/Utils/auth-helper";
-import { Breakpoint } from "react-socks";
 import home from "../../../logos/home.jpg";
 import library from "../../../logos/library.jpg";
 const mapStatetoProps = (state) => {
@@ -30,6 +29,7 @@ const HomePage = styled.div`
     top: 0px;
     left: 0px;
     height: 100%;
+    min-height:100%;
     @media (min-width:768px){
       width: 100%;
     }
