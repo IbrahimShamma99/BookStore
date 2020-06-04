@@ -31,7 +31,7 @@ const coverImage = styled.img`
   float: right;
   height: auto;
   max-height: 430px;
-  max-width: 350px;
+  max-width: 200px;
   visibility: visible;
   background: rgb(40, 51, 85);
   border: 3px solid rgb(40, 51, 85);
