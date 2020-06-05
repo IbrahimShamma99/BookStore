@@ -26,11 +26,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const brief = (props) => (
-  <div>
     <briefDiv primary={props.theme === "light" ? true : null}>
       <p>{props.book.brief}</p>
     </briefDiv>
-  </div>
 );
 
 export default connect(mapStatetoProps, mapDispatchToProps)(brief);

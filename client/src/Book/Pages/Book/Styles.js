@@ -30,7 +30,7 @@ const coverImage = styled.img`
   position: absolute;
   float: right;
   height: auto;
-  max-height: 430px;
+  max-height: 260px;
   max-width: 200px;
   visibility: visible;
   background: rgb(40, 51, 85);
@@ -57,7 +57,7 @@ const react = styled.div`
   border-radius: 50%;
   background: transparent;
   position: absolute;
-
+  border-color:transparent;
   @media (min-width: 320px) {
     left: 4%;
     top: 83%;
@@ -84,24 +84,26 @@ const react = styled.div`
     border-radius: 50%;
     width: 42px;
     height: 42px;
-    boder: 0px;
-
     &:hover {
-      boder: 2px 2px 2px 2px;
-      border-color: purple;
+      border: 2px 2px 2px 2px;
+      border-color:transparent;
+      border-color: #958aee;
       border-radius: 50%;
     }
     &:focus {
+      border-color:transparent;
       boder: 2px 2px 2px 2px;
       background: #958aee;
       border-radius: 50%;
     }
     &::selected {
-      boder: 2px 2px 2px 2px;
+      border-color:transparent;
+      border: 2px 2px 2px 2px;
       background: #958aee;
       border-radius: 50%;
     }
     & > p {
+      border-color:transparent;
       color: ${(props) => (props.primary ? "rgb(30,41,55)" : "azure")};
       margin-top:5px;
     }
