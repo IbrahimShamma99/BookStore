@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { uploadAvatar } from "../../Utils/api-auth";
 import "react-dropdown/style.css";
 import url from "../../../constants/server";
+import { Calendar } from 'react-widgets'
 
 const options = ["one", "two", "three"];
 
@@ -167,6 +168,7 @@ class Update extends React.Component {
             id="date"
             name="date"
           ></input>
+          <Calendar/>
           <br />
 
           <label className="bio-form" htmlFor="Bio">

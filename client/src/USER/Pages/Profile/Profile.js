@@ -68,7 +68,7 @@ class Profile extends React.Component {
               {auth.isAuthenticated() &&
               this.props.user._id === this.props.profile._id ? (
                 <div className="username-container-button">
-                  <a href={"/" + this.props.username + "/update"}>
+                  <a href={"/" + this.props.user.username + "/update"}>
                     <this.Styles.usernameContainerButton>
                       Edit Profile
                     </this.Styles.usernameContainerButton>

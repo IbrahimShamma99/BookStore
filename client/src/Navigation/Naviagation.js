@@ -2,8 +2,6 @@ import React from "react";
 import RouteNames from "../USER/constants/user.routes";
 import bookRoutes from "../Book/constants/books.routes";
 import auth from "../USER/Utils/auth-helper";
-import * as actionTypes from "../USER/Store/user.actions";
-import { connect } from "react-redux";
 import url from "../constants/server";
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,19 +10,6 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
 
-const mapStatetoProps = (state) => {
-  return {
-    username: state.UserState.user.username,
-    user: state.UserState.user,
-    theme: state.util.theme,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 class naviagtionBar extends React.Component {
   componentDidMount() {
@@ -99,7 +84,7 @@ class naviagtionBar extends React.Component {
             {this.props.switchTheme}
             {console.log(url)}
             {auth.isAuthenticated() ? (
-              <Nav.Link href={"/" + this.props.username}>
+              <Nav.Link href={"/".concat(this.props.username)}>
                 <Button variant="inherit">
                   <this.Styles.H5>
                     {this.props.user.avatar ? (
@@ -120,4 +105,4 @@ class naviagtionBar extends React.Component {
     );
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(naviagtionBar);
+export default naviagtionBar;

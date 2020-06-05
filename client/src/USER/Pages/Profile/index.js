@@ -4,7 +4,8 @@ import * as actionTypes from "../../Store/user.actions";
 
 const mapStatetoProps = (state) => {
   return {
-    ...state.UserState,
+    user:state.UserState.user,
+    profile:state.UserState.profile,
     theme: state.util.theme,
   };
 };
