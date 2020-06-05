@@ -32,8 +32,8 @@ class Book extends React.Component {
       this.props.user._id
     );
   };
-  onReact = (name) => {
-    this.props.react(this.props.book._id,this.props.user._id,name);
+  onReact = (event) => {
+    this.props.react(this.props.book._id, this.props.user._id, event.target.value);
   };
   render() {
     return (
@@ -118,22 +118,16 @@ class Book extends React.Component {
               <StyleComponent.react
                 primary={this.props.theme === "light" ? true : null}
               >
-                <button
-                onClick={("heart")=>this.onReact}
-                >
+                <button value="heart" onClick={this.onReact}>
                   <img alt="heart" src={heart}></img>
                   <p>{this.props.book.reacts.heart.length}</p>
                 </button>
 
-                <button
-                onClick={this.onReact("read_later")}
-                >
+                <button value="read_later" onClick={this.onReact}>
                   <img alt="read_later" src={read_later}></img>
                   <p>{this.props.book.reacts.read_later.length}</p>
                 </button>
-                <button
-                onClick={this.onReact("unicorn")}
-                >
+                <button value="unicorn" onClick={this.onReact}>
                   <img alt="unicorn" src={unicorn}></img>
                   <p>{this.props.book.reacts.unicorn.length}</p>
                 </button>

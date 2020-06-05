@@ -90,9 +90,6 @@ const reactBook = (req, res) => {
   const book = req.book;
   const react = req.query.react;
   const UserID = req.query.user;
-  console.log(book)
-  console.log(react)
-  console.log(UserID)
   User.findOne({ _id: UserID }).then((user) => {
     book.addReact(react, user._id);
     book.save().then(() => {

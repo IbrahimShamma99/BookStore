@@ -140,7 +140,7 @@ const comment = (ID,userID,commentText) => {
 };
 
 const react = (ID,userID,value) => {
-  const QueryRoute = url.concat("/books/", ID, "/react","?user=",userID,"?react=",value);
+  const QueryRoute = url.concat("/books/", ID, "/react","?user=",userID,"&react=",value);
   return fetch(QueryRoute, {
     method: "get",
     headers: {
