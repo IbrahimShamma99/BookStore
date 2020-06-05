@@ -8,7 +8,7 @@ import unicorn from "../../../logos/unicorn.png";
 //import media from "../../../logos/photo-video-solid.svg";
 import submit from "../../../logos/paper-plane-regular.svg";
 import url from "../../../constants/server";
-import defaultCover from '../../Assets/book.jpg';
+import defaultCover from "../../Assets/book.jpg";
 class Book extends React.Component {
   componentDidMount() {
     this.props.fetchBook(this.props.match.params.book);
@@ -61,7 +61,7 @@ class Book extends React.Component {
               <StyleComponent.coverImage
                 alt="cover"
                 src={defaultCover}
-                ></StyleComponent.coverImage>
+              ></StyleComponent.coverImage>
             )}
             {this.props.book.comments.length !== 0 ? (
               <StyleComponent.commentDiv
@@ -78,24 +78,25 @@ class Book extends React.Component {
                 })}
               </StyleComponent.commentDiv>
             ) : null}
-            {this.props.book.brief?
-            <StyleComponent.briefInfo
-              primary={this.props.theme === "light" ? true : null}
-            >
-              <h4>Brief:</h4> <br />
-              <p>
-                {this.props.book.brief}
-                <a
-                  href={"/book/".concat(
-                    this.props.match.params.book,
-                    "/",
-                    "brief"
-                  )}
-                >
-                  Read More
-                </a>
-              </p>
-            </StyleComponent.briefInfo>:null}
+            {this.props.book.brief ? (
+              <StyleComponent.briefInfo
+                primary={this.props.theme === "light" ? true : null}
+              >
+                <h4>Brief:</h4> <br />
+                <p>
+                  {this.props.book.brief}
+                  <a
+                    href={"/book/".concat(
+                      this.props.match.params.book,
+                      "/",
+                      "brief"
+                    )}
+                  >
+                    Read More
+                  </a>
+                </p>
+              </StyleComponent.briefInfo>
+            ) : null}
             {auth.isAuthenticated() &&
             this.props.book.owner === this.props.user._id ? (
               <a
@@ -116,34 +117,41 @@ class Book extends React.Component {
               >
                 <button>
                   <img alt="heart" src={heart}></img>
+                  <p>{this.props.book.reacts.heart.length}</p>
                 </button>
+
                 <button>
                   <img alt="read_later" src={read_later}></img>
+                  <p>{this.props.book.reacts.read_later.length}</p>
                 </button>
                 <button>
                   <img alt="unicorn" src={unicorn}></img>
+                  <p>{this.props.book.reacts.unicorn.length}</p>
                 </button>
+              </StyleComponent.react>
+              <StyleComponent.react
+                primary={this.props.theme === "light" ? true : null}
+              >
+                <p></p>
+                <p></p>
               </StyleComponent.react>
             </div>
           </StyleComponent.BookDiv>
           <StyleComponent.Comment
             primary={this.props.theme === "light" ? true : null}
           >
-            
-               {
-                this.props.user.avatar ? (
-                  <img
-                    alt="profile"
-                    src={url.concat("/", this.props.user.avatar.filename)}
-                  ></img>
-                ) : (
-                  <img
-                    className="mobile-profile-picture"
-                    alt="profile"
-                    src={require("../../Assets/profile.jpg")}
-                  ></img>
-                )
-              }
+            {this.props.user.avatar ? (
+              <img
+                alt="profile"
+                src={url.concat("/", this.props.user.avatar.filename)}
+              ></img>
+            ) : (
+              <img
+                className="mobile-profile-picture"
+                alt="profile"
+                src={require("../../Assets/profile.jpg")}
+              ></img>
+            )}
             <StyleComponent.CommentForm
               onChange={this.onChangehandler}
               primary={this.props.theme === "light" ? true : null}

@@ -84,6 +84,7 @@ const react = styled.div`
     border-radius: 50%;
     width: 42px;
     height: 42px;
+    boder: 0px;
 
     &:hover {
       boder: 2px 2px 2px 2px;
@@ -99,6 +100,10 @@ const react = styled.div`
       boder: 2px 2px 2px 2px;
       background: #958aee;
       border-radius: 50%;
+    }
+    & > p {
+      color: ${(props) => (props.primary ? "rgb(30,41,55)" : "azure")};
+      margin-top:5px;
     }
 
     & > img {
