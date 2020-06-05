@@ -33,7 +33,7 @@ class Book extends React.Component {
     );
   };
   onReact = (name) => {
-    this.props.react(name);
+    this.props.react(this.props.book_id,this.props.user._id,name);
   };
   render() {
     return (

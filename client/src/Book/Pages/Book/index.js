@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
     comment: (comment, ID, userID) => {
       dispatch({ type: BookActions.COMMENT, ID, comment, userID });
     },
-    react:(value)=>dispatch({type:BookActions.REACT,value})
+    react:(ID ,userID,value)=>dispatch({type:BookActions.REACT,value,ID ,userID})
   };
 };
 
