@@ -142,7 +142,7 @@ const comment = (ID,userID,commentText) => {
 const react = (ID,userID) => {
   const QueryRoute = url.concat("/books/", ID, "/react","?user=",userID);
   return fetch(QueryRoute, {
-    method: "get",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
       Authorization: "Token ".concat(localStorage.getItem("jwt")),

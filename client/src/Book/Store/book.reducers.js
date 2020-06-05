@@ -14,7 +14,15 @@ const reducer = (state = initialState, action) => {
         })
       })
       return {...state}
-    case BookActions.REACT: 
+    case BookActions.REACT:
+        api.react(action.value).then(data=>{
+          if (data){
+            action.asyncDispatch({
+              type:BookActions.SUCCESS,
+              data
+            })
+          }
+        }) 
         return {...state}  
     case BookActions.REFRESH_BOOK:
       return {
