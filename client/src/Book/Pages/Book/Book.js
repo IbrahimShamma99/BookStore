@@ -33,7 +33,7 @@ class Book extends React.Component {
     );
   };
   onReact = (name) => {
-    this.props.react(this.props.book_id,this.props.user._id,name);
+    this.props.react(this.props.book._id,this.props.user._id,name);
   };
   render() {
     return (
@@ -119,7 +119,7 @@ class Book extends React.Component {
                 primary={this.props.theme === "light" ? true : null}
               >
                 <button
-                onClick={this.onReact("heart")}
+                onClick={("heart")=>this.onReact}
                 >
                   <img alt="heart" src={heart}></img>
                   <p>{this.props.book.reacts.heart.length}</p>
