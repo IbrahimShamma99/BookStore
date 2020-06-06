@@ -1,5 +1,5 @@
 import Navbar from "./Naviagation";
-import * as actionTypes from "../USER/Store/user.actions";
+import * as actionTypes from "../User/Store/user.actions";
 import { connect } from "react-redux";
 
 const mapStatetoProps = (state) => {

@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
-import auth from "../../../USER/Utils/auth-helper";
+import auth from "../../../User/Utils/auth-helper";
 import home from "../../../logos/home.jpg";
 import library from "../../../logos/library.jpg";
 const mapStatetoProps = (state) => {

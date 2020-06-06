@@ -5,17 +5,17 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import CustomRouter from './USER/Utils/PrivateRoute';
+import CustomRouter from './User/Utils/PrivateRoute';
 
 import BookRouteNames from "./Book/constants/books.routes";
-import UserRouteNames from "./USER/constants/user.routes";
+import UserRouteNames from "./User/constants/user.routes";
 
 //SECTION Pages User
-import Login from "./USER/Pages/Login/";
-import Signup from "./USER/Pages/Register/";
-import Home from "./USER/Pages/Home/";
-import Profile from "./USER/Pages/Profile/";
-import Update from "./USER/Pages/Update";
+import Login from "./User/Pages/Login/";
+import Signup from "./User/Pages/Register/";
+import Home from "./User/Pages/Home/";
+import Profile from "./User/Pages/Profile/";
+import Update from "./User/Pages/Update";
 
 //SECTION Pages Book
 import Feed from "./Book/Pages/Feed/";

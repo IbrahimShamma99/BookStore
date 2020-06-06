@@ -1,7 +1,7 @@
 import React from "react";
-import RouteNames from "../USER/constants/user.routes";
+import RouteNames from "../User/constants/user.routes";
 import bookRoutes from "../Book/constants/books.routes";
-import auth from "../USER/Utils/auth-helper";
+import auth from "../User/Utils/auth-helper";
 import url from "../constants/server";
 //SECTION importing bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";

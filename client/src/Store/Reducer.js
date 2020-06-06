@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import persistConfig from "./Config";
 //SECTION Reducers
-import userReducer from "../USER/Store/user.reducers";
+import userReducer from "../User/Store/user.reducers";
 import utileReducer from "../UtilStore/util.reducers";
 import bookReducer from "../Book/Store/book.reducers";
 
