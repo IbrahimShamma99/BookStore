@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import PrivateRoute from './USER/Utils/PrivateRoute';
+import CustomRouter from './USER/Utils/PrivateRoute';
 
 import BookRouteNames from "./Book/constants/books.routes";
 import UserRouteNames from "./USER/constants/user.routes";
@@ -31,18 +31,18 @@ class Switcher extends React.Component {
         <Router>
           <Switch>
             <Route exact path={UserRouteNames.base} component={Home} />
-            <Route path={UserRouteNames.login} component={Login} />
-            <Route path={UserRouteNames.register} component={Signup} />
-            <Route exact path={BookRouteNames.feed} component={Feed} />
+            <CustomRouter.PublicRoute path={UserRouteNames.login} component={Login} />
+            <CustomRouter.PublicRoute path={UserRouteNames.register} component={Signup} />
+            <Route exact path={BookRouteNames.feed} component={Feed}/>
             <Route path={BookRouteNames.genre} component={Feed} />
-            <Route path={BookRouteNames.create} component={CreateBook} />
-            <Route path={BookRouteNames.update} component={UpdateBook} />
+            <CustomRouter.PrivateRoute path={BookRouteNames.create} component={CreateBook} />
+            <CustomRouter.PrivateRoute path={BookRouteNames.update} component={UpdateBook} />
             <Route path={BookRouteNames.brief} component={BookBrief} />
             <Route path={BookRouteNames.book} component={Book} />
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
             </Route>
-            <PrivateRoute path={UserRouteNames.update} component={Update} />
+            <CustomRouter.PrivateRoute path={UserRouteNames.update} component={Update} />
             <Route path={UserRouteNames.profile} component={Profile} />
           </Switch>
         </Router>

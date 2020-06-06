@@ -19,4 +19,25 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     }
   />
 );
-export default PrivateRoute;
+
+const PublicRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      !auth.isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: "/",
+            state: { from: props.location },
+          }}
+        />
+      )
+    }
+  />
+);
+
+const CustomRouter = { PrivateRoute, PublicRoute };
+
+export default CustomRouter;
