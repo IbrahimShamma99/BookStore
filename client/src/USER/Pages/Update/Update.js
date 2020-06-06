@@ -73,7 +73,7 @@ class Update extends React.Component {
           />
           {this.props.profile.avatar ? (
             this.props.profile.avatar.filename ? (
-              <div class="view overlay zoom">
+              <div className="view overlay zoom">
                 <img
                   className="profile-picture"
                   alt="profile"

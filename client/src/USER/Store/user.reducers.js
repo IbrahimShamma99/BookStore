@@ -19,8 +19,8 @@ const reducers = (state = intialState, action) => {
       return {
         ...state,
         ...action.data,
-        show: false,
         error: "",
+        show: false,
         message: "",
         open: false,
         success: "",
@@ -96,6 +96,7 @@ const reducers = (state = intialState, action) => {
         error: action.message,
         show: true,
       };
+
     case actionTypes.UPDATE:
       update(action.Data).then((data) => {
         if (data.error) {

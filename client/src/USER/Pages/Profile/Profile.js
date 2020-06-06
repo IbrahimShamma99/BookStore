@@ -18,7 +18,8 @@ class Profile extends React.Component {
       <div className="container">
       
         <Breakpoint medium up>
-        {!this.props.show ?(
+        {
+          !this.props.show ?(
           <div>
           {/** Desktop & Tablet version */}
           <this.Styles.ProfileContainer
@@ -38,7 +39,7 @@ class Profile extends React.Component {
 
             {this.props.profile.avatar ? (
               this.props.profile.avatar.filename ? (
-                <div class="view overlay zoom">
+                <div className="view overlay zoom">
                   <this.Styles.Img
                     className="profile-picture"
                     alt="profile"
