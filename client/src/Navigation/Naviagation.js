@@ -84,7 +84,7 @@ class naviagtionBar extends React.Component {
             {this.props.switchTheme}
             {console.log(url)}
             {auth.isAuthenticated() ? (
-              <Nav.Link href={"/".concat(this.props.username)}>
+              <Nav.Link href={"/".concat(this.props.user.username)}>
                 <Button variant="inherit">
                   <this.Styles.H5>
                     {this.props.user.avatar ? (
