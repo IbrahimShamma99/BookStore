@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const LoginForm = styled.div`
-  border: 5px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -17,15 +16,15 @@ const LoginForm = styled.div`
   width: 300px;
   height: auto;
   padding: 20px;
-  border-radius: 5%;
+  border-radius: 6px;
   background-color: bisque;
+  
 `;
 
 const Label = styled.label`
   color: black;
   font-weight: bold;
 `;
-
 
 class Login extends React.PureComponent {
   constructor(props) {

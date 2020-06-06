@@ -1,40 +1,37 @@
 .login-form {
-    border: 5px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -150px -150px -150px -150px;
-    width: 300px;
-    height: 250px;
-    padding: 20px;
-    border-radius: 5%;
-    background-color: bisque;
+  border: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -150px -150px -150px -150px;
+  width: 300px;
+  height: 250px;
+  padding: 20px;
+  border-radius: 5%;
+  background-color: bisque;
 }
 
 label {
-    color: black;
+  color: black;
 }
 .alert {
-  color:black
+  color: black;
 }
 .btn-flat {
-    background-color: rgb(180, 55, 55);
-    color: black;
-    width: 120px;
-    height: 38px;
-    border-radius: 6px;
-    font-weight: bolder;
-    outline: invert;
-    margin-left: 75px;
-    margin-right: auto;
-  }
+  background-color: rgb(180, 55, 55);
+  color: black;
+  height: 2.5rem;
+  border-radius: 6px;
+  font-weight: bolder;
+  outline: invert;
+  margin-left: 75px;
+  margin-right: auto;
+}
 .btn-flat:hover {
-    border: 2px solid #e93333;
-    background: 0 0;
-    color: black;
+  border: 2px solid #e93333;
 }
 
- textarea:focus,
+textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="datetime"]:focus,
@@ -49,9 +46,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 .form-control:focus {
-  border-color: rgba(200,50,50, 0.8);
+  border-color: rgba(200, 50, 50, 0.8);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgb(180, 55, 55);
   outline: 0 none;
 }
-
- 
