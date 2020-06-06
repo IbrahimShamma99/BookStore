@@ -6,8 +6,6 @@ import "./Signup.css";
 // import propTypes from "prop-types";
 import { Redirect } from "react-router-dom";
 import RouteNames from "../../constants/user.routes";
-import { connect } from "react-redux";
-import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
 
 const RegisterForm = styled.div`
@@ -22,35 +20,6 @@ const RegisterForm = styled.div`
   background-color: bisque;
 `;
 
-const label = styled.label`
-  color: black;
-  font-weight: bold;
-`;
-
-const input = styled.input``;
-const mapStateToProps = (state) => {
-  const RegisterState = {
-    email: state.UserState.user.email,
-    first_name: state.UserState.user.first_name,
-    username: state.UserState.user.username,
-    last_name: state.UserState.user.last_name,
-    password: state.UserState.user.password,
-    open: state.UserState.open,
-    error: state.UserState.error,
-    show: state.UserState.show,
-    submitted: state.UserState.submitted,
-  };
-  return RegisterState;
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) =>
-      dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: () => dispatch({ type: actionTypes.REGISTER }),
-    refresh: () => dispatch({ type: actionTypes.REFRESH }),
-  };
-};
 
 class Signup extends React.Component {
   state = {
@@ -200,4 +169,8 @@ class Signup extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+
+
+
+
+export default Signup;
