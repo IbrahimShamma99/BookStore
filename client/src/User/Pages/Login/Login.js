@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 const SignIn = (props) => {
   const SubmitHandler = () => {
-    return this.props.submit(() => {});
+    return props.submit(() => {});
   };
   const Changehandler = (name) => (event) => {
     props.change(name, event.target.value);
@@ -103,9 +103,9 @@ const SignIn = (props) => {
             label="Remember me"
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
+            onClick={SubmitHandler}
             color="primary"
             className={classes.submit}
           >
