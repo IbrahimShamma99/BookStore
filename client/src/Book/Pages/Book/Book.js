@@ -39,6 +39,10 @@ class Book extends React.Component {
   render() {
     return (
       <div>
+      {
+        this.props.book._id?
+        (
+      <div>
         <StyleComponent.Page
           primary={this.props.theme === "light" ? true : null}
         >
@@ -165,6 +169,10 @@ class Book extends React.Component {
             </StyleComponent.submit>
           </StyleComponent.Comment>
         </StyleComponent.Page>
+      </div>
+      ):
+      null
+    }
       </div>
     );
   }

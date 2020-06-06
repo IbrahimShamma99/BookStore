@@ -14,25 +14,25 @@ code {
 
 ::-webkit-scrollbar {
   width: 10px;
-  background: #F0F0F0;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d0c0c0;
+  background: rgba(255,255,255,0.6);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200,70,200,0.1);
+  background: rgba(255,255,255,0.6);
 }
 ::-webkit-scrollbar {
   width: 10px;
-  background: #F0F0F0;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0F0F0;
+  background: transparent;
   display: inline block;
-  border-width: 0px 0px 0px 2px; /*top left bottom right */
+  border-width: 0px 0px 0px 0px; /*top left bottom right */
   border-style: solid;
   border-color: #d0c0c0;
 }
