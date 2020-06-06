@@ -41,7 +41,7 @@ class Switcher extends React.Component {
             <Route path={BookRouteNames.book} component={Book} />
             <CustomRouter.PrivateRoute path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
-            </Route>
+            </CustomRouter.PrivateRoute>
             <CustomRouter.PrivateRoute path={UserRouteNames.update} component={Update} />
             <Route path={UserRouteNames.profile} component={Profile} />
           </Switch>

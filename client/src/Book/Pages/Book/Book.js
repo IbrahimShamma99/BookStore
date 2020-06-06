@@ -9,6 +9,7 @@ import unicorn from "../../../logos/unicorn.png";
 import submit from "../../../logos/paper-plane-regular.svg";
 import url from "../../../constants/server";
 import defaultCover from "../../Assets/book.jpg";
+
 class Book extends React.Component {
   componentDidMount() {
     this.props.fetchBook(this.props.match.params.book);

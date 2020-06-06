@@ -136,7 +136,6 @@ class Update extends React.Component {
 
           <label htmlFor="Password">Password</label>
           <br />
-          {console.log("state=", this.state)}
           <input
             value={this.state.user.password}
             onChange={this.onChangeHandler("password")}

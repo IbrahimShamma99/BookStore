@@ -118,7 +118,6 @@ const fetchViaTitle = (title) => {
 };
 
 const comment = (ID,userID,commentText) => {
-  console.log(comment)
   const commentBody = {
     comment:commentText
   }

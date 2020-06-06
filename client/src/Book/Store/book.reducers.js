@@ -7,7 +7,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case BookActions.COMMENT:
       api.comment(action.ID,action.userID,action.comment).then(data=>{
-        console.log("data",data)
         action.asyncDispatch({
           type:BookActions.SUCCESS,
           data
