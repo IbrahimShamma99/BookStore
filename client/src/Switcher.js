@@ -5,6 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import PrivateRoute from './USER/Utils/PrivateRoute';
+
 import BookRouteNames from "./Book/constants/books.routes";
 import UserRouteNames from "./USER/constants/user.routes";
 
@@ -21,6 +23,7 @@ import Book from "./Book/Pages/Book/";
 import CreateBook from "./Book/Pages/Create/";
 import UpdateBook from './Book/Pages/Update/'
 import BookBrief from './Book/Pages/Brief/'
+
 class Switcher extends React.Component {
   render() {
     return (
@@ -39,7 +42,7 @@ class Switcher extends React.Component {
             <Route path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
             </Route>
-            <Route path={UserRouteNames.update} component={Update} />
+            <PrivateRoute path={UserRouteNames.update} component={Update} />
             <Route path={UserRouteNames.profile} component={Profile} />
           </Switch>
         </Router>
