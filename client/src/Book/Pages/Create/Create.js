@@ -91,7 +91,9 @@ const Checkout = (props) => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
-
+  const clickSubmit = () => {
+    props.submit(props.userId);
+  };
   return (
     <React.Fragment>
       <CssBaseline />
@@ -122,6 +124,15 @@ const Checkout = (props) => {
                   Your order number is #2001539. We have emailed your order
                   confirmation, and will send you an update when your order has
                   shipped.
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.button}
+                    onClick={clickSubmit()}
+                  >
+                    Create
+                  </Button>
                 </Typography>
               </React.Fragment>
             ) : (
@@ -139,7 +150,7 @@ const Checkout = (props) => {
                     onClick={handleNext}
                     className={classes.button}
                   >
-                    {activeStep === steps.length - 1 ? "Place order" : "Next"}
+                    {activeStep === steps.length - 1 ? "Create" : "Next"}
                   </Button>
                 </div>
               </React.Fragment>
