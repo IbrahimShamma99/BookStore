@@ -131,17 +131,18 @@ const Checkout = (props) => {
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
+                  Your Book number is #2001539 and shipping is no its way 
+                  do you want to confirm?
                   <Button
+                    style={{ position: "relative",marginLeft:"30%"}}
                     variant="contained"
                     color="primary"
                     className={classes.button}
                     onClick={clickSubmit}
                   >
-                    Create
+                    Confirm
                   </Button>
+
                 </Typography>
               </React.Fragment>
             ) : (
