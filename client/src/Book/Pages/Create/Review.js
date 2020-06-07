@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Review() {
+const Review = (props) => {
   const classes = useStyles();
 
   return (
@@ -89,4 +89,6 @@ export default function Review() {
       </Grid>
     </React.Fragment>
   );
-}
+};
+
+export default Review;

@@ -80,7 +80,7 @@ function getStepContent(step) {
   }
 }
 
-export default function Checkout() {
+const Checkout = (props) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -95,8 +95,11 @@ export default function Checkout() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="absolute" color="default" className={classes.appBar}>
-      </AppBar>
+      <AppBar
+        position="absolute"
+        color="default"
+        className={classes.appBar}
+      ></AppBar>
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
@@ -147,7 +150,7 @@ export default function Checkout() {
       </main>
     </React.Fragment>
   );
-}
+};
 
 class CreateBook extends React.Component {
   componentDidMount() {
@@ -247,4 +250,7 @@ class CreateBook extends React.Component {
     );
   }
 }
+
+export default Checkout;
+
 // export default CreateBook;

@@ -7,6 +7,12 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { TextareaAutosize } from "@material-ui/core";
 
 const Form = (props) => {
+  const onChangeHandler = (name) => (event) => {
+    if (name === "cover") {
+      return props.change(name, event.target.files[0]);
+    }
+    props.change(name, event.target.value);
+  };
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -19,6 +25,7 @@ const Form = (props) => {
             id="title"
             name="title"
             label="Title"
+            onChange={onChangeHandler("title")}
             fullWidth
             autoComplete="given-name"
           />
