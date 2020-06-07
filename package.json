@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "install:server":"cd ./ServerSide && npm i",
+    "install:client":"cd ./client && npm i",
     "server": "cd ./ServerSide && npm run dev",
     "client": "cd ./client && npm start",
+    "install:dev":"concurrently \"npm run install:server\" \"npm run install:client\"",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
