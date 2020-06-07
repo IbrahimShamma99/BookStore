@@ -10,7 +10,6 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
 
-
 class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();
@@ -81,22 +80,28 @@ class naviagtionBar extends React.Component {
         */}
               {` `}
             </Nav>
-            {this.props.switchTheme}
             {auth.isAuthenticated() ? (
-              <Nav.Link href={"/".concat(this.props.user.username)}>
-                <Button variant="inherit">
-                  <this.Styles.H5>
-                    {this.props.user.avatar ? (
-                      <img
-                        alt="profile"
-                        src={url.concat("/", this.props.user.avatar.filename)}
-                      ></img>
-                    ) : (
-                      <img alt="profile"></img>
-                    )}
-                  </this.Styles.H5>
-                </Button>
-              </Nav.Link>
+              <div>  
+              {this.props.switchTheme}
+              </div>
+              ):null}
+
+                {auth.isAuthenticated() ? (
+
+                <Nav.Link href={"/".concat(this.props.user.username)}>
+                  <Button variant="inherit">
+                    <this.Styles.H5>
+                      {this.props.user.avatar ? (
+                        <img
+                          alt="profile"
+                          src={url.concat("/", this.props.user.avatar.filename)}
+                        ></img>
+                      ) : (
+                        <img alt="profile"></img>
+                      )}
+                    </this.Styles.H5>
+                  </Button>
+                </Nav.Link>
             ) : null}
           </Navbar.Collapse>
         </Navbar>

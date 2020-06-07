@@ -1,0 +1,25 @@
+{
+  "name": "BookStore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd ./ServerSide && npm run dev",
+    "client": "cd ./client && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IbrahimShamma99/BookStore.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IbrahimShamma99/BookStore/issues"
+  },
+  "homepage": "https://github.com/IbrahimShamma99/BookStore#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}
