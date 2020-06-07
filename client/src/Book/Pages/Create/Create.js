@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Redirect } from "react-router-dom";
 import InfoForm from "./from";
 import PaymentForm from "./Payment";
 import ReviewForm from "./Review";
@@ -90,9 +90,19 @@ const Checkout = (props) => {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  const onRedirect = () => {
+    return (
+      <div>
+        <Redirect to={"/book/".concat(props._id)} />
+      </div>
+    );
+  };
+
   const clickSubmit = () => {
     props.submit(props.userId);
+    onRedirect();
   };
+
   return (
     <React.Fragment>
       <CssBaseline />
@@ -262,5 +272,3 @@ class CreateBook extends React.Component {
 }
 
 export default Checkout;
-
-// export default CreateBook;

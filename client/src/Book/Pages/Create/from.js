@@ -43,7 +43,12 @@ const Form = (props) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextareaAutosize maxLength="1200" placeholder="brief" rowsMax={4} />
+          <TextareaAutosize 
+          onChange={onChangeHandler("brief")}
+          maxLength="1200" 
+          minLength="300"
+          placeholder="brief" 
+          rowsMax={4} />
         </Grid>
       </Grid>
     </React.Fragment>
