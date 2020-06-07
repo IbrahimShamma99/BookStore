@@ -7,7 +7,6 @@ import ReviewForm from "./Review";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
@@ -98,6 +97,7 @@ const Checkout = (props) => {
     <React.Fragment>
       <CssBaseline />
       <AppBar
+        style={{ background: "transparent", boxShadow: "none" }}
         position="absolute"
         color="default"
         className={classes.appBar}
@@ -105,7 +105,7 @@ const Checkout = (props) => {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            Add book
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (
@@ -127,9 +127,8 @@ const Checkout = (props) => {
                   <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleNext}
                     className={classes.button}
-                    onClick={clickSubmit()}
+                    onClick={clickSubmit}
                   >
                     Create
                   </Button>
