@@ -5,6 +5,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Grid from "@material-ui/core/Grid";
+import { connect } from "react-redux";
+import * as bookTypes from "../../Store/book.actions";
 
 const products = [
   { name: "Product 1", desc: "A nice thing", price: "$9.99" },
@@ -90,5 +92,24 @@ const Review = (props) => {
     </React.Fragment>
   );
 };
+const mapStateToProps = (state) => {
+  const BookState = {
+    userId: state.UserState.user._id,
+    ...state.BookState.book,
+    error: state.BookState.error,
+    open_error: state.BookState.open_error,
+    open_message: state.BookState.open_message,
+    message: state.BookState.message,
+  };
+  return BookState;
+};
 
-export default Review;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
+    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
+    refreshBook: () => dispatch({ type: bookTypes.REFRESH_BOOK }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Review);

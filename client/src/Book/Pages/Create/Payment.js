@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
+import { connect } from "react-redux";
+import * as bookTypes from "../../Store/book.actions";
 
 const PaymentForm = (props) => {
   return (
@@ -59,5 +61,24 @@ const PaymentForm = (props) => {
     </React.Fragment>
   );
 };
+const mapStateToProps = (state) => {
+  const BookState = {
+    userId: state.UserState.user._id,
+    ...state.BookState.book,
+    error: state.BookState.error,
+    open_error: state.BookState.open_error,
+    open_message: state.BookState.open_message,
+    message: state.BookState.message,
+  };
+  return BookState;
+};
 
-export default PaymentForm;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
+    submit: (userId) => dispatch({ type: bookTypes.CREATE_BOOK, user: userId }),
+    refreshBook: () => dispatch({ type: bookTypes.REFRESH_BOOK }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PaymentForm);
