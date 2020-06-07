@@ -1,4 +1,4 @@
-import CreateBook from "./Create";
+import BuyBook from "./Create";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
 
@@ -22,4 +22,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBook);
+export default connect(mapStateToProps, mapDispatchToProps)(BuyBook);

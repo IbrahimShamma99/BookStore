@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import NavigationBar from "./Navigation";
 import * as utilTypes from "./UtilStore/util.actions";
 
-import Switcher from "./Switcher";
+import Routes from "./Routes";
 
 const mapStateToProps = (state) => {
   return {
@@ -33,7 +33,7 @@ function App(props) {
             <Layout checked={props.checked} onChange={props.ToggleTheme} />
           }
         />
-        <Switcher />
+        <Routes />
       </React.Fragment>
     </ThemeProvider>
   );

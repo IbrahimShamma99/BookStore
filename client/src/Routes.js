@@ -23,6 +23,7 @@ import Book from "./Book/Pages/Book/";
 import CreateBook from "./Book/Pages/Create/";
 import UpdateBook from './Book/Pages/Update/'
 import BookBrief from './Book/Pages/Brief/'
+import BuyBook from './Book/Pages/Buy/'
 
 class Switcher extends React.Component {
   render() {
@@ -38,6 +39,7 @@ class Switcher extends React.Component {
             <CustomRouter.PrivateRoute path={BookRouteNames.create} component={CreateBook} />
             <CustomRouter.PrivateRoute path={BookRouteNames.update} component={UpdateBook} />
             <Route path={BookRouteNames.brief} component={BookBrief} />
+            <Route path={BookRouteNames.buy} component={BuyBook} />
             <Route path={BookRouteNames.book} component={Book} />
             <CustomRouter.PrivateRoute path={UserRouteNames.logout}>
               <Redirect to={UserRouteNames.base} />
