@@ -76,7 +76,6 @@ input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
   border-color: #e93333;
-  background-color: #dddddd;
 }
 
 input[type="text"],

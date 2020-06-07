@@ -1,5 +1,4 @@
 import React from "react";
-//import "./home.scss";
 import { connect } from "react-redux";
 import * as actionTypes from "../../Store/user.actions";
 import styled from "styled-components";
