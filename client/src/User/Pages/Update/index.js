@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchUser: (username) => {
       dispatch({ type: actionTypes.USERNAME_FETCH, username });
     },
-    submit: (Data) => dispatch({ type: actionTypes.UPDATE, Data }),
+    submit: () => dispatch({ type: actionTypes.UPDATE }),
     InitState: () => dispatch({ type: actionTypes.REFRESH }),
   };
 };
