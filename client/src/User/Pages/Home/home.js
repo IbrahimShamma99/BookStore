@@ -115,15 +115,15 @@ const ExploreButton = styled(BaseButton)`
   }
 `;
 
-class Home extends React.Component {
-  render() {
+const Home = (props) => {
+  
     return (
       <div>
           {auth.isAuthenticated() ? (
             <HomePage>
               <img alt="Home-background" src={library}></img>
 
-              <TipTextArea primary={this.props.theme === "light" ? true : null}>
+              <TipTextArea primary={props.theme === "light" ? true : null}>
                 <h1>
                   <Span>
                     Here you can expolre
@@ -139,14 +139,14 @@ class Home extends React.Component {
               </TipTextArea>
 
               <TextAreaAuth
-                primary={this.props.theme === "light" ? true : null}
+                primary={props.theme === "light" ? true : null}
               >
                 <h1>
                   <Span>Explore Now!</Span>
                 </h1>
                 <a href="/books/create">
                   <CreateButton
-                    primary={this.props.theme === "light" ? true : null}
+                    primary={props.theme === "light" ? true : null}
                   >
                     Add books!
                   </CreateButton>
@@ -168,7 +168,7 @@ class Home extends React.Component {
                   </Span>
                 </h1>
                 <a href="/register">
-                  <Button primary={this.props.theme === "light" ? true : null}>
+                  <Button primary={props.theme === "light" ? true : null}>
                     Join Now
                   </Button>
                 </a>
@@ -178,6 +178,6 @@ class Home extends React.Component {
       </div>
     );
   }
-}
+
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Home);

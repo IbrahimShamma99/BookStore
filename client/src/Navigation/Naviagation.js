@@ -19,8 +19,7 @@ class naviagtionBar extends React.Component {
 
   render() {
     return (
-      <div className="navbar">
-        <Navbar fixed="top" className="input" bg="black" expand="lg">
+        <Navbar fixed="top" className="input" bg="black" expand="lg" variant="dark">
           <Navbar.Brand href={RouteNames.base}>
             <this.Styles.H4>Home</this.Styles.H4>
           </Navbar.Brand>
@@ -81,31 +80,27 @@ class naviagtionBar extends React.Component {
               {` `}
             </Nav>
             {auth.isAuthenticated() ? (
-              <div>  
-              {this.props.switchTheme}
-              </div>
-              ):null}
+              <div>{this.props.switchTheme}</div>
+            ) : null}
 
-                {auth.isAuthenticated() ? (
-
-                <Nav.Link href={"/".concat(this.props.user.username)}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>
-                      {this.props.user.avatar ? (
-                        <img
-                          alt="profile"
-                          src={url.concat("/", this.props.user.avatar.filename)}
-                        ></img>
-                      ) : (
-                        <img alt="profile"></img>
-                      )}
-                    </this.Styles.H5>
-                  </Button>
-                </Nav.Link>
+            {auth.isAuthenticated() ? (
+              <Nav.Link href={"/".concat(this.props.user.username)}>
+                <Button variant="inherit">
+                  <this.Styles.H5>
+                    {this.props.user.avatar ? (
+                      <img
+                        alt="profile"
+                        src={url.concat("/", this.props.user.avatar.filename)}
+                      ></img>
+                    ) : (
+                      <img alt="profile"></img>
+                    )}
+                  </this.Styles.H5>
+                </Button>
+              </Nav.Link>
             ) : null}
           </Navbar.Collapse>
         </Navbar>
-      </div>
     );
   }
 }

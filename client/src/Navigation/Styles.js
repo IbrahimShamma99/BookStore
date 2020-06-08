@@ -7,19 +7,18 @@ const BaseH5 = styled.h5`
     color: rgba(180, 55, 55, 1);
   }
   & > img {
-    border-radius:50%;
+    border-radius: 50%;
     height: 32px;
     width: 32px;
     &:hover {
       transition: transform 0.8s ease;
       overflow: hidden; /* [1.2] Hide the overflowing of child elements */
-      transform: scale(1.1);  
-      border:4px;
-      border-color:azure;
+      transform: scale(1.1);
+      border: 4px;
+      border-color: azure;
     }
   }
 `;
-
 const Styles = (theme) => {
   if (theme === "light") {
     return {
