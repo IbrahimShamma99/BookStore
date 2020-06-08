@@ -25,6 +25,7 @@ const Form = (props) => {
             id="title"
             name="title"
             label="Title"
+            value={props.title}
             onChange={onChangeHandler("title")}
             fullWidth
             autoComplete="given-name"
@@ -35,6 +36,7 @@ const Form = (props) => {
             required
             id="author"
             name="author"
+            value={props.author}
             label="Author"
             fullWidth
             autoComplete="family-name"
@@ -45,6 +47,7 @@ const Form = (props) => {
           onChange={onChangeHandler("brief")}
           maxLength="1200" 
           minLength="300"
+          value={props.brief}
           placeholder="brief" 
           rowsMax={4} />
         </Grid>
