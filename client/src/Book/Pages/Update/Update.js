@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import * as bookTypes from "../../Store/book.actions";
 //import Button from "react-bootstrap/Button";
 
 import InfoForm from "./from";
@@ -18,27 +16,73 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
 
-//TODO redirect when not auth import auth from "../../../USER/Utils/auth-helper";
-// import { Redirect } from "react-router-dom";
-const mapStateToProps = (state) => {
-  const BookState = {
-    user: state.UserState.user,
-    ...state.BookState.book,
-    error: state.BookState.error,
-    open_error: state.BookState.open_error,
-    open_message: state.BookState.open_message,
-    message: state.BookState.message,
-  };
-  return BookState;
-};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    change: (name, value) => dispatch({ type: bookTypes.MODIFY, name, value }),
-    submit: (userId) => dispatch({ type: bookTypes.UPDATE_BOOK, user: userId }),
-    refreshBook: () => dispatch({ type: bookTypes.REFRESH_BOOK }),
-  };
-};
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {"Copyright © "}
+      <Link color="inherit" href="/">
+        BookApp
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
+  );
+}
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: "relative",
+  },
+  layout: {
+    width: "auto",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      width: 600,
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(3, 0, 5),
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
+
+const steps = ["Shipping address", "Payment details", "Review your order"];
+
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <InfoForm />;
+    case 1:
+      return <PaymentForm />;
+    case 2:
+      return <ReviewForm />;
+    default:
+      throw new Error("Unknown step");
+  }
+}
+
+
+
 
 class Update extends React.Component {
   componentDidMount() {
@@ -127,5 +171,4 @@ class Update extends React.Component {
     );
   }
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Update);
+export default Update;
