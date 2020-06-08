@@ -5,6 +5,9 @@ import TextField from "@material-ui/core/TextField";
 import { TextareaAutosize } from "@material-ui/core";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const Form = (props) => {
   const onChangeHandler = (name) => (event) => {
@@ -42,14 +45,32 @@ const Form = (props) => {
             autoComplete="family-name"
           />
         </Grid>
+        <Grid item xs={15}>
+          <InputLabel id="demo-simple-select-label">Genre</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            placeholder="Genre"
+            value={props.genre}
+            onChange={onChangeHandler("genre")}
+          >
+            <MenuItem value={"psychology"}>Psychology</MenuItem>
+            <MenuItem value={"software_development"}>
+              Software development
+            </MenuItem>
+            <MenuItem value={"self_improvement"}>Self improvement</MenuItem>
+          </Select>
+        </Grid>
+
         <Grid item xs={12}>
-          <TextareaAutosize 
-          onChange={onChangeHandler("brief")}
-          maxLength="1200" 
-          minLength="300"
-          value={props.brief}
-          placeholder="brief" 
-          rowsMax={4} />
+          <TextareaAutosize
+            onChange={onChangeHandler("brief")}
+            maxLength="1200"
+            minLength="300"
+            value={props.brief}
+            placeholder="brief"
+            rowsMax={4}
+          />
         </Grid>
       </Grid>
     </React.Fragment>
