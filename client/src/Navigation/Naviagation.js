@@ -10,6 +10,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
 
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();
@@ -19,55 +20,61 @@ class naviagtionBar extends React.Component {
 
   render() {
     return (
-        <Navbar fixed="top" className="input" bg="black" expand="lg" variant="dark">
-          <Navbar.Brand href={RouteNames.base}>
-            <this.Styles.H4>Home</this.Styles.H4>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              {!auth.isAuthenticated() ? (
-                <Nav.Link href={RouteNames.register}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>Register</this.Styles.H5>
-                  </Button>
-                </Nav.Link>
-              ) : null}
-              {!auth.isAuthenticated() ? (
-                <Nav.Link href={RouteNames.login}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>Login</this.Styles.H5>
-                  </Button>
-                </Nav.Link>
-              ) : null}
-              {auth.isAuthenticated() ? (
-                <Nav.Link href={RouteNames.logout}>
-                  <Button
-                    variant="inherit"
-                    onClick={() => {
-                      auth.signout();
-                    }}
-                  >
-                    <this.Styles.H5>Logout</this.Styles.H5>
-                  </Button>
-                </Nav.Link>
-              ) : null}
+      <Navbar
+        fixed="top"
+        className="input"
+        bg="black"
+        expand="lg"
+        variant="dark"
+      >
+        <Navbar.Brand href={RouteNames.base}>
+          <HomeRoundedIcon />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            {!auth.isAuthenticated() ? (
+              <Nav.Link href={RouteNames.register}>
+                <Button variant="inherit">
+                  <this.Styles.H5>Register</this.Styles.H5>
+                </Button>
+              </Nav.Link>
+            ) : null}
+            {!auth.isAuthenticated() ? (
+              <Nav.Link href={RouteNames.login}>
+                <Button variant="inherit">
+                  <this.Styles.H5>Login</this.Styles.H5>
+                </Button>
+              </Nav.Link>
+            ) : null}
+            {auth.isAuthenticated() ? (
+              <Nav.Link href={RouteNames.logout}>
+                <Button
+                  variant="inherit"
+                  onClick={() => {
+                    auth.signout();
+                  }}
+                >
+                  <this.Styles.H5>Logout</this.Styles.H5>
+                </Button>
+              </Nav.Link>
+            ) : null}
 
-              {auth.isAuthenticated() ? (
-                <Nav.Link href={bookRoutes.feed}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>Explore</this.Styles.H5>
-                  </Button>
-                </Nav.Link>
-              ) : null}
-              {auth.isAuthenticated() ? (
-                <Nav.Link href={bookRoutes.create}>
-                  <Button variant="inherit">
-                    <this.Styles.H5>Add book</this.Styles.H5>
-                  </Button>
-                </Nav.Link>
-              ) : null}
-              {/*        
+            {auth.isAuthenticated() ? (
+              <Nav.Link href={bookRoutes.feed}>
+                <Button variant="inherit">
+                  <this.Styles.H5>Explore</this.Styles.H5>
+                </Button>
+              </Nav.Link>
+            ) : null}
+            {auth.isAuthenticated() ? (
+              <Nav.Link href={bookRoutes.create}>
+                <Button variant="inherit">
+                  <this.Styles.H5>Add book</this.Styles.H5>
+                </Button>
+              </Nav.Link>
+            ) : null}
+            {/*        
           <NavDropdown title="Find your genre" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1/">Sports</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Cars</NavDropdown.Item>
@@ -77,30 +84,28 @@ class naviagtionBar extends React.Component {
           <NavDropdown.Item href="#action/3.4">Users</NavDropdown.Item>
         </NavDropdown>
         */}
-              {` `}
-            </Nav>
-            {auth.isAuthenticated() ? (
-              <div>{this.props.switchTheme}</div>
-            ) : null}
+            {` `}
+          </Nav>
+          {auth.isAuthenticated() ? <div>{this.props.switchTheme}</div> : null}
 
-            {auth.isAuthenticated() ? (
-              <Nav.Link href={"/".concat(this.props.user.username)}>
-                <Button variant="inherit">
-                  <this.Styles.H5>
-                    {this.props.user.avatar ? (
-                      <img
-                        alt="profile"
-                        src={url.concat("/", this.props.user.avatar.filename)}
-                      ></img>
-                    ) : (
-                      <img alt="profile"></img>
-                    )}
-                  </this.Styles.H5>
-                </Button>
-              </Nav.Link>
-            ) : null}
-          </Navbar.Collapse>
-        </Navbar>
+          {auth.isAuthenticated() ? (
+            <Nav.Link href={"/".concat(this.props.user.username)}>
+              <Button variant="inherit">
+                <this.Styles.H5>
+                  {this.props.user.avatar ? (
+                    <img
+                      alt="profile"
+                      src={url.concat("/", this.props.user.avatar.filename)}
+                    ></img>
+                  ) : (
+                    <img alt="profile"></img>
+                  )}
+                </this.Styles.H5>
+              </Button>
+            </Nav.Link>
+          ) : null}
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
