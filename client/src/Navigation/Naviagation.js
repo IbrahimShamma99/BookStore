@@ -9,8 +9,14 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
+import styled from "styled-components";
+import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+const Naviagtion = styled(Navbar)`
+  background: ${(props) => (props.primary ? "transparent" :  "#202c3d")};
+  height: 3.5rem;
+`;
+
 class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();
@@ -20,12 +26,9 @@ class naviagtionBar extends React.Component {
 
   render() {
     return (
-      <Navbar
+      <Naviagtion
         fixed="top"
-        className="input"
-        bg="black"
-        expand="lg"
-        variant="dark"
+        primary={this.props.theme === "light" ? true : null}
       >
         <Navbar.Brand href={RouteNames.base}>
           <HomeRoundedIcon />
@@ -105,7 +108,7 @@ class naviagtionBar extends React.Component {
             </Nav.Link>
           ) : null}
         </Navbar.Collapse>
-      </Navbar>
+      </Naviagtion>
     );
   }
 }

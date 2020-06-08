@@ -3,6 +3,17 @@ import styled from "styled-components";
 const BaseH5 = styled.h5`
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
+
+  display: inline;
+	position: relative;
+
+  text-shadow: 0 1px 0 #ccc,
+  0 6px 1px rgba(0,0,0,.1),
+  0 0 5px rgba(0,0,0,.1),
+  0 1px 3px rgba(0,0,0,.3),
+  0 3px 5px rgba(0,0,0,.2),
+  0 5px 10px rgba(0,0,0,.25);
+
   &: hover {
     color: rgba(180, 55, 55, 1);
   }
@@ -19,6 +30,9 @@ const BaseH5 = styled.h5`
     }
   }
 `;
+
+const wrap = styled.div``;
+
 const Styles = (theme) => {
   if (theme === "light") {
     return {
@@ -33,6 +47,7 @@ const Styles = (theme) => {
       H5: styled(BaseH5)`
         color: black;
       `,
+      wrap,
     };
   } else {
     return {
@@ -47,6 +62,7 @@ const Styles = (theme) => {
       H5: styled(BaseH5)`
         color: azure;
       `,
+      wrap,
     };
   }
 };
