@@ -55,6 +55,7 @@ const Form = (props) => {
             onChange={onChangeHandler("genre")}
           >
             <MenuItem value={"psychology"}>Psychology</MenuItem>
+            <MenuItem value={"philosphy"}>Philosphy</MenuItem>
             <MenuItem value={"software_development"}>
               Software development
             </MenuItem>
