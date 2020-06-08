@@ -1,7 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
 import * as bookTypes from "../../Store/book.actions";
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
+
+import InfoForm from "./from";
+import PaymentForm from "./Payment";
+import ReviewForm from "./Review";
+
+import { makeStyles } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import AppBar from "@material-ui/core/AppBar";
+import Paper from "@material-ui/core/Paper";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
+
 //TODO redirect when not auth import auth from "../../../USER/Utils/auth-helper";
 // import { Redirect } from "react-router-dom";
 const mapStateToProps = (state) => {
