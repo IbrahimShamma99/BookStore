@@ -5,14 +5,11 @@ const BaseH5 = styled.h5`
   font-weight: bold;
 
   display: inline;
-	position: relative;
+  position: relative;
 
-  text-shadow: 0 1px 0 #ccc,
-  0 6px 1px rgba(0,0,0,.1),
-  0 0 5px rgba(0,0,0,.1),
-  0 1px 3px rgba(0,0,0,.3),
-  0 3px 5px rgba(0,0,0,.2),
-  0 5px 10px rgba(0,0,0,.25);
+  text-shadow: 0 1px 0 #ccc, 0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25);
 
   &: hover {
     color: rgba(180, 55, 55, 1);
@@ -38,14 +35,14 @@ const Styles = (theme) => {
     return {
       H4: styled.h4`
         font-family: "Times New Roman", Times, serif;
-        color: black;
+        color: azure;
         font-weight: bold;
         &: hover {
           color: rgba(180, 55, 55, 1);
         }
       `,
       H5: styled(BaseH5)`
-        color: black;
+        color: azure;
       `,
       wrap,
     };

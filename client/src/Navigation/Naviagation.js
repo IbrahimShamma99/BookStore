@@ -13,8 +13,10 @@ import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
 const Naviagtion = styled(Navbar)`
-  background: ${(props) => (props.primary ? "transparent" :  "#202c3d")};
   height: 3.5rem;
+  border: 10px;
+  border-color: ;
+  border-style: solid;
 `;
 
 class naviagtionBar extends React.Component {
@@ -27,8 +29,10 @@ class naviagtionBar extends React.Component {
   render() {
     return (
       <Naviagtion
-        fixed="top"
         primary={this.props.theme === "light" ? true : null}
+        bg={this.props.theme === "light" ? "dark" : "transparent"}
+        variant="dark"
+        fixed="top"
       >
         <Navbar.Brand href={RouteNames.base}>
           <HomeRoundedIcon />

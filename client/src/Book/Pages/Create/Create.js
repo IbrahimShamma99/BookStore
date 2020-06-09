@@ -30,6 +30,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
+    background:"tansparent"
   },
   layout: {
     width: "auto",
