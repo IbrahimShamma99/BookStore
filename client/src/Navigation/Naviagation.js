@@ -20,6 +20,8 @@ const Naviagtion = styled(Navbar)`
   border-style: solid;
 `;
 
+
+
 class naviagtionBar extends React.Component {
   componentDidMount() {
     this.props.refresh();

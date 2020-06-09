@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Feed.css";
 import defaultCover from "../../Assets/book.jpg";
 import url from "../../../constants/server";
+import { Link } from "react-router-dom";
 
 const papar = styled.div`
   position: absolute;
@@ -78,6 +79,28 @@ const SideBar = styled.div`
   overflow-x: hidden;
   padding-top: 20px;
 `;
+const ProfileImg = styled.img`
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  margin-bottom: 10px;
+
+  &:hover {
+    transition: transform 0.8s ease;
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    transform: scale(1.1);
+    border: 4px;
+    border-color: azure;
+  }
+`;
+
+const user = styled.button`
+  color: black;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  display: inline-block;
+  border-radius: 3px;
+`;
 
 class Feed extends React.Component {
   componentDidMount() {
@@ -87,7 +110,7 @@ class Feed extends React.Component {
     return (
       <papar>
         <FeedPage primary={this.props.theme === "light" ? true : null}>
-          <h3></h3>
+          <h3>Feed Page</h3>
           {this.props.feed.map((post) => {
             return (
               <a href={"/book/" + post._id}>
@@ -113,11 +136,14 @@ class Feed extends React.Component {
         </FeedPage>
         <SideBar>
           {this.props.user.avatar ? (
-            <div>
-              <img
+            <div className="User-nav">
+              <ProfileImg
                 alt="profile"
                 src={url.concat("/", this.props.user.avatar.filename)}
-              ></img>
+              ></ProfileImg>
+              <a href={"/".concat(this.props.user.username)}>
+                {this.props.user.username}
+              </a>
             </div>
           ) : null}
           <div className="feed-nav">
