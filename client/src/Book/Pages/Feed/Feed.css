@@ -1,3 +1,11 @@
+.feed-nav a {
+  margin-left: 3px;
+  margin-bottom: 3px;
+  font-weight: bold;
+  margin-left:2px;
+
+}
+
 .feed-nav a:hover {
   opacity: 1;
   background: #4e57ef;
@@ -23,16 +31,15 @@
 }
 
 .User-nav a {
+  font-weight: bolder;
   margin-left: 3px;
   margin-bottom: 10px;
   padding: 0.1rem;
-  
 }
-
 
 .User-nav a:hover {
   opacity: 1;
-  background: rgba(5,5,5,0.05);
+  background: rgba(5, 5, 5, 0.05);
   color: white;
   border: 1px solid #cfd7ff;
   box-shadow: 3px 4px 0px #cfd7ff;

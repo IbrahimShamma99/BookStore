@@ -74,16 +74,17 @@ const SideBar = styled.div`
   position: fixed;
   z-index: 1;
   top: 80px;
-  left: 40px;
+  left: 30px;
   background-color: transparent;
   overflow-x: hidden;
   padding-top: 20px;
 `;
 const ProfileImg = styled.img`
   border-radius: 50%;
-  height: 38px;
-  width: 38px;
+  height: 32px;
+  width: 32px;
   margin-bottom: 10px;
+  margin-left:4px;
 
   &:hover {
     transition: transform 0.8s ease;
@@ -147,20 +148,16 @@ class Feed extends React.Component {
             </div>
           ) : null}
           <div className="feed-nav">
+            <h3>Genres</h3>
             <a href="/books/feed/">All</a>
-            <span className="sperator"></span>
             <br />
             <a href="/books/feed/philosphy">Philosphy</a>
-            <span className="sperator"></span>
             <br />
             <a href="/books/feed/software_development">Software Development</a>
-            <span className="sperator"></span>
             <br />
             <a href="/books/feed/self_improvement">Self Improvement</a>
-            <span className="sperator"></span>
             <br />
             <a href="/books/feed/psychology">Psychology</a>
-            <span className="sperator"></span>
             <br />
           </div>
         </SideBar>
