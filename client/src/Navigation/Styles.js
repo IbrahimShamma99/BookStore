@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "react-bootstrap/Button";
 
 const BaseH5 = styled.h5`
   font-family: "Times New Roman", Times, serif;
@@ -12,7 +13,7 @@ const BaseH5 = styled.h5`
     0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25);
 
   &: hover {
-    color: rgba(180, 55, 55, 1);
+
   }
   & > img {
     border-radius: 50%;
@@ -25,6 +26,18 @@ const BaseH5 = styled.h5`
       border: 4px;
       border-color: azure;
     }
+  }
+`;
+
+const NavButton = styled(Button)`
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  &::selected {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  &:focus {
+    background: rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -45,6 +58,7 @@ const Styles = (theme) => {
         color: azure;
       `,
       wrap,
+      NavButton,
     };
   } else {
     return {
@@ -60,6 +74,7 @@ const Styles = (theme) => {
         color: azure;
       `,
       wrap,
+      NavButton,
     };
   }
 };

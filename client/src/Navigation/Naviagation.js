@@ -13,9 +13,10 @@ import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
 const Naviagtion = styled(Navbar)`
-  height: 3.5rem;
-  border: 10px;
-  border-color: ;
+  height: 3.0rem;
+  border-width: 0px 0px 1px 0px;
+  border-color: ${(props) => (props.primary ? "white" : "azure")};
+  border-radius:1px;
   border-style: solid;
 `;
 
@@ -30,7 +31,7 @@ class naviagtionBar extends React.Component {
     return (
       <Naviagtion
         primary={this.props.theme === "light" ? true : null}
-        bg={this.props.theme === "light" ? "dark" : "transparent"}
+        bg={this.props.theme === "light" ? "dark" : "dark"}
         variant="dark"
         fixed="top"
       >
@@ -69,9 +70,9 @@ class naviagtionBar extends React.Component {
 
             {auth.isAuthenticated() ? (
               <Nav.Link href={bookRoutes.feed}>
-                <Button variant="inherit">
+                <this.Styles.NavButton variant="inherit">
                   <this.Styles.H5>Explore</this.Styles.H5>
-                </Button>
+                </this.Styles.NavButton>
               </Nav.Link>
             ) : null}
             {auth.isAuthenticated() ? (
