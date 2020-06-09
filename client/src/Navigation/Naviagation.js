@@ -10,7 +10,7 @@ import Nav from "react-bootstrap/Nav";
 import StyleComponent from "./Styles";
 import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
-
+import NotificationsIcon from '@material-ui/icons/Notifications';
 const Naviagtion = styled(Navbar)`
   height: 3rem;
   border-width: 0px 0px 1px 0px;
@@ -99,6 +99,8 @@ class naviagtionBar extends React.Component {
           </Nav>
           {auth.isAuthenticated() ? <div>{this.props.switchTheme}</div> : null}
 
+          
+
           {auth.isAuthenticated() ? (
             <Nav.Link href={"/".concat(this.props.user.username)}>
               <this.Styles.NavButton variant="inherit">
@@ -108,6 +110,20 @@ class naviagtionBar extends React.Component {
                       alt="profile"
                       src={url.concat("/", this.props.user.avatar.filename)}
                     ></img>
+                  ) : (
+                    <img alt="profile"></img>
+                  )}
+                </this.Styles.H5>
+              </this.Styles.NavButton>
+            </Nav.Link>
+          ) : null}
+
+          {auth.isAuthenticated() ? (
+            <Nav.Link href={"/".concat(this.props.user.username)}>
+              <this.Styles.NavButton variant="inherit">
+                <this.Styles.H5>
+                  {this.props.user.avatar ? (
+                    <NotificationsIcon/>
                   ) : (
                     <img alt="profile"></img>
                   )}
