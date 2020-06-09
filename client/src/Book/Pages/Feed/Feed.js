@@ -7,11 +7,30 @@ import defaultCover from "../../Assets/book.jpg";
 import url from "../../../constants/server";
 
 import BookIcon from "@material-ui/icons/Book";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import RateReviewIcon from '@material-ui/icons/RateReview';
-import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
-import InfoIcon from '@material-ui/icons/Info';
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import RateReviewIcon from "@material-ui/icons/RateReview";
+import LocalOfferIcon from "@material-ui/icons/LocalOffer";
+import EmojiObjectsIcon from "@material-ui/icons/EmojiObjects";
+import InfoIcon from "@material-ui/icons/Info";
+import FaceIcon from "@material-ui/icons/Face";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import PortraitIcon from "@material-ui/icons/Portrait";
+import PinterestIcon from "@material-ui/icons/Pinterest";
+import TwitterIcon from "@material-ui/icons/Twitter";
+
+const DevIcon = (props) => (
+  <div>
+    <a href="https://dev.to/ibrahimshamma99">
+      <img
+        src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+        alt="Ibrahim Abushammah's DEV Profile"
+        height="30"
+        width="30"
+      />
+    </a>
+  </div>
+);
 
 const papar = styled.div`
   position: absolute;
@@ -156,23 +175,47 @@ class Feed extends React.Component {
             <a href="/books/feed/self_improvement">Self Improvement</a>
             <br />
             <a href="/books/feed/psychology">Psychology</a>
-            <br /><br />
+            <br />
+            <br />
             <div>
-            <BookIcon/>
-            <a>Read later</a><br/>
-            <FavoriteIcon/>
-            <a>Favorite</a><br/>
-            <RateReviewIcon/>
-            <a>Reviewed</a><br/>
-            <LocalOfferIcon/>
-            <a>Tags</a><br/>
-            <EmojiObjectsIcon/>
-            <a>FAQ</a><br/>
-            <InfoIcon/>
-            <a>About</a><br/>
-
-          </div>
-
+              <BookIcon />
+              <a>Read later</a>
+              <br />
+              <FavoriteIcon />
+              <a>Favorite</a>
+              <br />
+              <RateReviewIcon />
+              <a>Reviewed</a>
+              <br />
+              <LocalOfferIcon />
+              <a>Tags</a>
+              <br />
+              <FaceIcon />
+              <a>Terms</a>
+              <br />
+              <EmojiObjectsIcon />
+              <a>FAQ</a>
+              <br />
+              <InfoIcon />
+              <a>About</a>
+              <br />
+              <h3>Contacts</h3>
+              <GitHubIcon />
+              <a>Github</a>
+              <br />
+              <LinkedInIcon />
+              <a>LinkedIn</a>
+              <br />
+              <PortraitIcon />
+              <a>Portfolio</a>
+              <br />
+              <PinterestIcon />
+              <a>Pinterest</a>
+              <br />
+              <TwitterIcon />
+              <a>Twitter</a>
+              <br />
+            </div>
           </div>
         </SideBar>
       </papar>
