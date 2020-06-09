@@ -30,8 +30,12 @@ const BaseH5 = styled.h5`
 `;
 
 const NavButton = styled(Button)`
+  background: transparent;
+  border-color: transparent;
+
   &:hover {
     background: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
   }
   &::selected {
     background: rgba(255, 255, 255, 0.1);

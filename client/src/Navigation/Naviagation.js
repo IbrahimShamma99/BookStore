@@ -13,10 +13,10 @@ import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 
 const Naviagtion = styled(Navbar)`
-  height: 3.0rem;
+  height: 3rem;
   border-width: 0px 0px 1px 0px;
   border-color: ${(props) => (props.primary ? "white" : "azure")};
-  border-radius:1px;
+  border-radius: 1px;
   border-style: solid;
 `;
 
@@ -36,35 +36,37 @@ class naviagtionBar extends React.Component {
         fixed="top"
       >
         <Navbar.Brand href={RouteNames.base}>
-          <HomeRoundedIcon />
+          <this.Styles.NavButton>
+            <HomeRoundedIcon />
+          </this.Styles.NavButton>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {!auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.register}>
-                <Button variant="inherit">
+                <this.Styles.NavButton variant="inherit">
                   <this.Styles.H5>Register</this.Styles.H5>
-                </Button>
+                </this.Styles.NavButton>
               </Nav.Link>
             ) : null}
             {!auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.login}>
-                <Button variant="inherit">
+                <this.Styles.NavButton variant="inherit">
                   <this.Styles.H5>Login</this.Styles.H5>
-                </Button>
+                </this.Styles.NavButton>
               </Nav.Link>
             ) : null}
             {auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.logout}>
-                <Button
+                <this.Styles.NavButton
                   variant="inherit"
                   onClick={() => {
                     auth.signout();
                   }}
                 >
                   <this.Styles.H5>Logout</this.Styles.H5>
-                </Button>
+                </this.Styles.NavButton>
               </Nav.Link>
             ) : null}
 
@@ -77,9 +79,9 @@ class naviagtionBar extends React.Component {
             ) : null}
             {auth.isAuthenticated() ? (
               <Nav.Link href={bookRoutes.create}>
-                <Button variant="inherit">
+                <this.Styles.NavButton variant="inherit">
                   <this.Styles.H5>Add book</this.Styles.H5>
-                </Button>
+                </this.Styles.NavButton>
               </Nav.Link>
             ) : null}
             {/*        
@@ -98,7 +100,7 @@ class naviagtionBar extends React.Component {
 
           {auth.isAuthenticated() ? (
             <Nav.Link href={"/".concat(this.props.user.username)}>
-              <Button variant="inherit">
+              <this.Styles.NavButton variant="inherit">
                 <this.Styles.H5>
                   {this.props.user.avatar ? (
                     <img
@@ -109,7 +111,7 @@ class naviagtionBar extends React.Component {
                     <img alt="profile"></img>
                   )}
                 </this.Styles.H5>
-              </Button>
+              </this.Styles.NavButton>
             </Nav.Link>
           ) : null}
         </Navbar.Collapse>
