@@ -5,7 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Feed.css";
 import defaultCover from "../../Assets/book.jpg";
 import url from "../../../constants/server";
-import { Link } from "react-router-dom";
+
+import BookIcon from "@material-ui/icons/Book";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import RateReviewIcon from '@material-ui/icons/RateReview';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import EmojiObjectsIcon from '@material-ui/icons/EmojiObjects';
+import InfoIcon from '@material-ui/icons/Info';
 
 const papar = styled.div`
   position: absolute;
@@ -84,7 +90,7 @@ const ProfileImg = styled.img`
   height: 32px;
   width: 32px;
   margin-bottom: 10px;
-  margin-left:4px;
+  margin-left: 4px;
 
   &:hover {
     transition: transform 0.8s ease;
@@ -93,14 +99,6 @@ const ProfileImg = styled.img`
     border: 4px;
     border-color: azure;
   }
-`;
-
-const user = styled.button`
-  color: black;
-  margin-bottom: 5px;
-  margin-left: 5px;
-  display: inline-block;
-  border-radius: 3px;
 `;
 
 class Feed extends React.Component {
@@ -158,7 +156,23 @@ class Feed extends React.Component {
             <a href="/books/feed/self_improvement">Self Improvement</a>
             <br />
             <a href="/books/feed/psychology">Psychology</a>
-            <br />
+            <br /><br />
+            <div>
+            <BookIcon/>
+            <a>Read later</a><br/>
+            <FavoriteIcon/>
+            <a>Favorite</a><br/>
+            <RateReviewIcon/>
+            <a>Reviewed</a><br/>
+            <LocalOfferIcon/>
+            <a>Tags</a><br/>
+            <EmojiObjectsIcon/>
+            <a>FAQ</a><br/>
+            <InfoIcon/>
+            <a>About</a><br/>
+
+          </div>
+
           </div>
         </SideBar>
       </papar>
