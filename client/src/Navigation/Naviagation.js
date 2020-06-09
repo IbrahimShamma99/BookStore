@@ -7,7 +7,6 @@ import url from "../constants/server";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import StyleComponent from "./Styles";
 import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
@@ -17,6 +16,7 @@ const Naviagtion = styled(Navbar)`
   border-width: 0px 0px 1px 0px;
   border-color: ${(props) => (props.primary ? "white" : "azure")};
   border-radius: 1px;
+  background:#343a40!important;
   border-style: solid;
 `;
 
@@ -32,7 +32,6 @@ class naviagtionBar extends React.Component {
       <Naviagtion
         primary={this.props.theme === "light" ? true : null}
         bg={this.props.theme === "light" ? "dark" : "dark"}
-        variant="dark"
         fixed="top"
       >
         <Navbar.Brand href={RouteNames.base}>
