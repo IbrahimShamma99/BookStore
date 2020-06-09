@@ -16,7 +16,7 @@ const Naviagtion = styled(Navbar)`
   border-width: 0px 0px 1px 0px;
   border-color: ${(props) => (props.primary ? "white" : "azure")};
   border-radius: 1px;
-  background:#343a40!important;
+  background: #343a40 !important;
   border-style: solid;
 `;
 

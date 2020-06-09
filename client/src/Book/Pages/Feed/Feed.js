@@ -1,21 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
-import * as BookActions from "../../Store/book.actions";
 import server from "../../../constants/server";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Feed.css";
 import defaultCover from "../../Assets/book.jpg";
+import url from "../../../constants/server";
+
+const papar = styled.div`
+  position: absolute;
+`;
 
 const FeedPage = styled.div`
   padding: 2em;
   position: absolute;
   top: 80px;
   border-radius: 6px;
-  left: 40px;
+  left: 200px;
   margin-top: 5px;
   background-color: ${(props) => (props.primary ? "bisque" : "#202c3d")};
-  width: 100%;
+  width: 85%;
   height: auto;
   max-width: 95%;
   & > h3 {
@@ -64,18 +67,17 @@ const Book = styled.div`
   }
 `;
 
-const mapStatetoProps = (state) => {
-  return {
-    theme: state.util.theme,
-    feed: state.BookState.feed,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchFeed: (genre) => dispatch({ type: BookActions.FETCH_FEED, genre }),
-  };
-};
+const SideBar = styled.div`
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 80px;
+  left: 40px;
+  background-color: transparent;
+  overflow-x: hidden;
+  padding-top: 20px;
+`;
 
 class Feed extends React.Component {
   componentDidMount() {
@@ -83,45 +85,61 @@ class Feed extends React.Component {
   }
   render() {
     return (
-      <FeedPage primary={this.props.theme === "light" ? true : null}>
-        <h3>
-          {
-            //TODO fix routes
-          }
+      <papar>
+        <FeedPage primary={this.props.theme === "light" ? true : null}>
+          <h3></h3>
+          {this.props.feed.map((post) => {
+            return (
+              <a href={"/book/" + post._id}>
+                <Book primary={this.props.theme === "light" ? true : null}>
+                  {post.cover.filename ? (
+                    <img
+                      alt="cover"
+                      src={server.concat("/", post.cover.filename)}
+                    ></img>
+                  ) : (
+                    <img alt="cover" src={defaultCover}></img>
+                  )}
+                  <span>{post.title}</span>
+                  {post.author ? (
+                    <div>
+                      <p>{post.author}</p>
+                    </div>
+                  ) : null}
+                </Book>
+              </a>
+            );
+          })}
+        </FeedPage>
+        <SideBar>
+          {this.props.user.avatar ? (
+            <div>
+              <img
+                alt="profile"
+                src={url.concat("/", this.props.user.avatar.filename)}
+              ></img>
+            </div>
+          ) : null}
           <div className="feed-nav">
+            <a href="/books/feed/">All</a>
+            <span className="sperator"></span>
+            <br />
             <a href="/books/feed/philosphy">Philosphy</a>
             <span className="sperator"></span>
+            <br />
             <a href="/books/feed/software_development">Software Development</a>
             <span className="sperator"></span>
+            <br />
             <a href="/books/feed/self_improvement">Self Improvement</a>
             <span className="sperator"></span>
+            <br />
             <a href="/books/feed/psychology">Psychology</a>
+            <span className="sperator"></span>
+            <br />
           </div>
-        </h3>
-        {this.props.feed.map((post) => {
-          return (
-            <a href={"/book/" + post._id}>
-              <Book primary={this.props.theme === "light" ? true : null}>
-                {post.cover.filename ? (
-                  <img
-                    alt="cover"
-                    src={server.concat("/", post.cover.filename)}
-                  ></img>
-                ) : (
-                  <img alt="cover" src={defaultCover}></img>
-                )}
-                <span>{post.title}</span>
-                {post.author ? (
-                  <div>
-                    <p>{post.author}</p>
-                  </div>
-                ) : null}
-              </Book>
-            </a>
-          );
-        })}
-      </FeedPage>
+        </SideBar>
+      </papar>
     );
   }
 }
-export default connect(mapStatetoProps, mapDispatchToProps)(Feed);
+export default Feed;
