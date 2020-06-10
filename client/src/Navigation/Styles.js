@@ -59,7 +59,10 @@ const Styles = (theme) => {
         }
       `,
       H5: styled(BaseH5)`
-        color: azure;
+        color: rbga(40, 30, 30, 0.8);
+      `,
+      HOME: styled.div`
+        background: rgba(0, 0, 0, 0.8);
       `,
       wrap,
       StyledNavButton: styled(NavButton)`
@@ -85,6 +88,8 @@ const Styles = (theme) => {
           color: rgba(180, 55, 55, 1);
         }
       `,
+      HOME: styled.div``,
+
       H5: styled(BaseH5)`
         color: azure;
       `,

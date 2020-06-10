@@ -35,7 +35,9 @@ class naviagtionBar extends React.Component {
       >
         <Navbar.Brand href={RouteNames.base}>
           <this.Styles.StyledNavButton>
-            <HomeRoundedIcon />
+            <this.Styles.HOME>
+              <HomeRoundedIcon />
+            </this.Styles.HOME>
           </this.Styles.StyledNavButton>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
