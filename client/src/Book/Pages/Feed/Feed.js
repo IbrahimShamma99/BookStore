@@ -44,9 +44,9 @@ const FeedPage = styled.div`
   left: 200px;
   margin-top: 5px;
   background-color: ${(props) => (props.primary ? "bisque" : "#202c3d")};
-  width: 85%;
+  width: 80%;
   height: auto;
-  max-width: 95%;
+  max-width: 2650px;
   & > h3 {
     left: 0;
     top: 0;
@@ -59,7 +59,21 @@ const FeedPage = styled.div`
     border: 1px solid #4e57ef;
     box-shadow: 3px 4px 0px #4e57ef;
   }
+  @media (min-width: 256px) {
+    width: 60%;
+  }
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  @media (min-width: 1024px) {
+    width: 80%;
+
+  }
+  @media (min-width: 1440px) {
+    width: 85%;
+  }
 `;
+
 const Book = styled.div`
   padding: 1em;
   border-width: 1px 1px 1px 2px; /*top left bottom right */
