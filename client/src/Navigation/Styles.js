@@ -62,7 +62,18 @@ const Styles = (theme) => {
         color: azure;
       `,
       wrap,
-      NavButton,
+      StyledNavButton: styled(NavButton)`
+        &:hover {
+          background: rgba(0, 0, 0, 0.2);
+          border-color: transparent;
+        }
+        &::selected {
+          background: rgba(0, 0, 0, 0.2);
+        }
+        &:focus {
+          background: rgba(0, 0, 0, 0.2);
+        }
+      `,
     };
   } else {
     return {
@@ -78,7 +89,7 @@ const Styles = (theme) => {
         color: azure;
       `,
       wrap,
-      NavButton,
+      StyledNavButton: NavButton,
     };
   }
 };

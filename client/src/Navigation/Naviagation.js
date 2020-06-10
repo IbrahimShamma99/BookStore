@@ -11,12 +11,12 @@ import StyleComponent from "./Styles";
 import styled from "styled-components";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+
 const Naviagtion = styled(Navbar)`
   height: 3rem;
   border-width: 0px 0px 1px 0px;
   border-color: ${(props) => (props.primary ? "white" : "azure")};
   border-radius: 1px;
-  background: #343a40 !important;
   border-style: solid;
 `;
 
@@ -31,56 +31,55 @@ class naviagtionBar extends React.Component {
     return (
       <Naviagtion
         primary={this.props.theme === "light" ? true : null}
-        bg={this.props.theme === "light" ? "dark" : "dark"}
         fixed="top"
       >
         <Navbar.Brand href={RouteNames.base}>
-          <this.Styles.NavButton>
+          <this.Styles.StyledNavButton>
             <HomeRoundedIcon />
-          </this.Styles.NavButton>
+          </this.Styles.StyledNavButton>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             {!auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.register}>
-                <this.Styles.NavButton variant="inherit">
+                <this.Styles.StyledNavButton variant="inherit">
                   <this.Styles.H5>Register</this.Styles.H5>
-                </this.Styles.NavButton>
+                </this.Styles.StyledNavButton>
               </Nav.Link>
             ) : null}
             {!auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.login}>
-                <this.Styles.NavButton variant="inherit">
+                <this.Styles.StyledNavButton variant="inherit">
                   <this.Styles.H5>Login</this.Styles.H5>
-                </this.Styles.NavButton>
+                </this.Styles.StyledNavButton>
               </Nav.Link>
             ) : null}
             {auth.isAuthenticated() ? (
               <Nav.Link href={RouteNames.logout}>
-                <this.Styles.NavButton
+                <this.Styles.StyledNavButton
                   variant="inherit"
                   onClick={() => {
                     auth.signout();
                   }}
                 >
                   <this.Styles.H5>Logout</this.Styles.H5>
-                </this.Styles.NavButton>
+                </this.Styles.StyledNavButton>
               </Nav.Link>
             ) : null}
 
             {auth.isAuthenticated() ? (
               <Nav.Link href={bookRoutes.feed}>
-                <this.Styles.NavButton variant="inherit">
+                <this.Styles.StyledNavButton variant="inherit">
                   <this.Styles.H5>Explore</this.Styles.H5>
-                </this.Styles.NavButton>
+                </this.Styles.StyledNavButton>
               </Nav.Link>
             ) : null}
             {auth.isAuthenticated() ? (
               <Nav.Link href={bookRoutes.create}>
-                <this.Styles.NavButton variant="inherit">
+                <this.Styles.StyledNavButton variant="inherit">
                   <this.Styles.H5>Add book</this.Styles.H5>
-                </this.Styles.NavButton>
+                </this.Styles.StyledNavButton>
               </Nav.Link>
             ) : null}
             {/*        
@@ -99,7 +98,7 @@ class naviagtionBar extends React.Component {
 
           {auth.isAuthenticated() ? (
             <Nav.Link href={"/".concat(this.props.user.username)}>
-              <this.Styles.NavButton variant="inherit">
+              <this.Styles.StyledNavButton variant="inherit">
                 <this.Styles.H5>
                   {this.props.user.avatar ? (
                     <img
@@ -110,14 +109,14 @@ class naviagtionBar extends React.Component {
                     <img alt="profile"></img>
                   )}
                 </this.Styles.H5>
-              </this.Styles.NavButton>
+              </this.Styles.StyledNavButton>
             </Nav.Link>
           ) : null}
 
           {auth.isAuthenticated() ? (
-            <this.Styles.NavButton>
+            <this.Styles.StyledNavButton>
               <NotificationsIcon />
-            </this.Styles.NavButton>
+            </this.Styles.StyledNavButton>
           ) : null}
         </Navbar.Collapse>
       </Naviagtion>
