@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
+var Book = mongoose.model("Book");
 
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
@@ -45,12 +46,23 @@ const adduser = (req, res, next) => {
 
 const fetchUserViaUsername = (req, res) => {
   const username = req.query.username;
+  const JSONBooks = [];
   User.findOne({ username }).then((user) => {
     if (!user) {
       return res.status(422).json({ error: "User not found" });
     }
-
-    return res.status(202).send({ user: user.toJSON() });
+    Promise.resolve(
+      Book.find({ _id: { $in: user.books } }).then((books) => {
+        books.map((book) => {
+          JSONBooks.push(book.toInfoJSON());
+        });
+      })
+    ).then(() => {
+      return res.status(202).send({ user:{
+        ...user.toJSON(),
+        books:JSONBooks,
+      } });
+    });
   });
 };
 

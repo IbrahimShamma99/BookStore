@@ -39,16 +39,23 @@ var BookSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-BookSchema.methods.toJSON = function () {
+
+BookSchema.methods.toInfoJSON = function () {
   return {
     _id: this._id,
-    genre: this.genre,
-    title: this.title,
     author: this.author,
+    title: this.title,
+    genre: this.genre,
+    cover: this.cover,
+  };
+};
+
+BookSchema.methods.toJSON = function () {
+  return {
+    ...this.toInfoJSON(),    
     brief: this.brief,
     reviews: this.reviews,
     owner: this.owner,
-    cover: this.cover,
     comments: this.comments,
     reacts: this.reacts,
   };
