@@ -1,5 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import PropTypes from "prop-types";
+import Routes from "../../constants/user.routes";
 
 //UI
 import Avatar from "@material-ui/core/Avatar";
@@ -15,7 +17,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import PropTypes from "prop-types";
 
 function Copyright() {
   return (
@@ -62,15 +63,15 @@ const SignIn = (props) => {
       <CssBaseline />
       <div className={classes.paper}>
         {props.show ? (
-            <div className="alert">
-              <span
-                className="closebtn"
-                onClick="this.parentElement.style.display='none';"
-              >
-                &times;
-              </span>
-              {props.error}
-            </div>
+          <div className="alert">
+            <span
+              className="closebtn"
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {props.error}
+          </div>
         ) : null}
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -118,12 +119,12 @@ const SignIn = (props) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/forget" variant="body2">
+              <Link href={Routes.password} variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/register" variant="body2">
+              <Link href={Routes.register} variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

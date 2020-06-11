@@ -19,18 +19,18 @@ import PortraitIcon from "@material-ui/icons/Portrait";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
-const DevIcon = (props) => (
-  <div>
-    <a href="https://dev.to/ibrahimshamma99">
-      <img
-        src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
-        alt="Ibrahim Abushammah's DEV Profile"
-        height="30"
-        width="30"
-      />
-    </a>
-  </div>
-);
+// const DevIcon = (props) => (
+//   <div>
+//     <a href="https://dev.to/ibrahimshamma99">
+//       <img
+//         src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
+//         alt="Ibrahim Abushammah's DEV Profile"
+//         height="30"
+//         width="30"
+//       />
+//     </a>
+//   </div>
+// );
 
 const papar = styled.div`
   position: absolute;
