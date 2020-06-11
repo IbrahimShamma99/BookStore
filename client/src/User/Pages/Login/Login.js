@@ -51,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignIn = (props) => {
-  const SubmitHandler = () => {
+  const SubmitHandler = (e) => {
+    e.preventDefault();
     return props.submit(() => {});
   };
   const Changehandler = (name) => (event) => {
@@ -114,6 +115,7 @@ const SignIn = (props) => {
             onClick={SubmitHandler}
             color="primary"
             className={classes.submit}
+            type="submit"
           >
             Sign In
           </Button>
