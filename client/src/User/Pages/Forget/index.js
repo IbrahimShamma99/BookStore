@@ -2,8 +2,6 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -12,6 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import PropTypes from "prop-types";
 import Routes from "../../constants/user.routes";
+import { connect } from "react-redux";
+import * as actionTypes from "../../Store/user.actions";
 
 function Copyright() {
   return (
@@ -69,7 +69,7 @@ const Forget = (props) => {
           </div>
         ) : null}
         <Typography component="h1" variant="h5">
-          Sign in
+          Forget your password
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
@@ -83,22 +83,6 @@ const Forget = (props) => {
             onChange={Changehandler("email")}
             autoComplete="email"
             autoFocus
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            onChange={Changehandler("password")}
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
           />
           <Button
             fullWidth
@@ -127,7 +111,26 @@ const Forget = (props) => {
 
 Forget.propTypes = {
   email: PropTypes.string,
-  password: PropTypes.string,
 };
 
-export default Forget;
+const mapStateToProps = (state) => {
+  return {
+    email: state.UserState.user.email,
+    error: state.UserState.error,
+    open: state.UserState.open,
+    show: state.UserState.show,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    change: (name, value) =>
+      dispatch({ type: actionTypes.MODIFY, name, value }),
+    submit: (cb) => dispatch({ type: actionTypes.PASSWORD_FORGET }),
+    InitState: () => dispatch({ type: actionTypes.REFRESH }),
+    ExternalError: (value) =>
+      dispatch({ type: actionTypes.ExternalError, message: value }),
+    refresh: () => dispatch({ type: actionTypes.REFRESH }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Forget);

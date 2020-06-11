@@ -28,6 +28,9 @@ const reducers = (state = intialState, action) => {
     case PURGE:
       return {};
 
+    case actionTypes.PASSWORD_FORGET:
+      return {...state};
+
     case actionTypes.LOGIN:
       userData.profile = undefined;
       login(userData).then((data) => {
@@ -113,8 +116,7 @@ const reducers = (state = intialState, action) => {
       });
       return state;
     case actionTypes.FETCH_UPDATE:
-      auth.authenticate(action.user.token, () => {
-      });
+      auth.authenticate(action.user.token, () => {});
       return { ...state, ...action, profile: {}, open: true };
 
     case actionTypes.SUCCESS:

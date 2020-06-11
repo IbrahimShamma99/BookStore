@@ -12,3 +12,4 @@ export const SUCCESS = () => "SUCCESS";
 export const ERROR = () => "ERROR";
 export const ExternalError = () => "External_Error";
 export const Connection_ERROR = () => "Connection_ERROR";
+export const PASSWORD_FORGET = () => "PASSWORD_FORGET";
