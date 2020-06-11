@@ -33,7 +33,7 @@ const register = (user) => {
   return fetch(url.concat(apiRoutes.register), {
     method: "POST",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
     },
     withCredentials: true,
@@ -57,7 +57,7 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(url , apiRoutes.update , DATA.user._id, {
+  return fetch(url, apiRoutes.update, DATA.user._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const uploadAvatar = (ID, avatar, cb) => {
       Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
   };
-  axios.put(url.concat(apiRoutes.update , ID), formData, config);
+  axios.put(url.concat(apiRoutes.update, ID), formData, config);
   cb();
 };
 

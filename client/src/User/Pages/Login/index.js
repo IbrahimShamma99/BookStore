@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     change: (name, value) =>
       dispatch({ type: actionTypes.MODIFY, name, value }),
-    submit: (cb) => dispatch({ type: actionTypes.LOGIN }),
+    submit: () => dispatch({ type: actionTypes.LOGIN }),
     InitState: () => dispatch({ type: actionTypes.REFRESH }),
     ExternalError: (value) =>
       dispatch({ type: actionTypes.ExternalError, message: value }),

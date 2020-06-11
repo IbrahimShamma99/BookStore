@@ -1,5 +1,5 @@
 import * as actionTypes from "./user.actions";
-import { login, register, update, fetchViaUsername } from "../Utils/api-auth";
+import * as api from "../Utils/api-auth";
 import auth from "../Utils/auth-helper";
 import { userInitState } from "./user.constants";
 import { PURGE } from "redux-persist";
@@ -29,11 +29,11 @@ const reducers = (state = intialState, action) => {
       return {};
 
     case actionTypes.PASSWORD_FORGET:
-      return {...state};
+      return { ...state };
 
     case actionTypes.LOGIN:
       userData.profile = undefined;
-      login(userData).then((data) => {
+      api.login(userData).then((data) => {
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,
@@ -49,7 +49,7 @@ const reducers = (state = intialState, action) => {
       });
       return { ...state };
     case actionTypes.USERNAME_FETCH:
-      fetchViaUsername(action.username).then((data) => {
+      api.fetchViaUsername(action.username).then((data) => {
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,
@@ -77,7 +77,7 @@ const reducers = (state = intialState, action) => {
         },
       };
     case actionTypes.REGISTER:
-      register(userData).then((data) => {
+      api.register(userData).then((data) => {
         userData.profile = undefined;
         if (data.error) {
           action.asyncDispatch({
@@ -101,7 +101,7 @@ const reducers = (state = intialState, action) => {
       };
 
     case actionTypes.UPDATE:
-      update({ user: state.user }).then((data) => {
+      api.update({ user: state.user }).then((data) => {
         if (data.error) {
           action.asyncDispatch({
             type: actionTypes.ERROR,
