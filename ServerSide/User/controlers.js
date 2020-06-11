@@ -58,10 +58,12 @@ const fetchUserViaUsername = (req, res) => {
         });
       })
     ).then(() => {
-      return res.status(202).send({ user:{
-        ...user.toJSON(),
-        books:JSONBooks,
-      } });
+      return res.status(202).send({
+        user: {
+          ...user.toJSON(),
+          books: JSONBooks,
+        },
+      });
     });
   });
 };
@@ -150,10 +152,10 @@ const followUser = (req, res, next) => {
       User.findById(followedInfo._id)
         .then((followed) => {
           if (!user) {
-            res.status(422).send({ success: false, error: "User not found" });
+            return res.status(422).send({ success: false, error: "User not found" });
           }
           if (!followed) {
-            res
+            return res
               .status(422)
               .send({ success: false, message: "followed not found" });
           }
@@ -173,6 +175,20 @@ const followUser = (req, res, next) => {
     .catch(next);
 };
 
+const password = (req, res) => {
+  if (!req.body.email){
+    return res.status(401).send({
+      error:"please provide email"
+    })
+  }
+  const email = req.body.email;
+  User.findOne({email}).then(user =>{
+    if (!user) {
+      return res.status(422).send({ success: false, error: "User not found" });
+    }
+  })
+};
+
 const logout = (req, res) => {
   return res.status(202).send({
     message: "Logged out!",
@@ -187,6 +203,7 @@ const UserControler = {
   uploadAvatar,
   logout,
   updateUser,
+  password,
   followUser,
   fetchUserViaUsername,
 };

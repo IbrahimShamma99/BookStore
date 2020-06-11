@@ -103,14 +103,20 @@ const fetchViaUsername = (username) => {
 };
 
 const forget_password = (email) => {
-  const QueryRoute = url.concat(apiRoutes.password, email);
+  const QueryRoute = url.concat(apiRoutes.password);
+  const body = {
+    user:{
+      email
+    }
+  }
   return fetch(QueryRoute, {
-    method: "get",
+    method: "post",
     headers: {
       "Content-Type": "application/json",
     },
     withCredentials: true,
     crossdomain: true,
+    body
   })
     .then((response) => {
       return response.json();
