@@ -67,7 +67,6 @@ const FeedPage = styled.div`
   }
   @media (min-width: 1024px) {
     width: 80%;
-
   }
   @media (min-width: 1440px) {
     width: 85%;

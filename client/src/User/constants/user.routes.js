@@ -1,6 +1,7 @@
 const RouteNames = {
   register: "/register",
   login: "/login",
+  password: "/password",
   feed: "/feed",
   home: "/home",
   base: "/",

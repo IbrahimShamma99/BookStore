@@ -1,7 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-//UI
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -49,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = (props) => {
+const Forget = (props) => {
   const SubmitHandler = () => {
     return props.submit(() => {});
   };
@@ -62,19 +59,16 @@ const SignIn = (props) => {
       <CssBaseline />
       <div className={classes.paper}>
         {props.show ? (
-            <div className="alert">
-              <span
-                className="closebtn"
-                onClick="this.parentElement.style.display='none';"
-              >
-                &times;
-              </span>
-              {props.error}
-            </div>
+          <div className="alert">
+            <span
+              className="closebtn"
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {props.error}
+          </div>
         ) : null}
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
@@ -114,14 +108,9 @@ const SignIn = (props) => {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Send
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link href="/forget" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
               <Link href="/register" variant="body2">
                 {"Don't have an account? Sign Up"}
@@ -137,9 +126,9 @@ const SignIn = (props) => {
   );
 };
 
-SignIn.propTypes = {
+Forget.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
 };
 
-export default SignIn;
+export default Forget;

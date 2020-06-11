@@ -15,7 +15,8 @@ import Login from "./User/Pages/Login/";
 import Signup from "./User/Pages/Register/";
 import Home from "./User/Pages/Home/";
 import Profile from "./User/Pages/Profile/";
-import Update from "./User/Pages/Update";
+import Update from "./User/Pages/Update/";
+import Forget from './User/Pages/Forget/'
 
 //SECTION Pages Book
 import Feed from "./Book/Pages/Feed/";
@@ -33,6 +34,7 @@ class Switcher extends React.Component {
           <Switch>
             <Route exact path={UserRouteNames.base} component={Home} />
             <CustomRouter.PublicRoute path={UserRouteNames.login} component={Login} />
+            <CustomRouter.PublicRoute path={UserRouteNames.password} component={Forget} />
             <CustomRouter.PublicRoute path={UserRouteNames.register} component={Signup} />
             <Route exact path={BookRouteNames.feed} component={Feed}/>
             <Route path={BookRouteNames.genre} component={Feed} />
