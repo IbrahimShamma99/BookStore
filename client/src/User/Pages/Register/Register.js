@@ -158,16 +158,11 @@ const SignUp = ({ submit, change, show, error }) => {
           >
             Sign Up
           </Button>
-          <Grid container>
 
-          <Grid item xs>
-            <Link href={Routes.password} variant="body2">
-              Forgot password?
-            </Link>
-          </Grid>
+          <Grid container>
           <Grid item>
             <Link href={Routes.register} variant="body2">
-              {"Don't have an account? Sign Up"}
+              {"Already have an account? Sign Up"}
             </Link>
           </Grid>
         </Grid>
@@ -180,7 +175,7 @@ const SignUp = ({ submit, change, show, error }) => {
     </Container>
   );
 };
-SignIn.propTypes = {
+SignUp.propTypes = {
   error: PropTypes.string,
   show: PropTypes.bool,
   submit: PropTypes.func,
