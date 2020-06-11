@@ -30,4 +30,7 @@ router.post(Routes.Logout, helper.optional, controlers.logout);
 //SECTION fetch via username
 router.get(Routes.username, helper.optional, controlers.fetchUserViaUsername);
 
+//SECTION forget password user
+router.post(Routes.password, controlers.password);
+
 module.exports = router;

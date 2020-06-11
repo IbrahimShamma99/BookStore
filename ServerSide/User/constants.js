@@ -6,6 +6,7 @@ const Routes = {
   user: "/users/:user",
   update: "/update/:user",
   follow: "/follow",
+  password: "/password",
   admin: "/admin",
   username:"/fetch"
 };

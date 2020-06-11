@@ -116,7 +116,7 @@ const forget_password = (email) => {
     },
     withCredentials: true,
     crossdomain: true,
-    body
+    body:JSON.stringify(body)
   })
     .then((response) => {
       return response.json();

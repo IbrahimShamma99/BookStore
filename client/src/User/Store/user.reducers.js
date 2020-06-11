@@ -29,6 +29,17 @@ const reducers = (state = intialState, action) => {
       return {};
 
     case actionTypes.PASSWORD_FORGET:
+      api.forget_password(state.user.email).then((data)=>{
+        if (data.error){
+          action.asyncDispatch({
+            type: actionTypes.ERROR,
+            message: data.error,
+          });
+        }
+        else {
+
+        }
+      })
       return { ...state };
 
     case actionTypes.LOGIN:

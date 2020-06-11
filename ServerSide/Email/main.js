@@ -7,7 +7,7 @@ const EmailVerifyService = (userEmail) => {
 };
 
 const PasswordForgetService = (userEmail)=>{
-  EmailCreateSend(userEmail,);
+  EmailCreateSend(userEmail,"forget password",VerifyemailBody(userEmail));
 };
 
 const NotificationService = (Emails,notication)=>{

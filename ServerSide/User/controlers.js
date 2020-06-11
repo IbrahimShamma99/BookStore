@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var User = mongoose.model("User");
 var Book = mongoose.model("Book");
-
+const { PasswordForgetService, EmailVerifyService } = require("../Email/");
 const adduser = (req, res, next) => {
   const UserInfo = req.body.user;
   if (!UserInfo) {
@@ -152,7 +152,9 @@ const followUser = (req, res, next) => {
       User.findById(followedInfo._id)
         .then((followed) => {
           if (!user) {
-            return res.status(422).send({ success: false, error: "User not found" });
+            return res
+              .status(422)
+              .send({ success: false, error: "User not found" });
           }
           if (!followed) {
             return res
@@ -176,17 +178,18 @@ const followUser = (req, res, next) => {
 };
 
 const password = (req, res) => {
-  if (!req.body.email){
+  if (!req.body.user.email) {
     return res.status(401).send({
-      error:"please provide email"
-    })
+      error: "please provide email",
+    });
   }
-  const email = req.body.email;
-  User.findOne({email}).then(user =>{
+  const email = req.body.user.email;
+  User.findOne({ email }).then((user) => {
     if (!user) {
       return res.status(422).send({ success: false, error: "User not found" });
     }
-  })
+    PasswordForgetService(user.email);
+  });
 };
 
 const logout = (req, res) => {
