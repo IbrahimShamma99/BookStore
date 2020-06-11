@@ -2,6 +2,7 @@ import React from "react";
 
 //UI
 import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -13,6 +14,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import PropTypes from "prop-types";
+import Routes from "../../constants/user.routes";
 
 function Copyright() {
   return (
@@ -46,19 +49,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = (props) => {
+const SignUp = ({ submit, change, show, error }) => {
   const SubmitHandler = (e) => {
     e.preventDefault();
-    return props.submit(() => {});
+    return submit(() => {});
   };
   const Changehandler = (name) => (event) => {
-    props.change(name, event.target.value);
+    change(name, event.target.value);
   };
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+        {show ? (
+          <div className="alert">
+            <span
+              className="closebtn"
+              onClick="this.parentElement.style.display='none';"
+            >
+              &times;
+            </span>
+            {error}
+          </div>
+        ) : null}
+
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -143,6 +158,20 @@ const SignUp = (props) => {
           >
             Sign Up
           </Button>
+          <Grid container>
+
+          <Grid item xs>
+            <Link href={Routes.password} variant="body2">
+              Forgot password?
+            </Link>
+          </Grid>
+          <Grid item>
+            <Link href={Routes.register} variant="body2">
+              {"Don't have an account? Sign Up"}
+            </Link>
+          </Grid>
+        </Grid>
+
         </form>
       </div>
       <Box mt={8}>
@@ -151,5 +180,10 @@ const SignUp = (props) => {
     </Container>
   );
 };
-
+SignIn.propTypes = {
+  error: PropTypes.string,
+  show: PropTypes.bool,
+  submit: PropTypes.func,
+  change: PropTypes.func,
+};
 export default SignUp;

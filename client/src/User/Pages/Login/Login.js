@@ -50,20 +50,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignIn = (props) => {
+const SignIn = ({ submit, change, show, error }) => {
   const SubmitHandler = (e) => {
     e.preventDefault();
-    return props.submit(() => {});
+    return submit(() => {});
   };
   const Changehandler = (name) => (event) => {
-    props.change(name, event.target.value);
+    change(name, event.target.value);
   };
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        {props.show ? (
+        {show ? (
           <div className="alert">
             <span
               className="closebtn"
@@ -71,7 +71,7 @@ const SignIn = (props) => {
             >
               &times;
             </span>
-            {props.error}
+            {error}
           </div>
         ) : null}
         <Avatar className={classes.avatar}>
@@ -141,8 +141,10 @@ const SignIn = (props) => {
 };
 
 SignIn.propTypes = {
-  email: PropTypes.string,
-  password: PropTypes.string,
+  error: PropTypes.string,
+  show: PropTypes.bool,
+  submit: PropTypes.func,
+  change: PropTypes.func,
 };
 
 export default SignIn;
