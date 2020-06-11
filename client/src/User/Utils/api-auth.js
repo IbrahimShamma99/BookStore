@@ -1,8 +1,8 @@
 import url from "../../constants/server";
 import axios from "axios";
-
+import apiRoutes from "../constants/user.api.routes";
 const login = (DATA) => {
-  return fetch(url + "/login", {
+  return fetch(url.concat(apiRoutes.login), {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -19,7 +19,7 @@ const login = (DATA) => {
 };
 
 const logout = () => {
-  return fetch(url + "/logout", {
+  return fetch(url.concat(apiRoutes.logout), {
     method: "GET",
     body: JSON.stringify({}),
   })
@@ -30,10 +30,10 @@ const logout = () => {
 };
 
 const register = (user) => {
-  return fetch(url + "/register", {
+  return fetch(url.concat(apiRoutes.register), {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
       "Content-Type": "application/json",
     },
     withCredentials: true,
@@ -47,7 +47,7 @@ const register = (user) => {
 };
 
 const signout = () => {
-  return fetch(url + "/logout", {
+  return fetch(url.concat(apiRoutes.logout), {
     method: "GET",
   })
     .then((response) => {
@@ -57,7 +57,7 @@ const signout = () => {
 };
 
 const update = (DATA) => {
-  return fetch(url + "/update/" + DATA.user._id, {
+  return fetch(url , apiRoutes.update , DATA.user._id, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -82,12 +82,28 @@ const uploadAvatar = (ID, avatar, cb) => {
       Authorization: "Token ".concat(localStorage.getItem("jwt")),
     },
   };
-  axios.put(url + "/update/" + ID, formData, config);
+  axios.put(url.concat(apiRoutes.update , ID), formData, config);
   cb();
 };
 
 const fetchViaUsername = (username) => {
-  const QueryRoute = url.concat("/fetch/", "?username=" + username);
+  const QueryRoute = url.concat(apiRoutes.username, username);
+  return fetch(QueryRoute, {
+    method: "get",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+    crossdomain: true,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+const forget_password = (email) => {
+  const QueryRoute = url.concat(apiRoutes.password, email);
   return fetch(QueryRoute, {
     method: "get",
     headers: {
@@ -106,6 +122,7 @@ export {
   signout,
   login,
   logout,
+  forget_password,
   uploadAvatar,
   register,
   update,
