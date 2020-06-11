@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Update = (props) => {
-  const SubmitHandler = () => {
+  const SubmitHandler = (e) => {
+    e.preventDefault();
     uploadAvatar(props.user._id, props.user.avatar, () => {
       props.fetchUser(props.match.params.user);
     });
@@ -165,6 +166,7 @@ const Update = (props) => {
             onClick={SubmitHandler}
             color="primary"
             className={classes.submit}
+            type="submit"
           >
             Submit
           </Button>
