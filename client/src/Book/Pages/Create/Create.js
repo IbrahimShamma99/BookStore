@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import InfoForm from "./from";
 import PaymentForm from "./Payment";
 import ReviewForm from "./Review";
+import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -30,7 +31,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   appBar: {
     position: "relative",
-    background:"tansparent"
+    background: "tansparent",
   },
   layout: {
     width: "auto",
@@ -80,7 +81,7 @@ function getStepContent(step) {
   }
 }
 
-const Checkout = (props) => {
+const Checkout = ({ _id, submit, userId }) => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
@@ -94,13 +95,13 @@ const Checkout = (props) => {
   const onRedirect = () => {
     return (
       <div>
-        <Redirect to={"/book/".concat(props._id)} />
+        <Redirect to={"/book/".concat(_id)} />
       </div>
     );
   };
 
   const clickSubmit = () => {
-    props.submit(props.userId);
+    submit(userId);
     onRedirect();
   };
 
@@ -171,6 +172,12 @@ const Checkout = (props) => {
       </main>
     </React.Fragment>
   );
+};
+
+Checkout.propTypes = {
+  _id: PropTypes.string,
+  submit: PropTypes.func,
+  userId: PropTypes.string,
 };
 
 export default Checkout;

@@ -19,19 +19,6 @@ import PortraitIcon from "@material-ui/icons/Portrait";
 import PinterestIcon from "@material-ui/icons/Pinterest";
 import TwitterIcon from "@material-ui/icons/Twitter";
 
-// const DevIcon = (props) => (
-//   <div>
-//     <a href="https://dev.to/ibrahimshamma99">
-//       <img
-//         src="https://d2fltix0v2e0sb.cloudfront.net/dev-badge.svg"
-//         alt="Ibrahim Abushammah's DEV Profile"
-//         height="30"
-//         width="30"
-//       />
-//     </a>
-//   </div>
-// );
-
 const papar = styled.div`
   position: absolute;
 `;
@@ -138,14 +125,16 @@ class Feed extends React.Component {
     this.props.fetchFeed(this.props.match.params.genre);
   }
   render() {
+    const props = this.props;
+    const { theme, feed, user } = props;
     return (
       <papar>
-        <FeedPage primary={this.props.theme === "light" ? true : null}>
+        <FeedPage primary={theme === "light" ? true : null}>
           <h3>Feed Page</h3>
-          {this.props.feed.map((post) => {
+          {feed.map((post) => {
             return (
               <a href={"/book/" + post._id}>
-                <Book primary={this.props.theme === "light" ? true : null}>
+                <Book primary={theme === "light" ? true : null}>
                   {post.cover.filename ? (
                     <img
                       alt="cover"
@@ -166,15 +155,13 @@ class Feed extends React.Component {
           })}
         </FeedPage>
         <SideBar>
-          {this.props.user.avatar ? (
+          {user.avatar ? (
             <div className="User-nav">
               <ProfileImg
                 alt="profile"
-                src={url.concat("/", this.props.user.avatar.filename)}
+                src={url.concat("/", user.avatar.filename)}
               ></ProfileImg>
-              <a href={"/".concat(this.props.user.username)}>
-                {this.props.user.username}
-              </a>
+              <a href={"/".concat(user.username)}>{user.username}</a>
             </div>
           ) : null}
           <div className="feed-nav">
@@ -192,41 +179,42 @@ class Feed extends React.Component {
             <br />
             <div>
               <BookIcon />
-              <a>Read later</a>
+              <a href="/">Read later</a>
               <br />
               <FavoriteIcon />
-              <a>Favorite</a>
+              <a href="/">Favorite</a>
               <br />
               <RateReviewIcon />
-              <a>Reviewed</a>
+              <a href="/">Reviewed</a>
               <br />
               <LocalOfferIcon />
-              <a>Tags</a>
+              <a href="/">Tags</a>
               <br />
               <FaceIcon />
-              <a>Terms</a>
+              <a href="/">Terms</a>
               <br />
               <EmojiObjectsIcon />
-              <a>FAQ</a>
+              <a href="/"
+              >FAQ</a>
               <br />
               <InfoIcon />
-              <a>About</a>
+              <a href="/">About</a>
               <br />
               <h3>Contacts</h3>
               <GitHubIcon />
-              <a>Github</a>
+              <a href="/">Github</a>
               <br />
               <LinkedInIcon />
-              <a>LinkedIn</a>
+              <a href="/">LinkedIn</a>
               <br />
               <PortraitIcon />
-              <a>Portfolio</a>
+              <a href="/">Portfolio</a>
               <br />
               <PinterestIcon />
-              <a>Pinterest</a>
+              <a href="/">Pinterest</a>
               <br />
               <TwitterIcon />
-              <a>Twitter</a>
+              <a href="/">Twitter</a>
               <br />
             </div>
           </div>
