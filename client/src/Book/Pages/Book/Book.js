@@ -11,7 +11,7 @@ import url from "../../../constants/server";
 import defaultCover from "../../Assets/book.jpg";
 
 class Book extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchBook(this.props.match.params.book);
   }
   state = {

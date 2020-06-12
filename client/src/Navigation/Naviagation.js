@@ -21,7 +21,7 @@ const Naviagtion = styled(Navbar)`
 `;
 
 class naviagtionBar extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.refresh();
   }
 

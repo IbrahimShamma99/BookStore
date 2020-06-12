@@ -134,7 +134,7 @@ const ProfileImg = styled.img`
 `;
 
 class Feed extends React.Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchFeed(this.props.match.params.genre);
   }
   render() {
