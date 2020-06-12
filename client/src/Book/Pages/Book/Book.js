@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import StyleComponent from "./Styles";
 import server from "../../../constants/server";
 import auth from "../../../User/Utils/auth-helper";
@@ -14,11 +15,17 @@ class Book extends React.Component {
   componentWillMount() {
     this.props.fetchBook(this.props.match.params.book);
   }
-  state = {
-    comment: {
-      text: "",
-    },
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      comment: {
+        text: "",
+      },
+    };
+    this.onChangehandler = this.onChangehandler.bind(this);
+    this.onSubmitComment = this.onSubmitComment.bind(this);
+    this.onReact = this.onReact.bind(this);
+  }
   onChangehandler = (event) => {
     this.setState({
       comment: {
@@ -41,31 +48,29 @@ class Book extends React.Component {
     );
   };
   render() {
+    const param = this.props.match.params.book;
+    const { book, theme, user } = this.props;
     return (
       <div>
-        {this.props.book._id ? (
+        {book._id ? (
           <div>
-            <StyleComponent.Page
-              primary={this.props.theme === "light" ? true : null}
-            >
-              <StyleComponent.BookDiv
-                primary={this.props.theme === "light" ? true : null}
-              >
+            <StyleComponent.Page primary={theme === "light" ? true : null}>
+              <StyleComponent.BookDiv primary={theme === "light" ? true : null}>
                 <StyleComponent.bookInfo
-                  primary={this.props.theme === "light" ? true : null}
+                  primary={theme === "light" ? true : null}
                 >
                   <h4>Title:</h4>
-                  <p>{this.props.book.title}</p>
+                  <p>{book.title}</p>
                   {/*             <h4>Brief:</h4>
               <p>{this.props.book.brief}</p>
 */}
                   <h4>Author:</h4>
-                  <p>{this.props.book.author}</p>
+                  <p>{book.author}</p>
                 </StyleComponent.bookInfo>
-                {this.props.book.cover.filename ? (
+                {book.cover.filename ? (
                   <StyleComponent.coverImage
                     alt="cover"
-                    src={server.concat("/", this.props.book.cover.filename)}
+                    src={server.concat("/", book.cover.filename)}
                   ></StyleComponent.coverImage>
                 ) : (
                   <StyleComponent.coverImage
@@ -73,14 +78,14 @@ class Book extends React.Component {
                     src={defaultCover}
                   ></StyleComponent.coverImage>
                 )}
-                {this.props.book.comments.length !== 0 ? (
+                {book.comments.length !== 0 ? (
                   <StyleComponent.commentDiv
-                    primary={this.props.theme === "light" ? true : null}
+                    primary={theme === "light" ? true : null}
                   >
-                    {this.props.book.comments.map((Comment) => {
+                    {book.comments.map((Comment) => {
                       return (
                         <StyleComponent.comment
-                          primary={this.props.theme === "light" ? true : null}
+                          primary={theme === "light" ? true : null}
                         >
                           <p>{Comment.text}</p>
                         </StyleComponent.comment>
@@ -88,34 +93,21 @@ class Book extends React.Component {
                     })}
                   </StyleComponent.commentDiv>
                 ) : null}
-                {this.props.book.brief ? (
+                {book.brief ? (
                   <StyleComponent.briefInfo
-                    primary={this.props.theme === "light" ? true : null}
+                    primary={theme === "light" ? true : null}
                   >
                     <h4>Brief:</h4> <br />
                     <p>
-                      {this.props.book.brief}
-                      <a
-                        href={"/book/".concat(
-                          this.props.match.params.book,
-                          "/",
-                          "brief"
-                        )}
-                      >
+                      {book.brief}
+                      <a href={"/book/".concat(param, "/", "brief")}>
                         Read More
                       </a>
                     </p>
                   </StyleComponent.briefInfo>
                 ) : null}
-                {auth.isAuthenticated() &&
-                this.props.book.owner === this.props.user._id ? (
-                  <a
-                    href={"/book/".concat(
-                      this.props.match.params.book,
-                      "/",
-                      "update"
-                    )}
-                  >
+                {auth.isAuthenticated() && book.owner === user._id ? (
+                  <a href={"/book/".concat(param, "/", "update")}>
                     <StyleComponent.ButtonWrapper>
                       EDIT Book
                     </StyleComponent.ButtonWrapper>
@@ -123,37 +115,35 @@ class Book extends React.Component {
                 ) : null}
                 <div className="reacts">
                   <StyleComponent.react
-                    primary={this.props.theme === "light" ? true : null}
+                    primary={theme === "light" ? true : null}
                   >
                     <button value="heart" onClick={this.onReact}>
                       <img alt="heart" src={heart}></img>
-                      <p>{this.props.book.reacts.heart.length}</p>
+                      <p>{book.reacts.heart.length}</p>
                     </button>
 
                     <button value="read_later" onClick={this.onReact}>
                       <img alt="read_later" src={read_later}></img>
-                      <p>{this.props.book.reacts.read_later.length}</p>
+                      <p>{book.reacts.read_later.length}</p>
                     </button>
                     <button value="unicorn" onClick={this.onReact}>
                       <img alt="unicorn" src={unicorn}></img>
-                      <p>{this.props.book.reacts.unicorn.length}</p>
+                      <p>{book.reacts.unicorn.length}</p>
                     </button>
                   </StyleComponent.react>
                   <StyleComponent.react
-                    primary={this.props.theme === "light" ? true : null}
+                    primary={theme === "light" ? true : null}
                   >
                     <p></p>
                     <p></p>
                   </StyleComponent.react>
                 </div>
               </StyleComponent.BookDiv>
-              <StyleComponent.Comment
-                primary={this.props.theme === "light" ? true : null}
-              >
-                {this.props.user.avatar ? (
+              <StyleComponent.Comment primary={theme === "light" ? true : null}>
+                {user.avatar ? (
                   <img
                     alt="profile"
-                    src={url.concat("/", this.props.user.avatar.filename)}
+                    src={url.concat("/", user.avatar.filename)}
                   ></img>
                 ) : (
                   <img
@@ -164,7 +154,7 @@ class Book extends React.Component {
                 )}
                 <StyleComponent.CommentForm
                   onChange={this.onChangehandler}
-                  primary={this.props.theme === "light" ? true : null}
+                  primary={theme === "light" ? true : null}
                 ></StyleComponent.CommentForm>
                 <StyleComponent.submit onClick={this.onSubmitComment}>
                   <img alt="submit" src={submit}></img>
@@ -177,4 +167,8 @@ class Book extends React.Component {
     );
   }
 }
+Book.propTypes = {
+  book: PropTypes.object,
+  theme: PropTypes.string,
+};
 export default Book;

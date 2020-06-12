@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import server from "../../../constants/server";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -194,8 +195,7 @@ class Feed extends React.Component {
               <a href="/">Terms</a>
               <br />
               <EmojiObjectsIcon />
-              <a href="/"
-              >FAQ</a>
+              <a href="/">FAQ</a>
               <br />
               <InfoIcon />
               <a href="/">About</a>
@@ -223,4 +223,11 @@ class Feed extends React.Component {
     );
   }
 }
+
+Feed.propTypes = {
+  theme: PropTypes.string,
+  user: PropTypes.object,
+  feed: PropTypes.array,
+};
+
 export default Feed;
