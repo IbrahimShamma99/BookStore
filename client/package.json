@@ -28,7 +28,7 @@
     "redux-persist": "^5.0.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.1.0",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",
